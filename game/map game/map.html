@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./map.css">
+</head>
+
+<body>
+    <div class="mode-select">
+        <div class="mode-select-inner">
+            <h2>Game Mode Select</h2>
+            <select name="mapSelect" id="mapSelect">
+                <option value="school">school</option>
+                <option value="town">town</option>
+            </select>
+            <select name="modeSelect" id="modeSelect">
+                <option value="free">free mode</option>
+                <option value="quiz">quiz mode</option>
+            </select>
+            <button onclick="start()">Enter</button>
+        </div>
+    </div>
+    <div class="root">
+        <div class="game">
+            <div class="canCon">
+                <canvas id="map"></canvas>
+                <canvas id="char"></canvas>
+            </div>
+        </div>
+        <div class="control">
+            <div>
+                <p>X: <span id="xText"></span> Y: <span id="yText"></span></p>
+                <h4>Name: <span id="nameText"></span></h4>
+                <button>Sound</button>
+            </div>
+            <div>
+                <h2>Quiz time</h2>
+                <p>Where is the <span id="goalText">###</span></p>
+                <button>Sound</button>
+            </div>
+            <div class="btn-ctrl">
+                <button id="left">turn left</button>
+                <button id="straight">straight</button>
+                <button id="right">turn right</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../database/database.js"></script>
+    <script src="./board.js"></script>
+    <script src="./map.js"></script>
+
+
+</body>
+
+</html>

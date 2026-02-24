@@ -1,0 +1,57 @@
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(240, 248, 255, 0.653);
+}
+
+.control-inner {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 30%;
+    border: 5px solid black;
+    padding: 10%;
+}
+
+.hide {
+    display: none;
+}
+
+.test {
+    display: flex;
+    flex-direction: column; 
+}
+
+#questCon {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+
+#questBtn {
+    margin: auto;
+    height: fit-content;
+}
+
+#questBtnImg {
+    max-height: 20vh;
+}
+
+#testCon {
+    height: 20vh;
+    display:flex;
+    flex-direction: row;
+}
+
+#testCon button {
+    width: 25%;
+}
+
+#testCon button img {
+    max-width: 100%;
+    max-height: 100%;
+}

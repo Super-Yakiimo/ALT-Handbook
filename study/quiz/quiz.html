@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Time</title>
+    <link rel="stylesheet" href="./quiz.css">
+</head>
+
+<body>
+    <div class="control">
+        <div class="control-inner">
+            <h3>Pick vocab</h3> 
+
+            <input id="fruitCheck" type="checkbox">
+            <label for="fruitCheck">Fruit</label>
+
+            <input id="vegCheck" type="checkbox">
+            <label for="vegCheck">Vegatable</label>
+
+            <input id="jobCheck" type="checkbox">
+            <label for="jobCheck">Job</label>
+            
+
+            <h3>How many questions</h3>
+            <select name="qNumb" id="qNumb">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+
+            <h3>Question Type</h3>
+            <input id="selectSound" type="checkbox">
+            <label for="selectSound">Select Sound</label>
+
+            <input id="selectImage" type="checkbox">
+            <label for="selectImage">Select Img</label>
+
+            <input id="reading" type="checkbox">
+            <label for="reading">Reading</label>
+
+
+            <div>
+                <button onclick="start()">Start</button>               
+            </div>
+
+        </div>
+    </div>
+    <div class="test">
+        <h3>##/##</h3>
+        <h2>Question text</h2>
+        <div id="questCon">
+            <button id="questBtn">
+                <img id="questBtnImg" src="../../resource/img/fruit/fruit_melon.png" alt="img">
+            </button>
+        </div>
+        <div id="testCon">
+            <button id="btnOne">
+                <img id="btnOneImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
+            </button>
+            <button id="btnTwo">
+                <img id="btnTwoImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
+            </button>
+            <button id="btnThree">
+                <img id="btnThreeImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
+            </button>
+            <button id="btnFour">
+                <img id="btnFourImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
+            </button>
+        </div>
+        <div id="enter-con"></div>
+    </div>
+
+    <script src="../../database/database.js"></script>
+    <script src="./quiz.js"></script>
+</body>
+
+</html>

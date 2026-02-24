@@ -1,0 +1,115 @@
+html,
+body,
+.root {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.root {
+    display: flex;
+    flex-direction: row;
+    touch-action: none;
+}
+
+.game,
+.control {
+    height: 100%;
+}
+
+.game {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.control div {
+    height: 33%;
+    width: 100%;
+    background-color: aquamarine;
+    border-radius: 10%;
+    text-align: center;
+}
+
+.btn-ctrl {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-ctrl button {
+    height: 33%;
+    border-radius: 30%;
+}
+
+.canCon {
+    background-color: black;
+    position: relative;
+}
+
+#game,
+#char {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mode-select {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 255, 255, 0.51);
+}
+
+.mode-select-inner {
+    background-color: white;
+    width: 40%;
+    height: 40%;
+    padding: 5%;
+    border-radius: 15%;
+    border: 5px solid black;
+}
+
+.hide {
+    display: none;
+}
+
+@media (max-aspect-ratio: 0.8) {
+    .root {
+        flex-direction: column;
+    }
+
+    .game {
+        height: 90%;
+        width: 100%;
+    }
+
+    .control {
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .control div {
+        width: 33%;
+        height: 100%;
+    }
+
+    .btn-ctrl {
+        flex-direction: row;
+    }
+
+    .btn-ctrl button {
+        height: 100%;
+    }
+}
