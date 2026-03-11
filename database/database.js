@@ -10,10 +10,10 @@ const ART_ROOM = { name: "arts and crafts room", link: "arts-and-crafts-room.png
 const CLASSROOM = { name: "classroom", link: "classroom.png" };
 const COMPUTER = { name: "computer room", link: "computer-room.png" };
 const COOKING = { name: "cooking room", link: "cooking-room.png" };
-const ENTRANCE = { name: "entrace", link: "entrance.png" };
+const ENTRANCE = { name: "entrance", link: "entrance.png" };
 const GYM = { name: "gymnasium", link: "gym.png" };
 const LIBRARY = { name: "library", link: "library.png" };
-const LUNCH = { name: "lunch", link: "lunch-room.png" };
+const LUNCH = { name: "lunch room", link: "lunch-room.png" };
 const MUSIC = { name: "music room", link: "music-room.png" };
 const NURSE = { name: "school nurses office", link: "nurses-office.png" };
 const PLAYGROUND = { name: "playground", link: "playground.png" };
@@ -76,7 +76,7 @@ const TOWN = [
     { name: "game center", link: "game_center.png" },
     { name: "gym", link: "gym.png" },
     { name: "hotel", link: "hotel.png" },
-    { name: "kiosk", link: "internet-cafe.png" },
+    { name: "inertnet cafe", link: "internet-cafe.png" },
     { name: "kiosk", link: "kiosk.png" },
     { name: "library", link: "library.png" },
     { name: "music store", link: "music-store.png" },
@@ -155,3 +155,87 @@ const FRUIT = [
     { name: "water mellon", link: "fruit/fruit_suika_kodama.png" },
     { name: "blue berry", link: "fruit/fruit_blueberry.png" }
 ]
+
+const ANIMAL = [
+    { name: "dog", link: "animal/dog.png" },
+    { name: "cat", link: "animal/cat.png" },
+    { name: "chicken", link: "animal/chicken.png" },
+    { name: "cow", link: "animal/cow.png" },
+    { name: "horse", link: "animal/horse.png" },
+    { name: "lion", link: "animal/lion.png" },
+    { name: "tiger", link: "animal/tiger.png" },
+    { name: "hippo", link: "animal/hippo.png" },
+    { name: "snake", link: "animal/snake.png" },
+    { name: "deer", link: "animal/deer.png" },
+    { name: "moose", link: "animal/moose.png" },
+    { name: "bird", link: "animal/bird.png" },
+    { name: "duck", link: "animal/duck.png" },
+    { name: "pig", link: "animal/pig.png" },
+    { name: "rein deer", link: "animal/rein-deer.png" },
+    { name: "giraffe", link: "animal/giraffe.png" }
+]
+
+const VERB = [
+    { name: "cook", link: "verb/cook.jpg"},
+    { name: "crawl", link: "verb/crawl.jpg"},
+    { name: "dance", link: "verb/dance.jpg"},
+    { name: "draw", link: "verb/draw.jpg"},
+    { name: "drink", link: "verb/drink.jpg"},
+    { name: "eat", link: "verb/eat.jpg"},
+    { name: "fly", link: "verb/fly.jpg"},
+    { name: "jump", link: "verb/jump.jpg"},
+    { name: "jump", link: "verb/jump.jpg"},
+    { name: "kneel", link: "verb/kneel.jpg"},
+    { name: "laugh", link: "verb/laugh.jpg"},
+    { name: "old", link: "verb/old.jpg"},
+    { name: "push", link: "verb/push.jpg"},
+    { name: "read", link: "verb/read.jpg"},
+    { name: "run", link: "verb/run.jpg"},
+    { name: "shout", link: "verb/shout.jpg"},
+    { name: "sing", link: "verb/sing.jpg"},
+    { name: "sleep", link: "verb/sleep.jpg"},
+    { name: "smell", link: "verb/smell.jpg"},
+    { name: "stretch", link: "verb/stretch.jpg"},
+    { name: "swim", link: "verb/swim.jpg"},
+    { name: "throw", link: "verb/throw.jpg"},
+    { name: "walk", link: "verb/walk.jpg"},
+    { name: "water", link: "verb/water.jpg"},
+    { name: "win", link: "verb/win.jpg"},
+]
+
+// icons
+const BACK = "../../icon/card-back.png";
+
+const VOCAB_LIST = [
+    FRUIT, VEGETABLE, JOBS, ANIMAL
+];
+/*
+
+get selected vocab
+based on input
+*/
+
+const getVocab = () => {
+    const INPUT = [
+        "fruitCheck", "vegCheck", "jobCheck", "animalCheck"
+    ];
+
+
+    let vocabList = [];
+
+    for (let i = 0; i < INPUT.length; i++) {
+        let checked = document.querySelector(`#${INPUT[i]}`).checked
+        if (checked == true) {
+            vocabList = vocabList.concat(VOCAB_LIST[i]);
+        }
+    }
+    return vocabList.sort(() => Math.random() - 0.5);
+}
+
+const getAll = () => {
+    let vocabList = [];
+    for (let i = 0; i < VOCAB_LIST.length; i++) {
+        vocabList = vocabList.concat(VOCAB_LIST[i]);
+    }
+    return vocabList.sort(() => Math.random() - 0.5);
+}

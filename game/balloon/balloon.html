@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Pop</title>
+    <link rel="stylesheet" href="./balloon.css">
+</head>
+
+<body>
+    <div class="control">
+        <div class="control-inner">
+            <h3>Pick vocab</h3>
+
+            <input id="fruitCheck" type="checkbox">
+            <label for="fruitCheck">Fruit</label>
+
+            <input id="vegCheck" type="checkbox">
+            <label for="vegCheck">Vegatable</label>
+
+            <input id="jobCheck" type="checkbox">
+            <label for="jobCheck">Job</label>
+
+            <input id="animalCheck" type="checkbox">
+            <label for="animalCheck">Animal</label>
+
+
+            <h3>Difficulty</h3>
+            <select name="level" id="level">
+                <option value="4">Easy</option>
+                <option value="4">Meduim</option>
+                <option value="6">Hard</option>
+                <option value="8">Extreme</option>
+            </select>
+
+            <div>
+                <button onclick="start()">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./balloon.js"></script>
+</body>
+
+</html>

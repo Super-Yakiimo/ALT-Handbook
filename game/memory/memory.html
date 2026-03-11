@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+    <link rel="stylesheet" href="./memory.css">
+</head>
+
+<body>
+    <div class="control">
+        <div class="control-inner">
+            <h3>Pick vocab</h3>
+
+            <input id="fruitCheck" type="checkbox">
+            <label for="fruitCheck">Fruit</label>
+
+            <input id="vegCheck" type="checkbox">
+            <label for="vegCheck">Vegatable</label>
+
+            <input id="jobCheck" type="checkbox">
+            <label for="jobCheck">Job</label>
+
+            <input id="animalCheck" type="checkbox">
+            <label for="animalCheck">Animal</label>
+
+
+            <h3>Difficulty</h3>
+            <select name="level" id="level">
+                <option value="4">Easy</option>
+                <option value="4">Meduim</option>
+                <option value="6">Hard</option>
+                <option value="8">Extreme</option>
+            </select>
+
+            <div>
+                <button onclick="start()">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-root">
+        <div class="text-root">
+            <h3 id="findText">Find the "<span id="replaceText">###</span>" card</h3>
+        </div>
+        <div class="card-root"></div>
+    </div>
+
+    <script src="../../database/database.js"></script>
+    <script src="./memory.js"></script>
+</body>
+
+</html>

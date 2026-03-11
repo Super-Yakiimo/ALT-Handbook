@@ -21,6 +21,9 @@
 
             <input id="jobCheck" type="checkbox">
             <label for="jobCheck">Job</label>
+
+            <input id="animalCheck" type="checkbox">
+            <label for="animalCheck">Animal</label>
             
 
             <h3>How many questions</h3>
@@ -31,15 +34,12 @@
             </select>
 
             <h3>Question Type</h3>
-            <input id="selectSound" type="checkbox">
-            <label for="selectSound">Select Sound</label>
-
-            <input id="selectImage" type="checkbox">
-            <label for="selectImage">Select Img</label>
-
-            <input id="reading" type="checkbox">
-            <label for="reading">Reading</label>
-
+            <select name="questType" id="questType">
+                <option value="all">All</option>
+                <option id="imgSound" value="imgSound">Image and Sound</option>
+                <option value="imgText">Image and Text</option>
+                <option id="textSound" value="textSound">Text and Sound</option>
+            </select>
 
             <div>
                 <button onclick="start()">Start</button>               
@@ -50,26 +50,9 @@
     <div class="test">
         <h3>##/##</h3>
         <h2>Question text</h2>
-        <div id="questCon">
-            <button id="questBtn">
-                <img id="questBtnImg" src="../../resource/img/fruit/fruit_melon.png" alt="img">
-            </button>
-        </div>
-        <div id="testCon">
-            <button id="btnOne">
-                <img id="btnOneImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
-            </button>
-            <button id="btnTwo">
-                <img id="btnTwoImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
-            </button>
-            <button id="btnThree">
-                <img id="btnThreeImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
-            </button>
-            <button id="btnFour">
-                <img id="btnFourImg" src="../../resource/img/fruit/fruit_mango.png" alt="img">
-            </button>
-        </div>
-        <div id="enter-con"></div>
+        <div id="questCon"></div>
+        <div id="testCon"></div>
+        <div id="enterCon"><button><img id="entrBtn" src="../../resource/img/icon/enter.png" alt=""></button></div>
     </div>
 
     <script src="../../database/database.js"></script>

@@ -8,6 +8,36 @@ sound variables
 const CORRECT = "../../resource/sound/bell.mp3";
 
 
+function speakText(text) {
+
+    // Check browser support
+    if (!('speechSynthesis' in window)) {
+        alert("Sorry, your browser does not support Text-to-Speech.");
+        return;
+    }
+
+    // Stop any ongoing speech
+    window.speechSynthesis.cancel();
+
+    // Create a new utterance
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US"; // English (US)
+    utterance.rate = 1;       // Speed (0.1 to 10)
+    utterance.pitch = 1;      // Pitch (0 to 2)
+    utterance.volume = 1;     // Volume (0 to 1)
+
+    // Optional: choose a specific English voice if available
+    const voices = speechSynthesis.getVoices();
+    const englishVoice = voices.find(voice => voice.lang.startsWith("en"));
+    if (englishVoice) {
+        utterance.voice = englishVoice;
+    }
+
+    // Speak the text
+    window.speechSynthesis.speak(utterance);
+}
+
+
 /*
 entry point
 */
@@ -18,7 +48,6 @@ function start() {
 
     //audio
     var correctAudio = new Audio(CORRECT);
-
 
     // game mode selection inputs
     const mapSelect = this.document.querySelector("#mapSelect");
@@ -33,6 +62,9 @@ function start() {
     const charCan = this.document.querySelector("#char");
     charCtx = charCan.getContext('2d');
 
+    // sound btns
+    let locSound = document.querySelector("#locSound");
+    let questSound = document.querySelector("#questSound");
 
     /*
     player control input and text display
@@ -194,6 +226,8 @@ function start() {
             return console.log('null');
         }
 
+        speakText('go straight');
+
         // update the player index
         xIndex = nextX;
         yIndex = nextY;
@@ -237,6 +271,10 @@ function start() {
             return;
         }
         moving = true;
+
+        // speak when turning
+        let text = (dir == -1) ? 'turn left' : 'turn right';
+        speakText(text);
 
         playerInfo.dirIndex += dir;
 
@@ -284,6 +322,7 @@ function start() {
 
         // create quiz question 
         if (modeSelect.value == 'quiz') {
+            questSound.disabled = false;
             makeQuiz();
         }
 
@@ -343,6 +382,19 @@ function start() {
 
     setDim();
     updateUI();
+
+
+    locSound.addEventListener("click", ()=>{
+        let name = selectMap.layout[selectMap.row * yIndex + xIndex].room.name;
+        console.log(name);
+        speakText(name);
+    });
+
+    questSound.addEventListener("click", ()=>{
+        console.log(goalText.innerHTML);
+        let text = `Where is the ${goalText.innerHTML}?`;
+        speakText(text);
+    });
 
     left.addEventListener('click', () => {
         turn(-1);
