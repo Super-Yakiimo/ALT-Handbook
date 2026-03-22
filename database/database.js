@@ -187,7 +187,6 @@ const VERB = [
     { name: "jump", link: "verb/jump.jpg"},
     { name: "kneel", link: "verb/kneel.jpg"},
     { name: "laugh", link: "verb/laugh.jpg"},
-    { name: "old", link: "verb/old.jpg"},
     { name: "push", link: "verb/push.jpg"},
     { name: "read", link: "verb/read.jpg"},
     { name: "run", link: "verb/run.jpg"},
@@ -203,11 +202,11 @@ const VERB = [
     { name: "win", link: "verb/win.jpg"},
 ]
 
-// icons
-const BACK = "../../icon/card-back.png";
+// icons "../../resource/img/icon/card-back.png"
+const BACK = "../../resource/img/icon/card-back.png";
 
 const VOCAB_LIST = [
-    FRUIT, VEGETABLE, JOBS, ANIMAL
+    FRUIT, VEGETABLE, JOBS, ANIMAL, VERB
 ];
 /*
 
@@ -217,7 +216,7 @@ based on input
 
 const getVocab = () => {
     const INPUT = [
-        "fruitCheck", "vegCheck", "jobCheck", "animalCheck"
+        "fruitCheck", "vegCheck", "jobCheck", "animalCheck", "verbCheck"
     ];
 
 

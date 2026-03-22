@@ -6,23 +6,6 @@ get selected vocab
 
 const synth = window.speechSynthesis;
 let voice = null;
-
-function pickVoice() {
-    //console.log('load voices');
-    let voices = synth.getVoices();
-    voices = voices.filter(voice => voice.lang.startsWith("en"));
-    voice = voices[Math.floor(Math.random() * voices.length)]; 
-    //console.log(voice);
-
-    let natFilter = voices.filter(voice => voice.name.includes('Natural'));
-
-    if(natFilter.length > 0){
-        voice = natFilter[Math.floor(Math.random() * voices.length)];
-    }
-
-    //console.log("voice: " + voice);
-}
-
 // speak
 function speakText(text) {
 
@@ -43,14 +26,10 @@ function speakText(text) {
 
     // Create a new utterance
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US"; // English (US)
+    //utterance.lang = "en-US"; // English (US)
     utterance.rate = 1;       // Speed (0.1 to 10)
     utterance.pitch = 1;      // Pitch (0 to 2)
     utterance.volume = 1;     // Volume (0 to 1)
-
-    if (voice) {
-        utterance.voice = voice;
-    }
 
     // Speak the text
     synth.speak(utterance);
@@ -68,7 +47,7 @@ function makeCards(number) {
     let replaceText = document.querySelector('#replaceText');
 
     let allVocab = getAll();
-    console.log(allVocab);
+    //console.log(allVocab);
 
     for (let i = 0; i < number; i++) {
         let row = document.createElement('div');
@@ -119,21 +98,17 @@ function makeCards(number) {
     return cardList;
 }
 
-window.onload = function () {
-    speechSynthesis.onload = pickVoice;
-    speechSynthesis.onvoiceschanged = pickVoice;
-}
-
 // start function
 function start() {
-    //console.log(voice);
-    if (voice == null) {
-        return alert('please wait for speech synthesis to load');
-    }
-
     let level = document.querySelector('#level');
     let lNumb = Number(level.value);
     let vocab = getVocab();
+
+    // audio files
+    const correct = new Audio('../../resource/sound/bell.mp3');
+    const wrong = new Audio('../../resource/sound/incorrect.mp3');
+    correct.preload = 'auto';
+    wrong.preload = 'auto';
 
     let wait = true;
 
@@ -156,14 +131,23 @@ function start() {
 
         if (aIndex == select && indexList.length <= 0) {
             setPictures();
+            correct.currentTime = 0;
+            correct.play();
         }
         else if (aIndex == select) {
             makeQuestion();
+            correct.currentTime = 0;
+            correct.play();
+        }
+        else {
+            wrong.currentTime = 0;
+            wrong.play();
         }
     }
 
     function flipStagered() {
         let index = 0;
+        let stagerTime = 1000 / cardList.length;
         let jstOut = Array.from(cardList, card => card.outer).sort(() => Math.random() - 0.5);
         let handle = setInterval(() => {
             let card = jstOut[index];
@@ -178,7 +162,7 @@ function start() {
                 clearInterval(handle);
                 wait = false;
             }
-        }, 100);
+        }, stagerTime);
     }
 
     function setPictures() {
@@ -206,7 +190,7 @@ function start() {
         //console.log(aIndex, picList[aIndex]);
         let answer = picList[aIndex];
         replaceText.innerHTML = answer.name;
-        speakText(`Find the ${answer.name}`);
+        speakText(`Find the ${answer.name} card`);
     }
 
     document.querySelector('.control').classList.add('hide');
@@ -215,7 +199,7 @@ function start() {
 
     cardList.forEach((card, index) => {
         card.outer.addEventListener('click', () => {
-            console.log(picList[index].name);
+            //console.log(picList[index].name);
             checkAnswer(index);
         });
 

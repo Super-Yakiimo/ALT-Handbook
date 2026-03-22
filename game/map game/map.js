@@ -139,11 +139,12 @@ function start() {
 
     // make quiz question
     const makeQuiz = () => {
-        let filterMap = selectMap.layout.filter(block => block.room.name != 'hallway' && block.room.name != 'road' && block.room.name != 'none');
-        filterMap = filterMap.filter(block => ~(block.x == playerInfo.x && block.y == playerInfo.y));
+        // get current tile
+        let currName = selectMap.layout[selectMap.row * yIndex + xIndex].room.name;
+        // filter out road and hallway // filter out current place
+        let filterMap = selectMap.layout.filter(block => block.room.name != 'hallway' && block.room.name != 'road' && block.room.name != 'none' &&  block.room.name != currName);
+        console.log(filterMap);
         let rand = Math.floor(Math.random() * filterMap.length);
-        console.log(filterMap[rand]);
-
         goalText.innerHTML = filterMap[rand].room.name;
     }
 
