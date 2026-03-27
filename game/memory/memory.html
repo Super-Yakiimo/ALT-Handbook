@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory</title>
     <link rel="stylesheet" href="./memory.css">
+    <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
 </head>
 
 <body>
-    <div class="control">
+    <div id="start" class="control">
         <div class="control-inner">
             <h3>Pick vocab</h3>
 
@@ -25,13 +26,16 @@
             <input id="animalCheck" type="checkbox">
             <label for="animalCheck">Animal</label>
 
+            <input id="verbCheck" type="checkbox">
+            <label for="verbCheck">Verb</label>
+
 
             <h3>Difficulty</h3>
             <select name="level" id="level">
-                <option value="4">Easy</option>
-                <option value="4">Meduim</option>
-                <option value="6">Hard</option>
-                <option value="8">Extreme</option>
+                <option value="0">Easy</option>
+                <option value="1">Meduim</option>
+                <option value="2">Hard</option>
+                <option value="3">Extreme</option>
             </select>
 
             <div>
@@ -40,9 +44,19 @@
         </div>
     </div>
 
+    <div id="end" class="control hide">
+        <div class="control-inner">
+            <h1>Finish</h1>
+            <h2>Score: <span id="endScoreText">###</span></h2>
+            <h2>Time: <span id="endTimeText">###</span></h2>
+            <button onclick="location.reload(true);">Play Again</button>
+        </div>
+    </div>
+
     <div class="game-root">
         <div class="text-root">
-            <h3 id="findText">Find the "<span id="replaceText">###</span>" card</h3>
+            <div>Score: <span id="scoreText">####</span></div>
+            <div>Time: <span id="timeText">####</span></div>
         </div>
         <div class="card-root"></div>
     </div>

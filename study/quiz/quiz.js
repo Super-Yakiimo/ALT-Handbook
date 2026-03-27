@@ -119,9 +119,7 @@ const getQuestNumb = () => {
 create the test
 */
 
-const makeTest = (vocab, types) => {
-    let qNumb = getQuestNumb();
-
+const makeTest = (vocab, types, qNumb) => {
     let test = [];
 
     for (let i = 0; i < qNumb; i++) {
@@ -207,18 +205,23 @@ start function
 const start = () => {
     let vocab = getVocab();
     let types = getChecked();
+    let qNumb = getQuestNumb();
+
+    let scoreText = document.querySelector("#scoreText");
 
     if (vocab.length == 0) {
         return alert('please select some vocab');
     }
 
-    document.querySelector('.control').classList.add('hide');
-    let test = makeTest(vocab, types);
-    console.log(test);
+    document.querySelector('#start').classList.add('hide');
+    let test = makeTest(vocab, types, qNumb);
 
     let entrBtn = document.querySelector("#entrBtn");
 
     let select, quest;
+    let score = 0;
+
+    scoreText.innerHTML = `${score} / ${qNumb}`;
 
     /*
     set buttons images and text
@@ -304,10 +307,19 @@ const start = () => {
     }
 
     entrBtn.addEventListener("click", () => {
-        console.log(quest.answer, select);
+        //console.log(quest.answer, select);
         if (quest.answer == select) {
-            console.log('correct');
-            setBtns();
+            //console.log('correct');
+            score++;
+            scoreText.innerHTML = `${score} / ${qNumb}`;
+            if(test.length > 0){
+               setBtns(); 
+            }
+            else {
+                document.querySelector('#end').classList.remove('hide');
+                document.querySelector('#finalScoreText').innerHTML = `${score} / ${qNumb}`;
+            }
+            
         }
     });
 

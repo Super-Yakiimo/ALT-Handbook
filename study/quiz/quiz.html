@@ -9,9 +9,11 @@
 </head>
 
 <body>
-    <div class="control">
+    <div id="start" class="control">
         <div class="control-inner">
-            <h3>Pick vocab</h3> 
+            <h1>Controls</h1>
+
+            <h3>Pick vocab</h3>
 
             <input id="fruitCheck" type="checkbox">
             <label for="fruitCheck">Fruit</label>
@@ -24,7 +26,10 @@
 
             <input id="animalCheck" type="checkbox">
             <label for="animalCheck">Animal</label>
-            
+
+            <input id="verbCheck" type="checkbox">
+            <label for="verbCheck">Verb</label>
+
 
             <h3>How many questions</h3>
             <select name="qNumb" id="qNumb">
@@ -41,14 +46,31 @@
                 <option id="textSound" value="textSound">Text and Sound</option>
             </select>
 
+            <br>
+            <br>
+            <br>
+
             <div>
-                <button onclick="start()">Start</button>               
+                <button onclick="start()">Start</button>
             </div>
 
         </div>
     </div>
+
+    <div id="end" class="control hide">
+        <div class="control-inner">
+
+            <h1>Finish</h1>
+
+            <h2 id="finalScoreText">Score <span>##/##</span></h2>
+
+            <button onclick="location.reload(true);">Play Again</button>
+
+        </div>
+    </div>
+
     <div class="test">
-        <h3>##/##</h3>
+        <h3 id="scoreText">##/##</h3>
         <h2>Question text</h2>
         <div id="questCon"></div>
         <div id="testCon"></div>

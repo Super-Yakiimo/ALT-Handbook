@@ -16,3 +16,11 @@
     border: 5px solid black;
     padding: 10%;
 }
+
+body {
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
