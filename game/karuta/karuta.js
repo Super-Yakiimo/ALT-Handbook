@@ -5,7 +5,6 @@ get selected vocab
 */
 
 const synth = window.speechSynthesis;
-let voice = null;
 // speak
 function speakText(text) {
 
