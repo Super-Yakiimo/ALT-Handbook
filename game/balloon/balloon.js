@@ -92,13 +92,15 @@ const start = () => {
     let ctx = canvas.getContext("2d");
 
     let vocab = getVocab();
+    let level = document.querySelector('#level');
+    let bNumb = Number(level.value);
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     document.querySelector('#start').classList.add('hide');
 
-    let balloons = makeBalloons(10, vocab);
+    let balloons = makeBalloons(bNumb, vocab);
     let particles = [];
 
     const anim = () => {
@@ -110,6 +112,8 @@ const start = () => {
 
         ctx.textAlign = "center"; // Horizontal alignment
         ctx.textBaseline = "middle"; // Vertical alignment
+
+        particles = particles.filter(part => part.y < canvas.height + part.rad);
 
         particles.forEach((particle) => {
             // add grvity
@@ -130,7 +134,8 @@ const start = () => {
         ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, innerWidth, innerHeight);
 
-        balloons.forEach((balloon, index) => {
+        for(let i = balloons.length - 1; i >= 0; i--){
+            let balloon = balloons[i];
 
             balloon.x += balloon.dx;
             balloon.y += balloon.dy;
@@ -162,7 +167,9 @@ const start = () => {
             ctx.font = "30px Arial";
             ctx.fillStyle = "rgb(255, 255, 255)";
             ctx.fillText(balloon.name, balloon.x, balloon.y);
-        });
+        }
+
+         ctx.fillText(particles.length, 50, 50);
 
         window.requestAnimationFrame(anim);
     }

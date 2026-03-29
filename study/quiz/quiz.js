@@ -203,6 +203,14 @@ start function
 */
 
 const start = () => {
+
+    // audio files
+    const correct = new Audio('../../resource/sound/bell.mp3');
+    const wrong = new Audio('../../resource/sound/incorrect.mp3');
+    correct.preload = 'auto';
+    wrong.preload = 'auto';
+
+    // json
     let vocab = getVocab();
     let types = getChecked();
     let qNumb = getQuestNumb();
@@ -218,7 +226,7 @@ const start = () => {
 
     let entrBtn = document.querySelector("#entrBtn");
 
-    let select, quest;
+    let select, quest, tryNumb = 1;
     let score = 0;
 
     scoreText.innerHTML = `${score} / ${qNumb}`;
@@ -228,6 +236,7 @@ const start = () => {
     */
     const setBtns = () => {
 
+        tryNumb = 1;
         quest = test.splice(0, 1)[0];
 
         // button parents
@@ -308,9 +317,18 @@ const start = () => {
 
     entrBtn.addEventListener("click", () => {
         //console.log(quest.answer, select);
+
+        if(select == null){
+            return console.log('no select');
+        }
+
         if (quest.answer == select) {
+            correct.currentTime = 0;
+            correct.play();
             //console.log('correct');
-            score++;
+            let add = Math.floor(1 / tryNumb * 100) / 100;
+            console.log(tryNumb + ' plus: ' + add);
+            score += add;
             scoreText.innerHTML = `${score} / ${qNumb}`;
             if(test.length > 0){
                setBtns(); 
@@ -319,7 +337,13 @@ const start = () => {
                 document.querySelector('#end').classList.remove('hide');
                 document.querySelector('#finalScoreText').innerHTML = `${score} / ${qNumb}`;
             }
+            select = null;
             
+        }
+        else {
+            tryNumb++;
+            wrong.currentTime = 0;
+            wrong.play();
         }
     });
 
