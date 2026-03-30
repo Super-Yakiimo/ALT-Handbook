@@ -1,0 +1,88 @@
+html,
+body,
+.root {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.root {
+    display: flex;
+    flex-direction: row;
+    touch-action: none;
+}
+
+.game,
+.control {
+    height: 100%;
+}
+
+.game {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.canCon {
+   width: 100%;
+   height: 100%;
+}
+
+.control div {
+    height: 33%;
+    width: 100%;
+    text-align: center;
+}
+
+#draw,
+#tool {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#draw {
+    z-index: 3;
+}
+
+#tool {
+    z-index: 4;
+}
+
+@media (max-aspect-ratio: 0.8) {
+    .root {
+        flex-direction: column;
+    }
+
+    .game {
+        height: 90%;
+        width: 100%;
+    }
+
+    .control {
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .control div {
+        width: 33%;
+        height: 100%;
+    }
+
+    .btn-ctrl {
+        flex-direction: row;
+    }
+
+    .btn-ctrl button {
+        height: 100%;
+    }
+}

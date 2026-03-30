@@ -1,0 +1,61 @@
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(240, 248, 255, 0.653);
+}
+
+.control-inner {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 30%;
+    border: 5px solid black;
+    padding: 10%;
+}
+
+.hide {
+    display: none;
+}
+
+#vocabCardBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.vocab-card img {
+    width: 100px;
+    max-height: 100px;
+}
+
+.vocab-card button:hover {
+    background-color: white;
+    color: grey;
+    cursor: pointer;
+}
+
+.vocab-card button {
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+.vocab-card h1 {
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.vocab-card {
+    display: flex;
+    flex-direction: row;
+    border: 5px solid black;
+    width: fit-content;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 50px;
+}

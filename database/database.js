@@ -56,6 +56,16 @@ const ROAD_HOR = { name: "road", link: "road_hor.png" };
 
 const ROAD = { name: "road", link: "road.png" };
 
+const DAYS_OF_WEEK = [
+    { name: "sunday", link: "daysofweek/sunday.png" },
+    { name: "monday", link: "daysofweek/monday.png" },
+    { name: "tuesday", link: "daysofweek/tuesday.png" },
+    { name: "wednesday", link: "daysofweek/wednesday.png" },
+    { name: "thrusday", link: "daysofweek/thrusday.png" },
+    { name: "friday", link: "daysofweek/friday.png" },
+    { name: "saturday", link: "daysofweek/saturday.png" },
+];
+
 const TOWN = [
     { name: "aquarium", link: "aquarium.png" },
     { name: "bakery", link: "bakery.png" },
