@@ -117,11 +117,8 @@ function start() {
 
     // char img
     let charImg = document.querySelector('#charImg');
-    charImg.onload = () => {
-        SLICE_WIDTH = charImg.width / SWIDTH;
-        SLICE_HEIGHT = charImg.height / SHEIGHT;
-    }
-    charImg.src = src = "../../../resource/img/character.png";
+    SLICE_WIDTH = charImg.width / SWIDTH;
+    SLICE_HEIGHT = charImg.height / SHEIGHT;
 
     // block dimensions
     let blockDim;
