@@ -7,7 +7,6 @@ sound variables
 
 const CORRECT = "../../resource/sound/bell.mp3";
 
-
 function speakText(text) {
 
     // Check browser support
