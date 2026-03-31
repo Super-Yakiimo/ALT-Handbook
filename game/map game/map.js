@@ -116,7 +116,7 @@ function start() {
     let SLICE_HEIGHT;
 
     // char img
-    let charImg = document.createElement('img');
+    let charImg = document.querySelector('#charImg');
     charImg.onload = () => {
         SLICE_WIDTH = charImg.width / SWIDTH;
         SLICE_HEIGHT = charImg.height / SHEIGHT;

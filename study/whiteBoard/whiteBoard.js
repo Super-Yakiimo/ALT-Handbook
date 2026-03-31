@@ -4,7 +4,7 @@ const Mode = {
     Stamp: 2
 };
 
-const getColor = () => {
+const randColor = () => {
     let r = Math.random() * 255;
     let g = Math.random() * 255;
     let b = Math.random() * 255;
@@ -26,6 +26,9 @@ const start = () => {
     const stampBtn = this.document.querySelector("#stampBtn");
     const clearBtn = this.document.querySelector("#clearBtn");
 
+    const backColor = this.document.querySelector("#backColor");
+    const color = this.document.querySelector("#color");
+    const randColor = this.document.querySelector("#randColor");
 
     const dctx = draw.getContext('2d');
     const tctx = draw.getContext('2d');
@@ -49,6 +52,12 @@ const start = () => {
             return;
         }
 
+        let pickColor = sColor;
+
+        if (randColorCheck) {
+            pickColor = randColor();
+        }
+
         switch (mode) {
             case Mode.Draw:
                 particles.push({
@@ -58,7 +67,7 @@ const start = () => {
                     dx: 0,
                     dy: 0,
                     g: 0,
-                    color: getColor()
+                    color: pickColor
                 });
                 break;
             case Mode.Earase:
@@ -78,12 +87,20 @@ const start = () => {
         }
     }
 
+    // store when user is drawing
     let particles = [];
+    // mouse / user touch screen
     let active = false;
+    // selected user color
+    let sColor;
+    // select background color
+    let sBackColor = "rgba(255, 255, 255, 0.04)";
+    // is rand color selected
+    let randColorCheck = false;
 
     // click
     tool.addEventListener("mousedown", () => {
-         active = true;
+        active = true;
         console.log('start');
     });
 
@@ -136,9 +153,29 @@ const start = () => {
         });
     });
 
+    // color picker
+    color.addEventListener("change", () => {
+        console.log(color.value);
+        sColor = color.value;
+    });
+
+    backColor.addEventListener("change", () => {
+        let hex = backColor.value;
+        const r = parseInt(hex.substr(1, 2), 16);
+        const g = parseInt(hex.substr(3, 2), 16);
+        const b = parseInt(hex.substr(5, 2), 16);
+        const rgba = `rgba(${r}, ${g}, ${b}, ${0.04})`;
+        sBackColor = rgba;
+    });
+
+    randColor.addEventListener("click", () => {
+        randColorCheck = !randColorCheck;
+    });
+
+    // anim function
     const anim = () => {
         //dctx.clearRect(0, 0, innerWidth, innerHeight);
-        dctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        dctx.fillStyle = sBackColor;
         dctx.fillRect(0, 0, innerWidth, innerHeight);
 
         particles = particles.filter(part => part.y < heightPx + part.rad);
@@ -162,6 +199,7 @@ const start = () => {
     }
 
     setDim();
+    window.addEventListener('resize', setDim);
     window.requestAnimationFrame(anim);
 
 }
