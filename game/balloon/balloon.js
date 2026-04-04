@@ -223,3 +223,8 @@ const start = () => {
 
     window.requestAnimationFrame(anim);
 }
+
+
+window.onload = function(){
+    makeCheckBox();
+}

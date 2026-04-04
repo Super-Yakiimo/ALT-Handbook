@@ -350,11 +350,6 @@ const start = () => {
     setBtns();
 }
 
-window.onload = function () {
-    if (!('speechSynthesis' in window)) {
-        console.log('this browser does not support sound');
-        document.querySelector("#imgSound").disabled = true;
-        document.querySelector("#textSound").disabled = true;
-    }
+window.onload = function(){
+    makeCheckBox();
 }
-

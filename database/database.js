@@ -6,27 +6,27 @@ school locations
 // school locations : need to have unigue handles
 //const TEMPLATE = "NAME.png";
 
-const ART_ROOM = { name: "arts and crafts room", link: "arts-and-crafts-room.png" };
-const CLASSROOM = { name: "classroom", link: "classroom.png" };
-const COMPUTER = { name: "computer room", link: "computer-room.png" };
-const COOKING = { name: "cooking room", link: "cooking-room.png" };
-const ENTRANCE = { name: "entrance", link: "entrance.png" };
-const GYM = { name: "gymnasium", link: "gym.png" };
-const LIBRARY = { name: "library", link: "library.png" };
-const LUNCH = { name: "lunch room", link: "lunch-room.png" };
-const MUSIC = { name: "music room", link: "music-room.png" };
-const NURSE = { name: "school nurses office", link: "nurses-office.png" };
-const PLAYGROUND = { name: "playground", link: "playground.png" };
-const RESTROOM = { name: "restroom", link: "restroom.png" };
-const SCHOOL_OFFICE = { name: "school office", link: "school-office.png" };
-const PRINCIPAL = { name: "principals office", link: "school-principals-office.png" };
-const SCIENCE = { name: "science room", link: "science-room.png" };
-const TEACHERS = { name: "teachers office", link: "teachers-office.png" };
+const ART_ROOM = { name: "arts and crafts room", link: "school/arts-and-crafts-room.png" };
+const CLASSROOM = { name: "classroom", link: "school/classroom.png" };
+const COMPUTER = { name: "computer room", link: "school/computer-room.png" };
+const COOKING = { name: "cooking room", link: "school/cooking-room.png" };
+const ENTRANCE = { name: "entrance", link: "school/entrance.png" };
+const GYM = { name: "gymnasium", link: "school/gym.png" };
+const LIBRARY = { name: "library", link: "school/library.png" };
+const LUNCH = { name: "lunch room", link: "school/lunch-room.png" };
+const MUSIC = { name: "music room", link: "school/music-room.png" };
+const NURSE = { name: "school nurses office", link: "school/nurses-office.png" };
+const PLAYGROUND = { name: "playground", link: "school/playground.png" };
+const RESTROOM = { name: "restroom", link: "school/restroom.png" };
+const SCHOOL_OFFICE = { name: "school office", link: "school/school-office.png" };
+const PRINCIPAL = { name: "principals office", link: "school/school-principals-office.png" };
+const SCIENCE = { name: "science room", link: "school/science-room.png" };
+const TEACHERS = { name: "teachers office", link: "school/teachers-office.png" };
 
 // non classroom elements
-const HALL = { name: "hallway", link: "hall.png" };
-const HALL_VERT = { name: "hallway", link: "hall_vert.png" };
-const HALL_HOR = { name: "hallway", link: "hall_hor.png" };
+const HALL = { name: "hallway", link: "school/hall.png" };
+const HALL_VERT = { name: "hallway", link: "school/hall_vert.png" };
+const HALL_HOR = { name: "hallway", link: "school/hall_hor.png" };
 const BLANK = { name: "none", link: null }
 
 const SCHOOL = [
@@ -50,55 +50,55 @@ const SCHOOL = [
 town locations
 */
 
-const ROAD_VERT = { name: "road", link: "road_vert.png" };
+const ROAD_VERT = { name: "road", link: "town/road_vert.png" };
 
-const ROAD_HOR = { name: "road", link: "road_hor.png" };
+const ROAD_HOR = { name: "road", link: "town/road_hor.png" };
 
-const ROAD = { name: "road", link: "road.png" };
+const ROAD = { name: "road", link: "town/road.png" };
 
 const DAYS_OF_WEEK = [
     { name: "sunday", link: "daysofweek/sunday.png" },
     { name: "monday", link: "daysofweek/monday.png" },
     { name: "tuesday", link: "daysofweek/tuesday.png" },
     { name: "wednesday", link: "daysofweek/wednesday.png" },
-    { name: "thrusday", link: "daysofweek/thrusday.png" },
+    { name: "thursday", link: "daysofweek/thursday.png" },
     { name: "friday", link: "daysofweek/friday.png" },
     { name: "saturday", link: "daysofweek/saturday.png" },
 ];
 
 const TOWN = [
-    { name: "aquarium", link: "aquarium.png" },
-    { name: "bakery", link: "bakery.png" },
-    { name: "crepe shop", link: "crepe-shop.png" },
-    { name: "batting center", link: "batting-center.png" },
-    { name: "burger restaurant", link: "burger-restaurant.png" },
-    { name: "bycicle shop", link: "bycicle-shop.png" },
-    { name: "cake shop", link: "cake-store.png" },
-    { name: "candy shop", link: "candy-store.png" },
-    { name: "repair shop", link: "car-repair-shop.png" },
-    { name: "cinema", link: "cinema.png" },
-    { name: "clothing store", link: "clothing-store.png" },
-    { name: "dentist", link: "dentist.png" },
-    { name: "dress shop", link: "dress-shop.png" },
-    { name: "dvd rental shop", link: "dvd-rental.png" },
-    { name: "family restaurant", link: "familiy-restaurant.png" },
-    { name: "fast food restaurant", link: "fast-food-resaurant.png" },
-    { name: "game center", link: "game_center.png" },
-    { name: "gym", link: "gym.png" },
-    { name: "hotel", link: "hotel.png" },
-    { name: "inertnet cafe", link: "internet-cafe.png" },
-    { name: "kiosk", link: "kiosk.png" },
-    { name: "library", link: "library.png" },
-    { name: "music store", link: "music-store.png" },
-    { name: "park", link: "park.png" },
-    { name: "pizza shop", link: "pizza-shop.png" },
-    { name: "police station", link: "police-station.png" },
-    { name: "school", link: "school.png" },
-    { name: "shopping mall", link: "shopping-mall.png" },
-    { name: "theatre", link: "theatre.png" },
-    { name: "toy store", link: "toy-store.png" },
-    { name: "train station", link: "train-station.png" },
-    { name: "museum", link: "museum.png" },
+    { name: "aquarium", link: "town/aquarium.png" },
+    { name: "bakery", link: "town/bakery.png" },
+    { name: "crepe shop", link: "town/crepe-shop.png" },
+    { name: "batting center", link: "town/batting-center.png" },
+    { name: "burger restaurant", link: "town/burger-restaurant.png" },
+    { name: "bycicle shop", link: "town/bycicle-shop.png" },
+    { name: "cake shop", link: "town/cake-store.png" },
+    { name: "candy shop", link: "town/candy-store.png" },
+    { name: "repair shop", link: "town/car-repair-shop.png" },
+    { name: "cinema", link: "town/cinema.png" },
+    { name: "clothing store", link: "town/clothing-store.png" },
+    { name: "dentist", link: "town/dentist.png" },
+    { name: "dress shop", link: "town/dress-shop.png" },
+    { name: "dvd rental shop", link: "town/dvd-rental.png" },
+    { name: "family restaurant", link: "town/familiy-restaurant.png" },
+    { name: "fast food restaurant", link: "town/fast-food-resaurant.png" },
+    { name: "game center", link: "town/game_center.png" },
+    { name: "gym", link: "town/gym.png" },
+    { name: "hotel", link: "town/hotel.png" },
+    { name: "inertnet cafe", link: "town/internet-cafe.png" },
+    { name: "kiosk", link: "town/kiosk.png" },
+    { name: "library", link: "town/library.png" },
+    { name: "music store", link: "town/music-store.png" },
+    { name: "park", link: "town/park.png" },
+    { name: "pizza shop", link: "town/pizza-shop.png" },
+    { name: "police station", link: "town/police-station.png" },
+    { name: "school", link: "town/school.png" },
+    { name: "shopping mall", link: "town/shopping-mall.png" },
+    { name: "theatre", link: "town/theatre.png" },
+    { name: "toy store", link: "town/toy-store.png" },
+    { name: "train station", link: "town/train-station.png" },
+    { name: "museum", link: "town/museum.png" },
 ];
 
 const JOBS = [
@@ -216,19 +216,52 @@ const VERB = [
 const BACK = "../../resource/img/icon/card-back.png";
 
 const VOCAB_LIST = [
-    FRUIT, VEGETABLE, JOBS, ANIMAL, VERB
+    FRUIT, VEGETABLE, JOBS, ANIMAL, VERB, DAYS_OF_WEEK, SCHOOL, TOWN
 ];
-/*
 
+const LABEL_NAMES = ["Fruit", "Vegetable", "Job", "Animal", "Verb", "DOTW", "School", "Town"];
+
+const INPUT = [
+    "fruitCheck", "vegCheck", "jobCheck", "animalCheck", "verbCheck", "daysOfWeekCheck", "schoolCheck", "townCheck"
+];
+
+/*
+make the check boxes for vocab select
+            <div id="checkCon"></div>
+            <input id="fruitCheck" type="checkbox">
+            <label for="fruitCheck">Fruit</label>
+*/
+const makeCheckBox = () => {
+
+    const checkCon = document.querySelector("#checkCon");
+
+
+    if(checkCon == null){
+        return alert('cannot find the check box container');
+    }
+
+    INPUT.forEach((id, i) => {
+        let input = document.createElement('input');
+        let label = document.createElement('label');
+
+        input.id = id;
+        input.type = 'checkbox';
+
+        label.for = id;
+        label.innerHTML = LABEL_NAMES[i];
+
+        checkCon.appendChild(input);
+        checkCon.appendChild(label);
+    });
+}
+
+
+/*
 get selected vocab
 based on input
 */
 
 const getVocab = () => {
-    const INPUT = [
-        "fruitCheck", "vegCheck", "jobCheck", "animalCheck", "verbCheck"
-    ];
-
 
     let vocabList = [];
 

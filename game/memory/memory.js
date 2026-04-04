@@ -190,3 +190,7 @@ function start() {
         });
     });
 }
+
+window.onload = function(){
+    makeCheckBox();
+}

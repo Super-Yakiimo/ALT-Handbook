@@ -206,3 +206,7 @@ function start() {
 
     setPictures();
 }
+
+window.onload = function(){
+    makeCheckBox();
+}

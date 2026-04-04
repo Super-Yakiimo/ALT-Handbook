@@ -179,7 +179,7 @@ function start() {
             img.onload = function () {
                 mCtx.drawImage(img, 0, 0, img.width, img.height, block.x * blockDim, block.y * blockDim, block.w * blockDim, block.h * blockDim);
             }
-            let path = `../../resource/img/${mapSelect.value}/${block.room.link}`;
+            let path = `../../resource/img/${block.room.link}`;
             img.src = path;
         });
     }
