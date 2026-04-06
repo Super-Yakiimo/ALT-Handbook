@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Sort</title>
+    <link rel="stylesheet" href="./wordSort.css">
+        <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
 </head>
 <body>
+
+    <div id="start" class="control">
+        <div class="control-inner">
+            <h3>Pick vocab</h3>
+
+            <div id="checkCon"></div>
+
+            <h3>Difficulty</h3>
+            <select name="level" id="level">
+                <option value="0">EIKEN 5</option>
+                <option value="1">EIKEN 4</option>
+                <option value="2">EIKEN 3</option>
+                <option value="3">EIKEN 2</option>
+                <option value="4">EIKEN 1</option>
+            </select>
+
+            <div>
+                <button onclick="start()">Start</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="gameRoot">
+        <div id="canCon">
+            <canvas id="can"></canvas>
+        </div>
+        <div id="gameUI">
+            <button id="checkBtn">Check Answer</button>
+        </div>
+    </div>
+
     
+
+    <script src="./wordSort.js"></script>
 </body>
 </html>

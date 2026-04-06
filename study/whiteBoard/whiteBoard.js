@@ -129,10 +129,7 @@ const start = () => {
         control(event.touches[0].clientX, event.touches[0].clientY);
     });
 
-
-
     // buttons
-
     drawBtn.addEventListener("click", () => {
         mode = Mode.Draw;
     });
