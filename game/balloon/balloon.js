@@ -27,24 +27,24 @@ const makeBalloon = (word) => {
         rad: 100,
         name: word.name,
         img,
-        color: getColor()
+        color: getColor(),
+        pick: false
     }
 
     // return object
     return balloon;
 }
 
-const makeBalloons = (numb, vocab) => {
+const makeBalloons = (vocab) => {
     let balloons = [];
     // add balloons
-    for (let i = 0; i < numb; i++) {
+    for (let i = 0; i < vocab.length; i++) {
         // pick a word
-        let word = vocab[Math.floor(Math.random() * vocab.length)];
+        let word = vocab[i];
         // make balloon
         let balloon = makeBalloon(word);
         // add to list
         balloons.push(balloon);
-
     }
 
     return balloons;
@@ -88,20 +88,45 @@ function speakText(text) {
 
 
 const start = () => {
+
+    // sound stuff
+    const correct = new Audio('../../resource/sound/bell.mp3');
+    const wrong = new Audio('../../resource/sound/incorrect.mp3');
+    correct.preload = 'auto';
+    wrong.preload = 'auto';
+
+    // canvas
     let canvas = document.querySelector("canvas");
     let ctx = canvas.getContext("2d");
 
+    // vocab
     let vocab = getVocab();
     let level = document.querySelector('#level');
+    // number of balloons to make
     let bNumb = Number(level.value);
 
+
+    if (vocab.length == 0) {
+        return alert('pleased select some vocab');
+    }
+
+    // game mode select
+    let mode = Number(document.querySelector("#mode").value);
+
+    // set the canvas width and height
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    //score
+    let score = 0;
+
+    // time
+    let time = 0;
+
+    // close the start screen
     document.querySelector('#start').classList.add('hide');
 
-    let balloons = makeBalloons(bNumb, vocab);
-    let particles = [];
+    let balloons = [], particles = [];
 
     const anim = () => {
         //ctx.clearRect(0, 0, innerWidth, innerHeight);
@@ -134,7 +159,7 @@ const start = () => {
         ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, innerWidth, innerHeight);
 
-        for(let i = balloons.length - 1; i >= 0; i--){
+        for (let i = balloons.length - 1; i >= 0; i--) {
             let balloon = balloons[i];
 
             balloon.x += balloon.dx;
@@ -156,75 +181,205 @@ const start = () => {
                 balloon.y = canvas.height + balloon.rad;
             }
 
+            // circle
             ctx.beginPath();
             ctx.arc(balloon.x, balloon.y, balloon.rad, 0, Math.PI * 2);
             ctx.fillStyle = balloon.color;
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = balloon.color;
             ctx.fill();
             ctx.stroke();
 
+            // img
             ctx.drawImage(balloon.img, balloon.x - balloon.rad / 2, balloon.y - balloon.rad / 2, balloon.rad, balloon.rad);
 
+            // text
             ctx.font = "30px Arial";
             ctx.fillStyle = "rgb(255, 255, 255)";
             ctx.fillText(balloon.name, balloon.x, balloon.y);
+
+            if (balloon.pick == true) {
+                // hignlight when selected
+                ctx.beginPath();
+                ctx.arc(balloon.x, balloon.y, balloon.rad, 0, Math.PI * 2);
+                ctx.lineWidth = 10;
+                ctx.strokeStyle = "pink";
+                ctx.stroke();
+            }
         }
 
-         ctx.fillText(particles.length, 50, 50);
+        ctx.fillText(score, 50, 50);
 
         window.requestAnimationFrame(anim);
     }
 
-
-    canvas.addEventListener("click", (event) => {
-
-        // ctx.beginPath();
-        // ctx.arc(event.offsetX, event.offsetY, 20, 0, Math.PI * 2);
-        // ctx.fill()
-        // ctx.stroke();
-
-        const checkTap = () => {
-            for (let i = 0; i < balloons.length; i++) {
-                let balloon = balloons[i];
-                let deltaX = Math.abs(balloon.x - event.offsetX);
-                let deltaY = Math.abs(balloon.y - event.offsetY);
-                let dist = Math.sqrt(deltaX ** 2 + deltaY ** 2);
-                //console.log(dist);
-                if (dist < balloon.rad) {
-                    return i
-                }
+    const checkTap = () => {
+        for (let i = 0; i < balloons.length; i++) {
+            let balloon = balloons[i];
+            let deltaX = Math.abs(balloon.x - event.offsetX);
+            let deltaY = Math.abs(balloon.y - event.offsetY);
+            let dist = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+            //console.log(dist);
+            if (dist < balloon.rad) {
+                return i
             }
-            return -1;
         }
+        return -1;
+    }
 
-        let result = checkTap();
-        console.log(result);
-
-        if (result == -1) {
-            return;
-        }
-
-        let pop = balloons.splice(result, 1)[0];
-        //console.log(pop);
-
-        // say name
-        speakText(pop.name);
-
+    const addPop = (x, y) => {
         for (let i = 0; i < 20; i++) {
             particles.push({
-                x: pop.x,
-                y: pop.y,
+                x: x,
+                y: y,
                 rad: 20,
                 dx: rand() * 5,
                 dy: rand() * 5,
                 color: getColor()
             });
         }
-    });
+    }
+
+    const freeMode = () => {
+        while (bNumb >= vocab.length) {
+            vocab = [...vocab, ...vocab];
+        }
+        // get selcted number of random vocab
+        let s = vocab.sort(() => Math.random() - 0.5).splice(0, bNumb);
+        balloons = makeBalloons(s);
+        console.log(balloons);
+
+        canvas.addEventListener("click", (event) => {
+            let result = checkTap();
+            console.log(result);
+
+            if (result == -1) {
+                return;
+            }
+
+            let pop = balloons.splice(result, 1)[0];
+            //console.log(pop);
+
+            // say name
+            speakText(pop.name);
+
+            addPop(pop.x, pop.y);
+
+            if (balloons.length == 0) {
+                end();
+            }
+        });
+    }
+
+    const matchMode = () => {
+        while (bNumb >= vocab.length / 2) {
+            vocab = [...vocab, ...vocab];
+            console.log(bNumb, vocab.length);
+        }
+        let s = vocab.sort(() => Math.random() - 0.5).splice(0, bNumb / 2);
+        s = [...s, ...s];
+        balloons = makeBalloons(s);
+
+        let pick = null;
+
+        let handle = setInterval(() => {
+            time += 1;
+        }, 1000);
+
+        canvas.addEventListener("click", (event) => {
+            let result = checkTap();
+
+            if (result == -1) {
+                return;
+            }
+
+            if (pick == null) {
+                pick = result;
+                balloons[result].pick = true;
+                return;
+            }
+
+            console.log(balloons[pick].name == balloons[result].name);
+            if (balloons[pick].name == balloons[result].name) {
+                correct.currentTime = 0;
+                correct.play();
+                // pop the balloons 
+                balloons[result].pop = true;
+                balloons[pick].pop = true;
+
+                // the baloons that pop
+                let pops = balloons.filter((balloon) => balloon.pop != null);
+                // the balloons that do not pop
+                balloons = balloons.filter((balloon) => balloon.pop == null);
+                // create pop effect for ballons that pop
+                pops.forEach(pop => {
+                    addPop(pop.x, pop.y);
+                    speakText(pop.name);
+                });
+                pick = null;
+                score++;
+            }
+            else {
+                wrong.currentTime = 0;
+                wrong.play();
+                balloons[pick].pick = false;
+                pick = null;
+            }
+
+            if (balloons.length == 0) {
+                clearInterval(handle);
+                end();
+            }
+
+
+        });
+    }
+
+    const end = () => {
+        // close the start screen
+        document.querySelector('#end').classList.remove('hide');
+        let timeText = document.querySelector('#timeText');
+        let scoreText = document.querySelector('#scoreText');
+        timeText.innerHTML = time;
+        scoreText.innerHTML = score;
+    }
+
+    const testMode = () => {
+
+    }
+
+
+    // chose the mode
+    console.log(mode);
+    switch (mode) {
+        case 0:
+            freeMode();
+            break;
+        case 1:
+            matchMode();
+            break;
+        case 2:
+            testMode();
+            break;
+        default:
+            break;
+    }
+
 
     window.requestAnimationFrame(anim);
+
+    let pusher = setInterval(() => {
+
+        if (balloons.length <= 0) {
+            return clearInterval(pusher);
+        }
+        let randBalloon = balloons[Math.floor(Math.random() * balloons.length)];
+        randBalloon.dx = rand();
+        randBalloon.dy = rand();
+    }, 1000);
 }
 
 
-window.onload = function(){
+window.onload = function () {
     makeCheckBox();
 }

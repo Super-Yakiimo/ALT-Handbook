@@ -24,6 +24,13 @@
                 <option value="30">Extreme</option>
             </select>
 
+            <h3>Mode</h3>
+            <select name="mode" id="mode">
+                <option value="0">Free</option>
+                <option value="1">Match</option>
+                <option disabled value="2">Test</option>
+            </select>
+
             <br>
             <br>
 
@@ -35,7 +42,9 @@
 
     <div id="end" class="control hide">
         <div class="control-inner">
-
+            <h3>Score: <span id="scoreText">#####</span> </h3>
+            <h3>Time: <span id="timeText">#####</span> </h3>
+            <button onclick="location.reload(true);">Play Again</button>
         </div>
     </div>
 
