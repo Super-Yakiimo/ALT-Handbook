@@ -15,6 +15,12 @@ const wrong = new Audio('../../resource/sound/incorrect.mp3');
 correct.preload = 'auto';
 wrong.preload = 'auto';
 
+// resource\sound\floraphonic-you-win-sequence-2-183949.mp3
+// https://pixabay.com/sound-effects/search/win/
+const winSound = new Audio('../../resource/sound/floraphonic-you-win-sequence-2-183949.mp3');
+winSound.preload = 'auto';
+
+
 /* tempalte
 
     {
@@ -36,7 +42,7 @@ wrong.preload = 'auto';
 const WIN = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], //horizontal 
     [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
-    [0, 3, 8], [6, 4, 2] // diagnal
+    [0, 4, 8], [6, 4, 2] // diagnal
 
 ]
 
@@ -171,6 +177,8 @@ function start() {
                 console.log(win);
                 // show end screen if win
                 if(win){
+                    winSound.currentTime = 0;
+                    winSound.play();
                     // show end
                     setTimeout(() => {
                         endImg.src = (player == STATE.X) ? BATSU : MARU;

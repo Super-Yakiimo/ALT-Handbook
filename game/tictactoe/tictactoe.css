@@ -88,6 +88,10 @@ body {
 }
 
 
-.mark-img, #endImg{
+.mark-img {
     width: 10%;
+}
+
+#endImg{
+    height: 40%;
 }

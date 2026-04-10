@@ -109,7 +109,7 @@ const N3 = [
     {
         text: "A: Mom, I ate my sandwich, but I’m still hungry. B: OK. Wait a minute. I’ll make you ( ) one.",
         options: ["another", "near", "every", "much"],
-        answer: ""
+        answer: "another"
     },
     {
         text: "A: Do you know where the library is? B: It’s ( ) the post office.",
@@ -129,7 +129,7 @@ const N3 = [
     {
         text: "The road was closed yesterday because there was an ( ).",
         options: ["accident", "appointment", "apartment", "address"],
-        answer: ""
+        answer: "accident"
     },
     {
         text: "A: What should I do with this ( ) bottle? B: We can recycle it.",
@@ -139,7 +139,7 @@ const N3 = [
     {
         text: "This morning, Pat took a ( ) medicine for his stomachache, but it didn’t get better. He took some more later.",
         options: ["little", "lot", "most", "much"],
-        answer: ""
+        answer: "little"
     },
     {
         text: "A: Can you ( ) down the radio, please? B: OK.",
@@ -149,7 +149,7 @@ const N3 = [
     {
         text: "A: Where do you want to meet, Kate? B: Let’s meet ( ) front of the flower shop.",
         options: ["on", "for", "in", "to"],
-        answer: ""
+        answer: "in"
     },
     {
         text: "Mr. Ford often buys a newspaper at the station in the morning ( ) his way to work.",
