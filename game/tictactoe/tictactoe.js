@@ -323,7 +323,7 @@ const checkWin = (board) => {
         return true;
     }
 
-    console.log(board);
+    //console.log(board);
 
     let len = WIN.length;
     for(let i = 0; i < len; i++){
@@ -376,7 +376,7 @@ function start() {
     // get leve questions
     let nLevel = Number(level.value);
     let questPick = getQuest(nLevel);
-    console.log(questPick);
+    //console.log(questPick);
 
     // store tic tac board
     let board = Array.from({length: 9}, ()=>STATE.E);
@@ -387,10 +387,10 @@ function start() {
     uiImg.src = (player == STATE.X) ? BATSU : MARU;
 
     let randList = questPick.sort(()=>Math.random() - 0.5);
-    console.log(randList);
+    //console.log(randList);
 
     const showQuest = (quest, block, index)=>{
-        console.log(quest);
+        //console.log(quest);
         questScrn.classList.remove('hide');
         let btnCon = document.querySelector("#btnCon");
 
@@ -426,13 +426,14 @@ function start() {
                 }
                 // answer is correct
                 else {
-                    console.log("incorrect");
+                    //console.log("incorrect");
                     wrong.currentTime = 0;
                     wrong.play();
                     questScrn.classList.add('hide');
                 }
 
                 let win = checkWin(board);
+                console.log(win);
                 // show end screen if win
                 if(win){
                     // show end
@@ -445,7 +446,6 @@ function start() {
                 else {
                     // toggle to next player
                     player = (player == STATE.X) ? STATE.O : STATE.X;
-
                     uiImg.src = (player == STATE.X) ? BATSU : MARU;
                 }
             });
