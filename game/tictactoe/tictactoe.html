@@ -11,7 +11,46 @@
 
 <body>
 
+    <div id="startScrn" class="control">
+        <div class="control-inner">
+            <div style="height: 80%;">
+                <h2 id="questText">Game Time!</h2>
 
+                <h3>Eiken Level</h3>
+
+                <select name="level" id="level">
+                    <option value="5">EIKEN 5</option>
+                    <option value="4">EIKEN 4</option>
+                    <option value="3">EIKEN 3</option>
+                    <option value="2">EIKEN 2</option>
+                    <option value="1">EIKEN 1</option>
+                </select>
+
+                <h3>Start Player</h3>
+
+                <div>
+                    <input id="batsuRadio" name="mark" type="radio">
+                    <label for="">
+                        <img class="mark-img" src="../../resource/img/icon/mark_batsu.png" alt="">
+                    </label>
+                
+                </div>
+
+                <div>
+                    <input name="mark" type="radio">
+                    <label for="">
+                        <img class="mark-img" src="../../resource/img/icon/mark_maru.png" alt="">
+                    </label>
+                </div>
+
+
+
+            </div>
+            <div>
+                <button onclick="start()">Start Game</button>
+            </div>
+        </div>
+    </div>
 
     <div id="questScrn" class="control hide">
         <div class="control-inner">
@@ -25,7 +64,18 @@
         </div>
     </div>
 
-
+    <div id="endScrn" class="control hide">
+        <div class="control-inner">
+            <div style="height: 80%;">
+                <h2 id="questText">Game Over</h2>
+                <h3>Winner</h3>
+                <img id="endImg" src="../../resource/img/icon/mark_batsu.png" alt="">
+            </div>
+            <div>
+                <button onclick="location.reload(true);">Play Again</button>
+            </div>
+        </div>
+    </div>
 
     <div id="game-root">
         <div id="play-root">

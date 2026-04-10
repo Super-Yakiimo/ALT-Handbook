@@ -94,12 +94,12 @@ const WIN = [
 ]
 
 
-
 // check win 
 const checkWin = (board) => {
 
     const checkOne = (i) => {
         let check = WIN[i];
+
         if(board[check[0]] == STATE.E){
             return false;
         }
@@ -111,7 +111,9 @@ const checkWin = (board) => {
         return true;
     }
 
-    let len = WIN.len;
+    console.log(board);
+
+    let len = WIN.length;
     for(let i = 0; i < len; i++){
         if(checkOne(i)){
             return true;
@@ -129,23 +131,32 @@ const createImg = (mark) => {
     return img;
 }
 
-window.onload = function () {
+function start() {
     // screens
     let questScrn = document.querySelector("#questScrn");
+    let startScrn = document.querySelector("#startScrn");
+    let endScrn = document.querySelector("#endScrn");
 
     // ui img
     let uiImg = document.querySelector("#uiImg");
+    let endImg = document.querySelector("#endImg");
 
-    // buttons
+    // buttons / input
     let clsBtn = document.querySelector("#clsBtn");
+    let batsuRadio =  document.querySelector("#batsuRadio");
+    let level =  document.querySelector("#level");
 
     // store tic tac board
     let board = Array.from({length: 9}, ()=>STATE.E);
 
     // current player x or o
-    let player = STATE.X;
+    //console.log(batsuRadio);
+    let player = (batsuRadio.checked) ? STATE.X : STATE.O;
+    uiImg.src = (player == STATE.X) ? BATSU : MARU;
 
-    const showQuest = (quest, block)=>{
+    let randList = QUEST_LIST.sort(()=>Math.random() - 0.5);
+
+    const showQuest = (quest, block, index)=>{
         questScrn.classList.remove('hide');
         let btnCon = document.querySelector("#btnCon");
 
@@ -160,10 +171,10 @@ window.onload = function () {
             btnCon.appendChild(btn);
 
             btn.addEventListener('click', ()=>{
-                console.log(quest.answer, quest.options[i]);
+                //console.log(quest.answer, quest.options[i]);
                 // answer is correct
                 if(quest.answer == quest.options[i]){
-                    console.log("correct");
+                    //console.log("correct");
                     correct.currentTime = 0;
                     correct.play();
 
@@ -171,9 +182,12 @@ window.onload = function () {
                     // add mark to the board and the current player
                     block.appendChild(createImg(player));
                     // add this mark to the array as well
-                    board[i] = player;
+                    // do not use i
+                    board[index] = player;
                     // close the quesiton screen
                     questScrn.classList.add('hide');
+                    // disable the block click
+                    block.disabled = true;
 
                 }
                 // answer is correct
@@ -184,21 +198,27 @@ window.onload = function () {
                     questScrn.classList.add('hide');
                 }
 
-                // toggle to next player
-                player = (player == STATE.X) ? STATE.O : STATE.X;
+                let win = checkWin(board);
+                // show end screen if win
+                if(win){
+                    // show end
+                    endImg.src = (player == STATE.X) ? BATSU : MARU;
+                    endScrn.classList.remove('hide');
+                }
+                else {
+                    // toggle to next player
+                    player = (player == STATE.X) ? STATE.O : STATE.X;
 
-                uiImg.src = (player == STATE.X) ? BATSU : MARU;
-
-                console.log(checkWin(board));
+                    uiImg.src = (player == STATE.X) ? BATSU : MARU;
+                }
             });
         }
     }
 
-
     for (let i = 0; i < 9; i++) {
         let block = document.querySelector(`#block${i}`);
 
-        let quest = QUEST_LIST[i];
+        let quest = randList[i];
         // question text
         let h2 = document.createElement('h3');
         h2.innerHTML = quest.text;
@@ -211,12 +231,15 @@ window.onload = function () {
 
 
         block.addEventListener('click', () => {
-            console.log(i);
-            showQuest(quest, block);
+            //console.log(i);
+            showQuest(quest, block, i);
         });
     }
 
     clsBtn.addEventListener("click", ()=>{
         questScrn.classList.add('hide');
     });
+
+    // begin
+    startScrn.classList.add('hide');
 }
