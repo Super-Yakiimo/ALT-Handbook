@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game</title>
+    <link rel="stylesheet" href="./maze.css">
+    <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
+</head>
+<body>
+
+    <canvas style="display: none;" id="maze"></canvas>
+    <canvas style="display: none;" id="tiles"></canvas>
+    <canvas id="game"></canvas>
+
+    <div id="control">
+        <div class="row">
+            <button id="upBtn">UP</button>
+        </div>
+        <div class="row">
+            <button id="leftBtn">Left</button>
+            <button id="rghtBtn">Right</button>
+        </div>
+        <div class="row">
+            <button id="dwnBtn">Down</button>
+        </div>
+    </div>
+
+    <div id="startScrn" class="control">
+        <div class="control-inner">
+            <div style="height: 80%;">
+                <h2>Maze Game!</h2>
+
+                <h3>Eiken Level</h3>
+
+                <ol>
+                    <li>
+                        <input id="3b3" value="3" name="dim" type="radio">
+                        <label for="3b3">3x3</label>
+                        
+                    </li>
+                    <li>
+                        <input id="4b4" value="4" name="dim" type="radio">
+                        <label for="4b4">4x4</label>
+                    </li>
+                    <li>
+                        <input id="5b5" value="5" name="dim" type="radio">
+                        <label for="5b5">5x5</label>
+                    </li>
+                    <li>
+                        <input id="custom" value="5" name="dim" type="radio">
+                        <label for="wInput">Width: </label>
+                        <input id="wInput" type="number" value="6">
+                        <label for="hInput">Height: </label>
+                        <input id="hInput" type="number" value="6">
+                    </li>
+                </ol>
+
+
+
+            </div>
+            <div>
+                <button onclick="start()">Start Game</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./cat.js"></script>
+    <script src="./maze.js"></script>
+</body>
+</html>
