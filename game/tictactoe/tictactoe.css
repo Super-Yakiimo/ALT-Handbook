@@ -2,6 +2,11 @@
 ui screen
 */
 
+body, html {
+    margin: 0;
+    overflow: hidden;
+}
+
 .control {
     display: flex;
     align-items: center;

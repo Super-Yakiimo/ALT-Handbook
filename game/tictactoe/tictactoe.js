@@ -26,14 +26,14 @@ wrong.preload = 'auto';
 */
 
 // questions
-const QUEST_LIST = [
+const N5 = [
     {
-        text: "He’s ( ) his dog in the garden.",
+        text: "He's ( ) his dog in the garden.",
         options: ["reading", "washing", "making", "sitting"],
         answer: "washing"
     },
     {
-        text: "It’s very cold, Billy. () a coat today.",
+        text: "It's very cold, Billy. () a coat today.",
         options: ["Listen", "Wear", "See", "Watch"],
         answer: "Wear"
     },
@@ -78,6 +78,218 @@ const QUEST_LIST = [
         answer: "They"
     }
 ];
+
+const N4 = [
+    {
+        text: "Kentaro wants to be a ( ) baseball player in the future. He wants to play in the United States someday.",
+        options: ["difficult", "professional", "strange", "thick"],
+        answer: "professional"
+    },
+    {
+        text: "It'll rain this evening, Peter. Don't forget your ().",
+        options: ["umbrella", "dream", "mirror", "sandwich"],
+        answer: "umbrella"
+    },
+    {
+        text: "Yuta loves flying. He often goes to the ( ) to watch the planes.",
+        options: ["floor", "hospital", "airport", "mall"],
+        answer: "airport"
+    },
+    {
+        text: "Takeru's bag has many large books in it. It is very ( ), so Takeru can't carry it.",
+        options: ["heavy", "nervous", "late", "fast"],
+        answer: "heavy"
+    },
+    {
+        text: "Yumi visited a ( ) last weekend. She likes learning about history.",
+        options: ["dictionary", "question", "castle", "cloud"],
+        answer: "castle"
+    },
+    {
+        text: "Peter grows potatoes in his ( ). He also has an apple tree.",
+        options: ["cake", "song", "meat", "garden"],
+        answer: ""
+    },
+    {
+        text: "Last week, Brian () a cold. He stayed in bed for two days.",
+        options: ["caught", "told", "forgot", "played"],
+        answer: "caught"
+    },
+    {
+        text: "It was very hot during soccer practice. After practice, Jeff drank a ( ) of water.",
+        options: ["glass", "boat", "country", "floor"],
+        answer: "glass"
+    },
+    {
+        text: "Last week, a new student came to Lucy’s school. Lucy became good friends ( ) him because they both love sports.",
+        options: ["with", "through", "by", "into"],
+        answer: "with"
+    },
+    {
+        text: "Kate can ( ) very well. She’s on the school swimming team.",
+        options: ["swam", "swim", "swims", "to swim"],
+        answer: "swim"
+    }
+]
+
+const N3 = [
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    }
+]
+
+const P2 = [
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    }
+]
+
+const N2 = [
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    },
+    {
+        text: "",
+        options: ["", "", "", ""],
+        answer: ""
+    }
+]
 
 /*
 012
@@ -131,6 +343,21 @@ const createImg = (mark) => {
     return img;
 }
 
+const getQuest = (level) => {
+    switch(level){
+        case 5:
+            return N5;
+        case 4:
+            return N4;
+        case 3:
+            return N3;
+        case 2:
+            return N2;
+        default:
+            return N5
+    }
+}
+
 function start() {
     // screens
     let questScrn = document.querySelector("#questScrn");
@@ -146,6 +373,11 @@ function start() {
     let batsuRadio =  document.querySelector("#batsuRadio");
     let level =  document.querySelector("#level");
 
+    // get leve questions
+    let nLevel = Number(level.value);
+    let questPick = getQuest(nLevel);
+    console.log(questPick);
+
     // store tic tac board
     let board = Array.from({length: 9}, ()=>STATE.E);
 
@@ -154,9 +386,11 @@ function start() {
     let player = (batsuRadio.checked) ? STATE.X : STATE.O;
     uiImg.src = (player == STATE.X) ? BATSU : MARU;
 
-    let randList = QUEST_LIST.sort(()=>Math.random() - 0.5);
+    let randList = questPick.sort(()=>Math.random() - 0.5);
+    console.log(randList);
 
     const showQuest = (quest, block, index)=>{
+        console.log(quest);
         questScrn.classList.remove('hide');
         let btnCon = document.querySelector("#btnCon");
 
@@ -202,8 +436,11 @@ function start() {
                 // show end screen if win
                 if(win){
                     // show end
-                    endImg.src = (player == STATE.X) ? BATSU : MARU;
-                    endScrn.classList.remove('hide');
+                    setTimeout(() => {
+                        endImg.src = (player == STATE.X) ? BATSU : MARU;
+                        endScrn.classList.remove('hide');  
+                    }, 1000);
+                    
                 }
                 else {
                     // toggle to next player
@@ -219,6 +456,7 @@ function start() {
         let block = document.querySelector(`#block${i}`);
 
         let quest = randList[i];
+
         // question text
         let h2 = document.createElement('h3');
         h2.innerHTML = quest.text;
@@ -231,7 +469,7 @@ function start() {
 
 
         block.addEventListener('click', () => {
-            //console.log(i);
+            //console.log(quest);
             showQuest(quest, block, i);
         });
     }
@@ -243,3 +481,5 @@ function start() {
     // begin
     startScrn.classList.add('hide');
 }
+
+document.addEventListener('contextmenu', event => event.preventDefault());

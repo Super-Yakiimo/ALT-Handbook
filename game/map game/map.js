@@ -407,3 +407,5 @@ function start() {
 
     window.addEventListener('resize', setDim);
 }
+
+document.addEventListener('contextmenu', event => event.preventDefault());

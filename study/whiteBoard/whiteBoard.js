@@ -205,3 +205,5 @@ window.onload = function () {
     start();
 }
 
+
+document.addEventListener('contextmenu', event => event.preventDefault());

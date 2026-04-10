@@ -353,3 +353,5 @@ const start = () => {
 window.onload = function(){
     makeCheckBox();
 }
+
+document.addEventListener('contextmenu', event => event.preventDefault());

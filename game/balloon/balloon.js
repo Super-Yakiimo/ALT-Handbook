@@ -293,6 +293,10 @@ const start = () => {
                 return;
             }
 
+            if(balloons[result].pick == true){
+                return;
+            }
+
             if (pick == null) {
                 pick = result;
                 balloons[result].pick = true;
@@ -383,3 +387,5 @@ const start = () => {
 window.onload = function () {
     makeCheckBox();
 }
+
+document.addEventListener('contextmenu', event => event.preventDefault());

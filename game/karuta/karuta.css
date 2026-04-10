@@ -3,6 +3,7 @@ html, body, .game-root {
     height: 100%;
     margin: 0;
     touch-action: none;
+    overflow: hidden;
 }
 
 .control {
