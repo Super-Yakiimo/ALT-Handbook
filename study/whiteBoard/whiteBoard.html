@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="control">
-            <div>
+            <div id="top">
                 <h2>Control</h2>
 
                 <label for="drawBtn">Draw</label>
-                <input id="drawBtn" name="mode" type="radio">
+                <input checked id="drawBtn" name="mode" type="radio">
                 <br>
 
                 <label for="earaseBtn">Earase</label>
@@ -33,46 +33,54 @@
                 <input id="stampBtn" name="mode" type="radio">
                 <br>
 
-                <label for="clearBtn">Clear</label>
-                <input id="clearBtn" name="mode" type="radio">
+                <button id="clearBtn" name="mode">Clear</button>
                 <br>
                 
             </div>
-            <div>
+            <div id="middle">
                 <h2>Color</h2>
                 <label>Random: </label>
                 <input id="randColor" type="checkbox">
                 <br>
                 <label>Color: </label>
-                <input id="color" type="color">
+                <input value="#ffffff" id="color" type="color">
                 <br>
                 <label>BackColor: </label>
                 <input id="backColor" type="color">
                 <br>
                 <label>Size: </label>
-                <input id="size" type="range">
+                <input type="range" value="20" id="size" type="range">
+                <span id="sizeOut"></span>
                 
             </div>
 
-            <div>
+            <div id="bottom">
                 <h2>Stamp</h2>
-                <select name="" id=""></select>
+                <label>Stamp size: </label>
+                <input type="range" value="100" max="1000" id="stampSize" type="range">
+                <span id="stampSizeOut"></span>
+                <br>
+                <select name="selectType" id="selectType"></select>
+                <div name="selectImg" id="selectImg"></div>
             </div>
 
-            to do
-            color picker
-            stamp select
-            draw size
-            draw shape
-            samp size
-            other
         </div>
 
     </div>
 
-
-
+    <script src="../../database/database.js"></script>
     <script src="./whiteBoard.js"></script>
 </body>
 
 </html>
+
+<!--
+
+
+            to do
+            stamp select
+            draw shape
+            samp size
+            other
+            
+            -->

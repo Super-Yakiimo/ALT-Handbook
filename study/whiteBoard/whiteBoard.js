@@ -30,12 +30,24 @@ const start = () => {
     const color = this.document.querySelector("#color");
     const randColor = this.document.querySelector("#randColor");
 
+    const size = this.document.querySelector("#size");
+    const sizeOut = this.document.querySelector("#sizeOut");
+
+    const stampSize = this.document.querySelector("#stampSize");
+    const stampSizeOut = this.document.querySelector("#stampSizeOut");
+
+    const selectType = document.querySelector("#selectType");
+    const selectImg = document.querySelector("#selectImg");
+
     const dctx = draw.getContext('2d');
-    const tctx = draw.getContext('2d');
+    const tctx = tool.getContext('2d');
 
     let mode = Mode.Draw;
 
     let widthPx, heightPx;
+
+    let radias = 10;
+    let stampDim = 100;
 
     const setDim = () => {
         widthPx = canCon.clientWidth;
@@ -47,7 +59,35 @@ const start = () => {
         tool.height = heightPx;
     }
 
-    const control = (xPos, yPos) => {
+    const genImg = () => {
+        let pic = getType(selectType.value);
+        console.log(pic);
+        selectImg.innerHTML = "";
+        pic.forEach((value, index) => {
+            let input = document.createElement('input');
+            input.id = value.name;
+            input.type = 'radio';
+            input.name = 'type';
+
+            let img = document.createElement('img');
+            img.src = `../../resource/img/${value.link}`;
+
+            let label = document.createElement('label');
+            label.htmlFor = value.name;
+            label.appendChild(img);
+
+
+            selectImg.appendChild(input);
+            selectImg.appendChild(label);
+
+            label.addEventListener("click", () => {
+                selectStamp = img;
+                mode = Mode.Stamp;
+            });
+        });
+    }
+
+    const control = () => {
         if (active == false) {
             return;
         }
@@ -61,9 +101,10 @@ const start = () => {
         switch (mode) {
             case Mode.Draw:
                 particles.push({
-                    x: xPos,
-                    y: yPos,
-                    rad: 20,
+                    type: "part",
+                    x: pos.x,
+                    y: pos.y,
+                    rad: radias,
                     dx: 0,
                     dy: 0,
                     g: 0,
@@ -72,16 +113,28 @@ const start = () => {
                 break;
             case Mode.Earase:
                 particles.forEach((particle) => {
-                    let deltaX = Math.abs(particle.x - xPos);
-                    let deltaY = Math.abs(particle.y - yPos);
+                    let deltaX = Math.abs(particle.x - pos.x);
+                    let deltaY = Math.abs(particle.y - pos.y);
                     let dist = Math.sqrt(deltaX ** 2 + deltaY ** 2);
-                    if (dist < particle.rad) {
+                    if (dist < (particle.rad + radias)) {
                         particle.g = Math.random();
                         particle.dx = rand() * 5;
                         particle.dy = rand() * 5;
                     }
                 });
                 break;
+            case Mode.Stamp:
+                particles.push({
+                    type: "img",
+                    x: pos.x - stampDim / 2,
+                    y: pos.y - stampDim / 2,
+                    rad: stampDim,
+                    dx: 0,
+                    dy: 0,
+                    g: 0,
+                    color: pickColor,
+                    img: selectStamp
+                });
             default:
                 break;
         }
@@ -98,10 +151,20 @@ const start = () => {
     // is rand color selected
     let randColorCheck = false;
 
+    // position of click or touch
+    let pos = {
+        x: 0,
+        y: 0
+    }
+
     // click
-    tool.addEventListener("mousedown", () => {
+    tool.addEventListener("mousedown", (event) => {
         active = true;
-        console.log('start');
+        pos = {
+            x: event.offsetX,
+            y: event.offsetY
+        }
+        control();
     });
 
     tool.addEventListener("mouseup", () => {
@@ -110,23 +173,48 @@ const start = () => {
     });
 
     tool.addEventListener("mousemove", (event) => {
-        control(event.offsetX, event.offsetY);
+        pos = {
+            x: event.offsetX,
+            y: event.offsetY
+        }
+        control();
     });
 
     // touch
 
-    tool.addEventListener("touchstart", () => {
+    tool.addEventListener("touchstart", (event) => {
         active = true;
-        console.log('start');
+        pos = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY
+        }
+        control();
     });
 
     tool.addEventListener("touchend", () => {
         active = false;
         console.log('end');
+        pos = {
+            x: -radias,
+            y: -radias
+        }
     });
 
+    tool.addEventListener("mouseout", () => {
+        console.log('out');
+        pos = {
+            x: -radias,
+            y: -radias
+        }
+    });
+
+
     tool.addEventListener("touchmove", (event) => {
-        control(event.touches[0].clientX, event.touches[0].clientY);
+        pos = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY
+        }
+        control();
     });
 
     // buttons
@@ -151,29 +239,58 @@ const start = () => {
     });
 
     // color picker
+    sColor = color.value;
     color.addEventListener("change", () => {
         console.log(color.value);
         sColor = color.value;
     });
 
-    backColor.addEventListener("change", () => {
+
+    // the selected image to stamp
+    let selectStamp = null;
+
+    const getBackColor = () => {
         let hex = backColor.value;
         const r = parseInt(hex.substr(1, 2), 16);
         const g = parseInt(hex.substr(3, 2), 16);
         const b = parseInt(hex.substr(5, 2), 16);
         const rgba = `rgba(${r}, ${g}, ${b}, ${0.04})`;
         sBackColor = rgba;
-    });
+    }
+
+    getBackColor();
+    backColor.addEventListener("change", getBackColor);
 
     randColor.addEventListener("click", () => {
         randColorCheck = !randColorCheck;
     });
+
+    // control draw size
+    radias = Number(size.value);
+    sizeOut.innerHTML = radias;
+
+    size.addEventListener("change", () => {
+        radias = Number(size.value);
+        sizeOut.innerHTML = radias;
+    });
+
+    // stamp dimensions
+    stampDim = Number(stampSize.value);
+    stampSizeOut.innerHTML = stampDim;
+
+    stampSize.addEventListener("change", () => {
+        stampDim = Number(stampSize.value);
+        stampSizeOut.innerHTML = stampDim;
+    });
+
 
     // anim function
     const anim = () => {
         //dctx.clearRect(0, 0, innerWidth, innerHeight);
         dctx.fillStyle = sBackColor;
         dctx.fillRect(0, 0, innerWidth, innerHeight);
+
+        tctx.clearRect(0, 0, innerWidth, innerHeight);
 
         particles = particles.filter(part => part.y < heightPx + part.rad);
 
@@ -185,16 +302,52 @@ const start = () => {
             particle.x += particle.dx;
             particle.y += particle.dy;
 
-            // draw
-            dctx.beginPath();
-            dctx.arc(particle.x, particle.y, particle.rad, 0, Math.PI * 2);
-            dctx.fillStyle = particle.color;
-            dctx.fill();
+            if (particle.type == 'img') {
+                dctx.drawImage(particle.img, particle.x, particle.y,  particle.rad,  particle.rad);
+            }
+
+            if (particle.type == 'part') {
+                // draw
+                dctx.beginPath();
+                dctx.arc(particle.x, particle.y, particle.rad, 0, Math.PI * 2);
+                dctx.fillStyle = particle.color;
+                dctx.fill();
+            }
+
+
         });
+
+        if (mode == Mode.Earase || mode == Mode.Draw) {
+            tctx.lineWidth = 2;
+            tctx.beginPath();
+            tctx.strokeStyle = "white";
+            tctx.arc(pos.x, pos.y, radias, 0, Math.PI * 2);
+            tctx.stroke();
+            tctx.beginPath();
+            tctx.strokeStyle = "black";
+            tctx.arc(pos.x, pos.y, radias + 2, 0, Math.PI * 2);
+            tctx.stroke();
+        }
+
+        if (mode == Mode.Stamp && selectStamp != null) {
+            tctx.drawImage(selectStamp, pos.x - stampDim / 2, pos.y - stampDim / 2, stampDim, stampDim);
+        }
 
         window.requestAnimationFrame(anim);
     }
 
+    // img select for stamps
+    LABEL_NAMES.forEach((value, index) => {
+        let opt = document.createElement('option');
+        opt.innerHTML = value;
+        opt.id = INPUT[index];
+        selectType.appendChild(opt);
+    });
+
+    selectType.addEventListener('change', genImg);
+
+
+    genImg();
     setDim();
     window.addEventListener('resize', setDim);
     window.requestAnimationFrame(anim);

@@ -274,6 +274,19 @@ const getVocab = () => {
     return vocabList.sort(() => Math.random() - 0.5);
 }
 
+
+const getType = (type) => {
+
+    let vocabList = [];
+
+    for (let i = 0; i < INPUT.length; i++) {
+        if (type == LABEL_NAMES[i]) {
+            vocabList = vocabList.concat(VOCAB_LIST[i]);
+        }
+    }
+    return vocabList.sort(() => Math.random() - 0.5);
+}
+
 const getAll = () => {
     let vocabList = [];
     for (let i = 0; i < VOCAB_LIST.length; i++) {
