@@ -93,6 +93,8 @@ const getQuest = (level) => {
         case 3:
             return N3;
         case 2:
+            return P2;
+        case 1:
             return N2;
         default:
             return N5
@@ -127,7 +129,7 @@ function start() {
     let player = (batsuRadio.checked) ? STATE.X : STATE.O;
     uiImg.src = (player == STATE.X) ? BATSU : MARU;
 
-    let randList = questPick.sort(()=>Math.random() - 0.5);
+    let randList = questPick.sort(()=>Math.random() - 0.5).sort(()=>Math.random() - 0.5);
     //console.log(randList);
 
     const showQuest = (quest, block, index)=>{
