@@ -90,6 +90,14 @@ function makeCards(width, height, vocab) {
     return cardList;
 }
 
+function openEnd(){
+    document.querySelector('#endBox').classList.remove('hide');
+}
+
+function closeEnd(){
+    document.querySelector('#endBox').classList.add('hide');
+}
+
 const start = () => {
 
     let vocab = getVocab();

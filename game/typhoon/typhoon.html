@@ -47,7 +47,17 @@
         </div>
     </div>
 
-
+    <div id="endBox" class="control hide">
+        <div class="control-inner">
+            <div style="width: 90%;height: 90%;">
+                <p>If you press this button the game will reset!</p>
+                <button onclick="location.reload(true);">Reset</button>
+            </div>
+            
+            <p>Press this button to continue playing the game.</p>
+            <button onclick="closeEnd()">Close</button>
+        </div>
+    </div>
 
     <div class="root">
         <div class="game">
@@ -58,7 +68,7 @@
 
             </div>
             <div id="end">
-                <button onclick="location.reload(true);">Reset</button>
+                <button onclick="openEnd()">Reset</button>
             </div>
         </div>
     </div>
