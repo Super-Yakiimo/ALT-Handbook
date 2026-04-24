@@ -88,7 +88,7 @@ const N5 = [
     {
         text: "A : Mom, I don't know this word. Can you help me?<br>B : No, I can't. Use your ( ), Tom.",
         options: ["page", "cup", "dictionary", "story"],
-        answer: ""
+        answer: "dictionary"
     },
     {
         text: "Mr. Brown is a music teacher. He plays the () very well.",
