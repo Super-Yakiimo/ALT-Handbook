@@ -1,6 +1,7 @@
 // IMAGES
 const BATSU = "../../resource/img/icon/mark_batsu.png";
 const MARU = "../../resource/img/icon/mark_maru.png";
+const TIE = "../../resource/img/icon/tie.png";
 
 // board values x o null
 const STATE = Object.freeze({
@@ -132,6 +133,9 @@ function start() {
     let randList = questPick.sort(()=>Math.random() - 0.5).sort(()=>Math.random() - 0.5);
     //console.log(randList);
 
+    // number of correct answers
+    let count = 0;
+
     const showQuest = (quest, block, index)=>{
         //console.log(quest);
         questScrn.classList.remove('hide');
@@ -165,7 +169,8 @@ function start() {
                     questScrn.classList.add('hide');
                     // disable the block click
                     block.disabled = true;
-
+                    // correct answer add to turn
+                    count+=1;
                 }
                 // answer is correct
                 else {
@@ -176,7 +181,8 @@ function start() {
                 }
 
                 let win = checkWin(board);
-                console.log(win);
+                //console.log(win);
+                console.log(count);
                 // show end screen if win
                 if(win){
                     winSound.currentTime = 0;
@@ -187,6 +193,16 @@ function start() {
                         endScrn.classList.remove('hide');  
                     }, 1000);
                     
+                }
+                else if(count >= 9){
+                    // tie no win
+                    // show end
+                    winSound.currentTime = 0;
+                    winSound.play();
+                    endImg.src = TIE;
+                    setTimeout(() => {
+                        endScrn.classList.remove('hide');  
+                    }, 1000);
                 }
                 else {
                     // toggle to next player

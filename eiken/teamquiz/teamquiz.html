@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Quiz</title>
+    <link rel="stylesheet" href="./teamquiz.css">
+    <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
+</head>
+
+<body>
+    <div id="startScrn" class="control">
+        <div class="control-inner">
+            <div style="height: 80%;">
+                <h2>Game Time!</h2>
+
+                <h3>Eiken Level</h3>
+
+                <select name="level" id="level">
+                    <option value="5">EIKEN 5</option>
+                    <option value="4">EIKEN 4</option>
+                    <option value="3">EIKEN 3</option>
+                    <option value="2">EIKEN P2</option>
+                </select>
+
+                <h3>How many teams</h3>
+                <select name="team" id="team">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="start()">Start Game</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="endBox" class="control hide">
+        <div class="control-inner">
+            <div style="width: 90%;height: 90%;">
+                <p>If you press this button the game will reset!</p>
+                <button onclick="location.reload(true);">Reset</button>
+            </div>
+            
+            <p>Press this button to continue playing the game.</p>
+            <button onclick="closeEnd()">Close</button>
+        </div>
+    </div>
+
+    <div class="root">
+        <div class="game">
+
+        </div>
+        <div class="game-control">
+            <div id="users">
+
+            </div>
+            <div id="end-control">
+                <button onclick="openEnd()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./teamquiz.js"></script>
+
+</body>
+
+</html>
