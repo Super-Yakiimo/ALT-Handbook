@@ -6,20 +6,27 @@ const DIM = [
     { x: 10, y: 10 },
 ]
 
-const TYPHOON = [
-    "typhoon/ten.png",
-    "typhoon/minus10.png",
-    "typhoon/twenty.png",
-    "typhoon/minus20.png",
-    "typhoon/thirty.png",
-    "typhoon/minus30.png",
-    "typhoon/fourty.png",
-    "typhoon/minus40.png",
-    "typhoon/fifty.png",
-    "typhoon/minus50.png",
-    "typhoon/switch.jpg",
-    "typhoon/timesTwo.png",
-    "typhoon/typhoon.jpg",
+const PLUS10 = "typhoon/ten.png";
+const PLUS20 = "typhoon/twenty.png";
+const PLUS30 = "typhoon/thirty.png";
+const PLUS40 = "typhoon/fourty.png";
+const PLUS50 = "typhoon/fifty.png";
+
+const MINUS10 = "typhoon/minus10.png";
+const MINUS20 = "typhoon/minus20.png";
+const MINUS30 = "typhoon/minus30.png";
+const MINUS40 = "typhoon/minus40.png";
+const MINUS50 = "typhoon/minus50.png";
+
+const SWITCH = "typhoon/switch.jpg";
+const TIMES2 = "typhoon/timesTwo.png";
+const TYPHOON = "typhoon/typhoon.jpg";
+
+const TYPHOON_LIST = [
+    PLUS10,PLUS20,PLUS30,PLUS40,PLUS50,
+    PLUS10,PLUS20,PLUS30,PLUS40,PLUS50,
+    MINUS10,MINUS20,MINUS30,MINUS40,MINUS50,
+    SWITCH,TIMES2,TYPHOON
 ]
 
 function makeCards(width, height, vocab) {
@@ -60,7 +67,7 @@ function makeCards(width, height, vocab) {
 
             // back img
             let backImg = document.createElement('img');
-            backImg.src = "../../resource/img/" + TYPHOON[Math.floor(Math.random() * TYPHOON.length)];
+            backImg.src = "../../resource/img/" + TYPHOON_LIST[Math.floor(Math.random() * TYPHOON_LIST.length)];
             backImg.alt = "front";
             backImg.className = "card-img";
 
@@ -111,7 +118,7 @@ const start = () => {
     correct.preload = 'auto';
     wrong.preload = 'auto';
 
-    let gameControl = document.querySelector(".game-control");
+    let users = document.querySelector("#users");
 
     console.log(team, size);
 
@@ -130,6 +137,7 @@ const start = () => {
 
         let div = document.createElement('div');
         div.style = `width:${width};height:${height};`
+        div.className = 'char-box';
 
         let name = document.createElement('input');
         name.type = "text";
@@ -183,7 +191,7 @@ const start = () => {
         div.appendChild(addFifty);
         div.appendChild(minusFifty);
 
-        gameControl.appendChild(div);
+        users.appendChild(div);
 
     }
 
@@ -207,7 +215,7 @@ const start = () => {
 
             if (card.outer.classList.contains('flip')) {
                 setTimeout(() => {
-                    card.backImg.src = "../../resource/img/" + TYPHOON[Math.floor(Math.random() * TYPHOON.length)];
+                    card.backImg.src = "../../resource/img/" + TYPHOON_LIST[Math.floor(Math.random() * TYPHOON_LIST.length)];
                     wait = false;
                 }, 500);
                 card.outer.classList.remove('flip');
