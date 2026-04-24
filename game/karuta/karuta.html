@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,36 @@
     <link rel="stylesheet" href="./karuta.css">
     <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
 </head>
+
 <body>
     <div class="control">
         <div class="control-inner">
-            <h3>Pick vocab</h3> 
+            <div class="lrbox">
+                <div class="left">
 
-            <div id="checkCon"></div>   
+                    <h3>Difficulty</h3>
+                    <select name="level" id="level">
+                        <option value="3">Easy</option>
+                        <option value="4">Meduim</option>
+                        <option value="5">Hard</option>
+                        <option value="6">Extreme</option>
+                    </select>
 
-            <h3>Difficulty</h3>
-            <select name="level" id="level">
-                <option value="3">Easy</option>
-                <option value="4">Meduim</option>
-                <option value="5">Hard</option>
-                <option value="6">Extreme</option>
-            </select>
+                    <div>
+                        <button onclick="start()">Start</button>
+                    </div>
 
-            <div>
-                <button onclick="start()">Start</button>               
+                </div>
+                <div class="right">
+
+
+                    <h3>Pick vocab</h3>
+
+                    <div id="checkCon"></div>
+
+                </div>
             </div>
+
 
         </div>
     </div>
@@ -39,4 +52,5 @@
     <script src="../../database/database.js"></script>
     <script src="./karuta.js"></script>
 </body>
+
 </html>

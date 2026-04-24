@@ -1,0 +1,164 @@
+html,
+body,
+.root {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    overflow: hidden;
+}
+
+.root {
+    display: flex;
+    flex-direction: row;
+    touch-action: none;
+}
+
+.game,
+.control {
+    height: 100%;
+}
+
+.game {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.game-control {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+html, body {
+    touch-action: none;
+    margin: 0;
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(240, 248, 255, 0.653);
+}
+
+.control-inner {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 30%;
+    border: 5px solid black;
+    padding: 10%;
+}
+
+.lrbox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.left, .right {
+    width: 50%;
+    height: 100%;
+}
+
+#checkCon{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+}
+
+body {
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+/*
+ card
+*/
+
+.card-root {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-aspect-ratio: 0.8) {
+    .root {
+        flex-direction: column;
+    }
+
+    .game {
+        height: 90%;
+        width: 100%;
+    }
+
+    .game-control {
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+    }
+}

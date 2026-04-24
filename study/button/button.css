@@ -17,6 +17,26 @@
     padding: 10%;
 }
 
+
+.lrbox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.left, .right {
+    width: 50%;
+    height: 100%;
+}
+
+#checkCon{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+}
+
 .hide {
     display: none;
 }

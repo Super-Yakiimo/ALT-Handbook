@@ -66,6 +66,33 @@ const DAYS_OF_WEEK = [
     { name: "saturday", link: "daysofweek/saturday.png" },
 ];
 
+const MONTH = [
+    { name: "January", link: "month/january.png" },
+    { name: "February", link: "month/february.png" },
+    { name: "March", link: "month/march.png" },
+    { name: "April", link: "month/april.png" },
+    { name: "May", link: "month/may.png" },
+    { name: "June", link: "month/june.png" },
+    { name: "July", link: "month/july.png" },
+    { name: "August", link: "month/august.png" },
+    { name: "September", link: "month/september.png" },
+    { name: "October", link: "month/october.png" },
+    { name: "November", link: "month/november.png" },
+    { name: "December", link: "month/december.png" },
+];
+
+const WEATHER = [
+    { name: "sunny", link: "weather/sunny.png" },
+    { name: "hot", link: "weather/hot.png" },
+    { name: "rainy", link: "weather/rainy.png" },
+    { name: "umbrella", link: "weather/umbrella.png" },
+    { name: "cloudy", link: "weather/cloudy.png" },
+    { name: "sweater", link: "weather/sweater.png" },
+    { name: "snowy", link: "weather/snowy.png" },
+    { name: "cold", link: "weather/cold.png" },
+    { name: "jacket", link: "weather/jacket.png" },
+];
+
 const TOWN = [
     { name: "aquarium", link: "town/aquarium.png" },
     { name: "bakery", link: "town/bakery.png" },
@@ -118,6 +145,27 @@ const JOBS = [
     { name: "waitress", link: "jobs/waitress.png" }
 ]
 
+const STATIONARY = [
+    { name: "pencil", link: "stationary/pencil.png" },
+    { name: "mechanical pencil", link: "stationary/mechanical pencil.png" },
+    { name: "earaser", link: "stationary/earaser.png" },
+    { name: "pencil case", link: "stationary/pencil case.png" },
+    { name: "ruler", link: "stationary/ruler.png" },
+    { name: "glue stick", link: "stationary/glue stick.png" },
+    { name: "pen", link: "stationary/pen.png" },
+    { name: "notebook", link: "stationary/notebook.png" },
+    { name: "book", link: "stationary/book.png" },
+    { name: "calendar", link: "stationary/calender_full.png" },
+    { name: "stapler", link: "stationary/stapler.png" },
+    { name: "pencil sharpener", link: "stationary/pencil sharpener.png" },
+    { name: "marker", link: "stationary/marker.png" },
+    { name: "crayons", link: "stationary/crayons.png" },
+    { name: "scissors", link: "stationary/scissors.png" },
+    { name: "calculator", link: "stationary/bunbougu_dentaku.png" },
+    { name: "magnet", link: "stationary/magnet.png" }
+]
+
+
 const COLOR = [
     { name: "red", link: "color/crayon01_red.png" },
     { name: "orange", link: "color/crayon02_orange.png" },
@@ -132,6 +180,68 @@ const COLOR = [
     { name: "grey", link: "color/crayon11_gray.png" },
     { name: "black", link: "color/crayon12_black.png" },
 ]
+
+const SHAPE = [
+    { name: "diamond", link: "shape/diamond.png" },
+    { name: "heart", link: "shape/heart.png" },
+    { name: "oval", link: "shape/oval.png" },
+    { name: "rectangle", link: "shape/rectangle.png" },
+    { name: "square", link: "shape/square.png" },
+    { name: "star", link: "shape/star.png" },
+    { name: "parallelogram", link: "shape/paralleogram.png" },
+    { name: "trapezoid", link: "shape/trapazoid.png" },
+    { name: "right triangle", link: "shape/right-triangle.png" },
+    { name: "triangle", link: "shape/triangle.png" },
+];
+
+const FOOD = [
+    { name: "pizza", link: "food/pizza.png" },
+    { name: "hamburger", link: "food/food_hamburger_cheese.png" },
+    { name: "french fries", link: "food/food_fried_potato_dish.png" },
+    { name: "curry", link: "food/curry.png" },
+    { name: "salad", link: "food/salad.png" },
+    { name: "steak", link: "food/beef.png" },
+    { name: "fish and chips", link: "food/fishandchips.png" },
+    { name: "omlet", link: "food/food_omurice.png" },
+    { name: "tacos", link: "food/tacos.png" },
+    { name: "sushi", link: "food/sushi.png" },
+    { name: "lasagna", link: "food/lasagna.png" },
+    { name: "rice ball", link: "food/onigiri_maru.png" },
+    { name: "spaghetti", link: "food/food_spaghetti_bolognese_meatsauce.png" },
+    { name: "ramen", link: "food/ramen_syouyu.png" },
+    { name: "sandwhich", link: "food/food_sandwich_blt.png" },
+    { name: "sausage", link: "food/food_sausage.png" },
+    { name: "quiche", link: "food/food_quiche_kissyu.png" },
+    { name: "fried chicken", link: "food/food_fried_chicken.png" },
+    { name: "rice", link: "food/food_tamago_gohan4.png" },
+    { name: "grilled fish", link: "food/fish.png" },
+]
+
+const DESSERT = [
+    { name: "ice cream", link: "dessert/icecream3_cookiecream.png" },
+    { name: "shaved ice", link: "dessert/kakigoori3_orange.png" },
+    { name: "popcorn", link: "dessert/popcorn.png" },
+    { name: "potato chips", link: "dessert/potatochips.png" },
+    { name: "apple pie", link: "dessert/sweets_applepie.png" },
+    { name: "cake", link: "dessert/sweets_cake_rousoku.png" },
+    { name: "chocolate", link: "dessert/sweets_chocolate_dark.png" },
+    { name: "creampuff", link: "dessert/sweets_creampuff.png" },
+    { name: "donut", link: "dessert/sweets_donut.png" },
+    { name: "parfait", link: "dessert/sweets_fruit_pafe.png" },
+    { name: "pancake", link: "dessert/sweets_pancake.png" },
+    { name: "pudding", link: "dessert/sweets_purin.png" },
+];
+
+const DRINK = [
+    { name: "water", link: "drink/amount_water_glass3.png" },
+    { name: "coffee", link: "drink/coffee04_blend_black.png" },
+    { name: "grean tea", link: "drink/drink_greentea.png" },
+    { name: "ice cream soda", link: "drink/drink_melonsoda.png" },
+    { name: "milk", link: "drink/drink_milk_gallon.png" },
+    { name: "juice", link: "drink/juice_apple.png" },
+    { name: "soda", link: "drink/soda4_green.png" },
+    { name: "tea", link: "drink/tea_lemon.png" },
+];
 
 const VEGETABLE = [
     { name: "onions", link: "vegetable/onion.png" },
@@ -186,43 +296,43 @@ const ANIMAL = [
 ]
 
 const VERB = [
-    { name: "cook", link: "verb/cook.jpg"},
-    { name: "crawl", link: "verb/crawl.jpg"},
-    { name: "dance", link: "verb/dance.jpg"},
-    { name: "draw", link: "verb/draw.jpg"},
-    { name: "drink", link: "verb/drink.jpg"},
-    { name: "eat", link: "verb/eat.jpg"},
-    { name: "fly", link: "verb/fly.jpg"},
-    { name: "jump", link: "verb/jump.jpg"},
-    { name: "jump", link: "verb/jump.jpg"},
-    { name: "kneel", link: "verb/kneel.jpg"},
-    { name: "laugh", link: "verb/laugh.jpg"},
-    { name: "push", link: "verb/push.jpg"},
-    { name: "read", link: "verb/read.jpg"},
-    { name: "run", link: "verb/run.jpg"},
-    { name: "shout", link: "verb/shout.jpg"},
-    { name: "sing", link: "verb/sing.jpg"},
-    { name: "sleep", link: "verb/sleep.jpg"},
-    { name: "smell", link: "verb/smell.jpg"},
-    { name: "stretch", link: "verb/stretch.jpg"},
-    { name: "swim", link: "verb/swim.jpg"},
-    { name: "throw", link: "verb/throw.jpg"},
-    { name: "walk", link: "verb/walk.jpg"},
-    { name: "water", link: "verb/water.jpg"},
-    { name: "win", link: "verb/win.jpg"},
+    { name: "cook", link: "verb/cook.jpg" },
+    { name: "crawl", link: "verb/crawl.jpg" },
+    { name: "dance", link: "verb/dance.jpg" },
+    { name: "draw", link: "verb/draw.jpg" },
+    { name: "drink", link: "verb/drink.jpg" },
+    { name: "eat", link: "verb/eat.jpg" },
+    { name: "fly", link: "verb/fly.jpg" },
+    { name: "jump", link: "verb/jump.jpg" },
+    { name: "jump", link: "verb/jump.jpg" },
+    { name: "kneel", link: "verb/kneel.jpg" },
+    { name: "laugh", link: "verb/laugh.jpg" },
+    { name: "push", link: "verb/push.jpg" },
+    { name: "read", link: "verb/read.jpg" },
+    { name: "run", link: "verb/run.jpg" },
+    { name: "shout", link: "verb/shout.jpg" },
+    { name: "sing", link: "verb/sing.jpg" },
+    { name: "sleep", link: "verb/sleep.jpg" },
+    { name: "smell", link: "verb/smell.jpg" },
+    { name: "stretch", link: "verb/stretch.jpg" },
+    { name: "swim", link: "verb/swim.jpg" },
+    { name: "throw", link: "verb/throw.jpg" },
+    { name: "walk", link: "verb/walk.jpg" },
+    { name: "water", link: "verb/water.jpg" },
+    { name: "win", link: "verb/win.jpg" },
 ]
 
 // icons "../../resource/img/icon/card-back.png"
 const BACK = "../../resource/img/icon/card-back.png";
 
 const VOCAB_LIST = [
-    FRUIT, VEGETABLE, JOBS, ANIMAL, VERB, DAYS_OF_WEEK, SCHOOL, TOWN
+    FOOD, FRUIT, VEGETABLE, DESSERT, DRINK, JOBS, ANIMAL, VERB, DAYS_OF_WEEK, MONTH, WEATHER, SCHOOL, TOWN, STATIONARY, SHAPE
 ];
 
-const LABEL_NAMES = ["Fruit", "Vegetable", "Job", "Animal", "Verb", "DOTW", "School", "Town"];
+const LABEL_NAMES = ["Food", "Fruit", "Vegetable", "Dessert", "Drink", "Job", "Animal", "Verb", "DOTW", "Month", "Weather", "School", "Town", "Stationary", "Shape"];
 
 const INPUT = [
-    "fruitCheck", "vegCheck", "jobCheck", "animalCheck", "verbCheck", "daysOfWeekCheck", "schoolCheck", "townCheck"
+    "foodCheck", "fruitCheck", "vegCheck", "Dessert", "Drink", "jobCheck", "animalCheck", "verbCheck", "daysOfWeekCheck", "monthCheck", "weatherCheck", "schoolCheck", "townCheck", "statCheck", "shapeCheck"
 ];
 
 /*
@@ -234,25 +344,46 @@ make the check boxes for vocab select
 const makeCheckBox = () => {
 
     const checkCon = document.querySelector("#checkCon");
+    const DIM = 4;
 
-
-    if(checkCon == null){
+    if (checkCon == null) {
         return alert('cannot find the check box container');
     }
 
-    INPUT.forEach((id, i) => {
-        let input = document.createElement('input');
-        let label = document.createElement('label');
+    for (let i = 0; i < DIM; i++) {
+        let row = document.createElement('div');
+        row.className = 'row';
+        row.style = `height:${100/DIM}%;width:100%;display:flex;flex-direction: row;`;
+        for (let j = 0; j < DIM; j++) {
 
-        input.id = id;
-        input.type = 'checkbox';
+            let index = i * DIM + j;
 
-        label.for = id;
-        label.innerHTML = LABEL_NAMES[i];
+            let box = document.createElement('div');
+            box.className = 'box';
+            box.style = `height:100%;width:${100/DIM}%;border: 1px solid black;`;
 
-        checkCon.appendChild(input);
-        checkCon.appendChild(label);
-    });
+            if (index < VOCAB_LIST.length) {
+                let id = INPUT[index];
+                let name = LABEL_NAMES[index];
+
+                let input = document.createElement('input');
+                let label = document.createElement('label');
+
+                input.id = id;
+                input.type = 'checkbox';
+
+                label.for = id;
+                label.innerHTML = name;
+
+                box.appendChild(input);
+                box.appendChild(label);
+            }
+
+            row.appendChild(box);
+        }
+
+        checkCon.appendChild(row);
+    }
 }
 
 

@@ -192,7 +192,8 @@ function start() {
 }
 
 window.onload = function(){
+    document.addEventListener('contextmenu', event => event.preventDefault());
     makeCheckBox();
 }
 
-document.addEventListener('contextmenu', event => event.preventDefault());
+

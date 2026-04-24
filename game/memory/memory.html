@@ -12,28 +12,32 @@
 <body>
     <div id="start" class="control">
         <div class="control-inner">
-            <h3>Pick vocab</h3>
+            <div class="lrbox">
+                <div class="left">
+                    <h3>Mode</h3>
 
-            <div id="checkCon"></div>
+                    <select name="mode" id="mode">
+                        <option value="0">Picture</option>
+                        <option value="1">Text</option>
+                        <option value="2">Picture and Text</option>
+                    </select>
 
-            <h3>Mode</h3>
+                    <h3>Difficulty</h3>
+                    <select name="level" id="level">
+                        <option value="0">Easy</option>
+                        <option value="1">Meduim</option>
+                        <option value="2">Hard</option>
+                        <option value="3">Extreme</option>
+                    </select>
 
-            <select name="mode" id="mode">
-                <option value="0">Picture</option>
-                <option value="1">Text</option>
-                <option value="2">Picture and Text</option>
-            </select>
-
-            <h3>Difficulty</h3>
-            <select name="level" id="level">
-                <option value="0">Easy</option>
-                <option value="1">Meduim</option>
-                <option value="2">Hard</option>
-                <option value="3">Extreme</option>
-            </select>
-
-            <div>
-                <button onclick="start()">Start</button>
+                    <div>
+                        <button onclick="start()">Start</button>
+                    </div>
+                </div>
+                <div class="right">
+                    <h3>Pick vocab</h3>
+                    <div id="checkCon"></div>
+                </div>
             </div>
         </div>
     </div>

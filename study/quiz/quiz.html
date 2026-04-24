@@ -12,34 +12,40 @@
 <body>
     <div id="start" class="control">
         <div class="control-inner">
-            <h1>Controls</h1>
+            <div class="lrbox">
+                <div class="left">
+                    <h1>Controls</h1>
 
-            <h3>Pick vocab</h3>
+                    <h3>How many questions</h3>
+                    <select name="qNumb" id="qNumb">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                    </select>
 
-            <div id="checkCon"></div>
+                    <h3>Question Type</h3>
+                    <select name="questType" id="questType">
+                        <option value="all">All</option>
+                        <option id="imgSound" value="imgSound">Image and Sound</option>
+                        <option value="imgText">Image and Text</option>
+                        <option id="textSound" value="textSound">Text and Sound</option>
+                    </select>
 
-            <h3>How many questions</h3>
-            <select name="qNumb" id="qNumb">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-            </select>
+                    <br>
+                    <br>
+                    <br>
 
-            <h3>Question Type</h3>
-            <select name="questType" id="questType">
-                <option value="all">All</option>
-                <option id="imgSound" value="imgSound">Image and Sound</option>
-                <option value="imgText">Image and Text</option>
-                <option id="textSound" value="textSound">Text and Sound</option>
-            </select>
+                    <div>
+                        <button onclick="start()">Start</button>
+                    </div>
+                </div>
+                <div class="right">
+                    <h3>Pick vocab</h3>
 
-            <br>
-            <br>
-            <br>
-
-            <div>
-                <button onclick="start()">Start</button>
+                    <div id="checkCon"></div>
+                </div>
             </div>
+
 
         </div>
     </div>

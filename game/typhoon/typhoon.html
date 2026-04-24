@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typhoon</title>
+    <link rel="stylesheet" href="./typhoon.css">
+</head>
+
+<body>
+
+    <div id="start" class="control">
+        <div class="control-inner">
+            <div class="lrbox">
+                <div class="left">
+                    <h3>How many teams</h3>
+                    <select name="team" id="team">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+
+                    <h3>How many cards</h3>
+                    <select name="size" id="size">
+                        <option value="0">Small</option>
+                        <option value="1">Meduim</option>
+                        <option value="2">Large</option>
+                        <option value="3">Giant</option>
+                    </select>
+
+                    <br>
+                    <br>
+
+                    <div>
+                        <button onclick="start()">Start</button>
+                    </div>
+                </div>
+                <div class="right">
+                    <h3>Pick vocab</h3>
+                    <div id="checkCon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="end" class="control hide">
+        <div class="control-inner">
+            <h3>Score: <span id="scoreText">#####</span> </h3>
+            <h3>Time: <span id="timeText">#####</span> </h3>
+            <button onclick="location.reload(true);">Play Again</button>
+        </div>
+    </div>
+
+
+
+    <div class="root">
+        <div class="game">
+
+        </div>
+        <div class="game-control">
+
+
+        </div>
+
+    </div>
+
+    <script src="../../database/speak.js"></script>
+    <script src="../../database/database.js"></script>
+    <script src="./typhoon.js"></script>
+</body>
+
+</html>

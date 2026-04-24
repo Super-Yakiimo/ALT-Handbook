@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,30 @@
     <link rel="stylesheet" href="./button.css">
     <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
 </head>
+
 <body>
-        <div id="start" class="control">
+    <div id="start" class="control">
         <div class="control-inner">
-            <h3>Pick vocab</h3>
+            <div class="lrbox">
+                <div class="left">
 
-            <div id="checkCon"></div>
+                    <label for="">Random</label>
+                    <input type="checkbox">
 
-            <br>
-            <br>
+                    <br>
+                    <br>
 
-            <div>
-                <button onclick="start()">Start</button>
+                    <div>
+                        <button onclick="start()">Start</button>
+                    </div>
+                </div>
+                <div class="right">
+                    <h3>Pick vocab</h3>
+
+                    <div id="checkCon"></div>
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -29,4 +41,5 @@
     <script src="../../database/database.js"></script>
     <script src="./button.js"></script>
 </body>
+
 </html>
