@@ -212,8 +212,27 @@ const POS_LIST = [
     }
 ];
 
+const ITEMS = [
+    "./res/img/item/blue shell.png",
+    "./res/img/item/bullet bill.png",
+    "./res/img/item/gold mushroom.png",
+    "./res/img/item/lightning.png",
+    "./res/img/item/mushroom.png",
+    "./res/img/item/tripple mushroom.png",
+    "./res/img/item/green shell.png"
+];
+
+
 const START = POS_LIST[0];
 
+const MOVE_TIME = 1000;
+const STEP = 30;
+
+// correct / incorrect sound
+const correct = new Audio('../../resource/sound/bell.mp3');
+const wrong = new Audio('../../resource/sound/incorrect.mp3');
+correct.preload = 'auto';
+wrong.preload = 'auto';
 // sound stuff
 const uiClick = new Audio('./res/sound/uiClick.mp3');
 uiClick.preload = 'auto';
@@ -238,7 +257,8 @@ const getNumb = () => {
 // get which character is selected
 const getPick = () => {
     for (let i = 0; i < CHAR_LIST.length; i++) {
-        let char = CHAR_LIST[i]; let check = document.querySelector(`#${char}`);
+        let char = CHAR_LIST[i];
+        let check = document.querySelector(`#${char}`);
         if (check.checked) {
             check.disabled = true; check.checked = false; return char;
         }
@@ -249,8 +269,9 @@ const getPick = () => {
 // make character object
 const makeChar = (name) => {
     let img = new Image();
-    img.src = `./img/character/${name}.png`;
+    img.src = `./res/img/character/${name}.png`;
 
+    console.log(name);
     let racer = {
         name,
         pos: 0,
@@ -272,14 +293,105 @@ window.onload = function () {
     let racers = [];
     let teamNumb = 0;
     let index = 0; // current player index
-    let questions = N5.sort(()=>Math.random() - 0.5);
+    let questions = N5.sort(() => Math.random() - 0.5);
+
+    // canvas / drawing variables and handlers
+    let canvas = document.querySelector("#canvas");
+    let ctx = canvas.getContext('2d');
+    let backImg = document.querySelector("#backImg");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let dim = (window.innerWidth > window.innerHeight ? window.innerWidth : window.innerHeight) * 0.08;
+
+    // anim for drawing characters
+    const anim = () => {
+        ctx.fillStyle = 'rgb(255, 255, 255, 0.1)';
+        ctx.fillRect(0, 0, innerWidth, innerHeight);
+
+        ctx.drawImage(backImg, 0, 0, this.innerWidth, this.innerHeight);
+
+        racers.forEach((char) => {
+            let x = char.x * canvas.width - dim / 2;
+            let y = char.y * canvas.height - dim / 2;
+            ctx.drawImage(char.img, x, y, dim, dim);
+        });
+        window.requestAnimationFrame(anim);
+    }
 
     // ui screens
     let startBox = document.querySelector("#startBox");
     let numberBox = document.querySelector("#numberBox");
     let charBox = document.querySelector("#charBox");
     let diceBox = document.querySelector("#diceBox");
+    let itemBox = document.querySelector("#itemBox");
+    let questBox = document.querySelector("#questBox");
+    let levelBox = document.querySelector("#levelBox");
     let __ = document.querySelector("#__");
+
+    // move a character to the next location
+    const moveChar = (numb, pickIndex) => {
+        if (numb == 0) {
+            showDice();
+            return alert('move zero no ok');
+        }
+        let char = racers[pickIndex];
+
+        let moveList = [];
+
+        // the next index after move
+        let nextIndex = char.pos + numb;
+
+        // next position
+        if (nextIndex < 0) {
+            nextIndex = 0;
+        }
+
+        if (nextIndex == char.index) {
+            showDice();
+            return alert('no move');
+        }
+
+        while (char.pos != nextIndex) {
+            // get the direction either 
+            let dir = (nextIndex > char.pos) ? 1 : -1;
+
+            let sIndex = char.pos;
+            let eIndex = char.pos + dir;
+            let sPos = POS_LIST[sIndex];
+            let ePos = POS_LIST[eIndex];
+            moveList.push(sPos);
+
+            let deltaX = (ePos.x - sPos.x) / STEP;
+            let deltaY = (ePos.y - sPos.y) / STEP;
+
+            for (let i = 0; i < STEP; i++) {
+                let x = sPos.x + deltaX * i;
+                let y = sPos.y + deltaY * i;
+                moveList.push({
+                    x, y
+                });
+            }
+
+            // move towards the intended index
+            char.pos += dir;
+        }
+
+        let index = 0;
+        let waitTime = Math.abs(numb) * MOVE_TIME / moveList.length;
+
+        let handle = setInterval(() => {
+            let pos = moveList[index];
+            char.x = pos.x;
+            char.y = pos.y;
+            index++;
+            if (index >= moveList.length) {
+                // finish
+                clearInterval(handle);
+            }
+        }, waitTime);
+
+    }
 
     /*
     start screen
@@ -287,6 +399,15 @@ window.onload = function () {
     document.querySelector('#startBtn').addEventListener('click', () => {
         playClick();
         startBox.classList.add('hide');
+        levelBox.classList.remove('hide');
+    });
+
+    /*
+    level select
+    */
+    document.querySelector('#lvlEntrBtn').addEventListener('click', () => {
+        playClick();
+        levelBox.classList.add('hide');
         numberBox.classList.remove('hide');
     });
 
@@ -312,19 +433,17 @@ window.onload = function () {
     character select screen
     */
     document.querySelector("#charEntrBtn").addEventListener("click", () => {
-
         let pick = getPick();
-
         if (pick == -1) {
             return;
         }
+        let char = makeChar(pick);
+
+        playClick();
+        racers.push(char);
 
         document.querySelector("#selectIndexNumber").src = NUMBERS[racers.length];
 
-        playClick();
-        racers.push(pick);
-
-        console.log(racers.length);
         if (racers.length >= teamNumb) {
             charBox.classList.add('hide');
             diceBox.classList.remove('hide');
@@ -342,69 +461,184 @@ window.onload = function () {
     let diceIndexNumber = document.querySelector("#diceIndexNumber");
     let diceResultImg = document.querySelector("#diceResultImg");
     let rollNextBtn = document.querySelector("#rollNextBtn");
-    
+
     // set the active player
-    diceIndexNumber.src = NUMBERS[index]; 
+    diceIndexNumber.src = NUMBERS[index];
+
+    let rnd;
 
     rollBtn.addEventListener('click', () => {
-        let rnd = Math.floor(Math.random() * 9);
-
+        rnd = Math.floor(Math.random() * 9);
         diceResultImg.src = NUMBERS[rnd];
-
         rollBtn.classList.add('hide');
         rollNextBtn.classList.remove('hide');
     });
 
     rollNextBtn.addEventListener('click', () => {
-
         rollNextBtn.classList.add('hide');
         rollBtn.classList.remove('hide');
-        //diceBox.classList.add('hide');
+        diceBox.classList.add('hide');
         diceResultImg.src = "./res/img/item/dice.png";
 
+        // move selected character
+        moveChar(rnd + 1, index);
 
-        // set question text and quesiton buttons
+        this.setTimeout(() => {
+            // show quest box
+            questBox.classList.remove('hide');
+            // make the question 
+            let questText = document.querySelector('#questText');
+            let questBtnCon = document.querySelector('#questBtnCon');
+            let nextBtn = document.querySelector('#nextBtn');
+            let itemBtn = document.querySelector('#itemBtn');
+            let select = questions[Math.floor(Math.random() * questions.length)];
+            questText.innerHTML = select.text;
+            let btnList = [];
+            questBtnCon.innerHTML = "";
+            // set question text and quesiton buttons
+            for (let i = 0; i < 4; i++) {
+                let btn = document.createElement('button');
+                btn.innerHTML = select.options[i];
+                questBtnCon.appendChild(btn);
+                btnList.push(btn);
+
+                btn.addEventListener('click', () => {
+                    btnList.forEach((obj) => { obj.disabled = true; });
+                    questText.innerHTML = select.text.replace("( )", `(${select.answer})`);
+                    if (select.options[i] == select.answer) {
+                        correct.currentTime = 0;
+                        correct.play();
+                        itemBtn.classList.remove('hide');
+                    }
+                    else {
+                        wrong.currentTime = 0;
+                        wrong.play();
+                        nextBtn.classList.remove('hide');
+                    }
+                });
+            }
+        }, (rnd + 1) * MOVE_TIME);
     });
 
 
-    let questText = document.querySelector('#questText');
-    let questBtnCon = document.querySelector('#questBtnCon');
-    let nextBtn = document.querySelector('#nextBtn');
-    let itemBtn = document.querySelector('#itemBtn');
-    let select = questions[0];
-    questText.innerHTML = select.text;
-    let btnList = [];
-    for(let i = 0; i < 4; i++){
-        let btn = document.createElement('button');
-        btn.innerHTML = select.options[i];
-        questBtnCon.appendChild(btn);
-        btnList.push(btn);
-
-        btn.addEventListener('click', ()=>{
-
-            btnList.forEach((obj)=>{obj.disabled = true;});
-
-            questText.innerHTML = select.text.replace("( )", `(${select.answer})` );
-
-            if(select.options[i] == select.answer){
-                console.log('correct');
-                itemBtn.classList.remove('hide');
-            }
-            else {
-                console.log('incorrect');
-                nextBtn.classList.remove('hide');
-            }
-        });
-    }
-
     // next players turn no item
-    nextBtn.addEventListener('click', ()=>{
-
+    nextBtn.addEventListener('click', () => {
+        questBox.classList.add('hide');
+        // next turn show dice
+        diceBox.classList.remove('hide');
+        // no item
+        index++;
+        if (index >= racers.length) {
+            index = 0;
+        }
+        diceIndexNumber.src = NUMBERS[index];
+        diceBox.classList.remove('hide');
     });
 
     // get an item and then go to next players turn
-    itemBtn.addEventListener('click', ()=>{
-
+    itemBtn.addEventListener('click', () => {
+        questBox.classList.add('hide');
+        itemBox.classList.remove('hide');
     });
-    
+
+
+    /*
+    item screen
+    */
+    let getItemBtn = document.querySelector("#getItemBtn");
+    let nextItemBtn = document.querySelector("#nextItemBtn");
+    let powerUpImg = document.querySelector("#powerUpImg");
+
+    let itmIndex;
+
+    getItemBtn.addEventListener('click', () => {
+        getItemBtn.classList.add('hide');
+        nextItemBtn.classList.remove('hide');
+        itmIndex = Math.floor(Math.random() * ITEMS.length);
+        powerUpImg.src = ITEMS[itmIndex];
+    });
+
+    nextItemBtn.addEventListener('click', () => {
+        getItemBtn.classList.add('hide');
+        nextItemBtn.classList.remove('hide');
+
+        let wait = 0;
+        let max;
+
+        switch (itmIndex) {
+            case 0: //blue shell
+                max = 0;
+                racers.forEach(racer => {
+                    if (racer.pos > max) {
+                        max = racer.pos;
+                    }
+                });
+                racers.forEach((racer, rIndex) => {
+                    if (racer.pos == max) {
+                        moveChar(-3, rIndex);
+                    }
+                });
+
+                wait = 3 * MOVE_TIME;
+
+                break;
+            case 1: // bullet bill
+                max = 0;
+                racers.forEach(racer => {
+                    if (racer.pos > max) {
+                        max = racer.pos;
+                    }
+                });
+                let dif = max - racers[index].pos;
+                if (dif > 0) {
+                    moveChar(dir, index);
+                    wait = dif * MOVE_TIME;
+                }
+                break;
+            case 2: // gold mushroom
+                moveChar(5, index);
+                wait = 5 * MOVE_TIME;
+                break;
+            case 3: // lightning
+                racers.forEach((racer, rIndex) => {
+                    if (index != rIndex) {
+                        moveChar(-1, rIndex);
+                    }
+                });
+                wait = MOVE_TIME;
+                break;
+            case 4: // mushroom
+                moveChar(1, index);
+                wait = MOVE_TIME;
+                break;
+            case 5: // tripple mushroom
+                moveChar(3, index);
+                wait = 3 * MOVE_TIME;
+                break;
+            case 6: // green shell
+                moveChar(-1, index);
+                wait = MOVE_TIME;
+                break;
+            default:
+                moveChar(10, index);
+                wait = 10 * MOVE_TIME;
+                break;
+        }
+
+        setTimeout(() => {
+            console.log('item');
+            index++;
+            if (index >= racers.length) {
+                index = 0;
+            }
+            diceIndexNumber.src = NUMBERS[index];
+            diceBox.classList.remove('hide');
+        }, wait);
+
+        itemBox.classList.add('hide');
+    });
+
+
+    // start anim
+    window.requestAnimationFrame(anim);
 }

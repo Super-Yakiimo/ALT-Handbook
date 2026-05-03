@@ -3,6 +3,19 @@ body {
     overflow: hidden;
 }
 
+#backImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .hide-box {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.8);
@@ -22,11 +35,8 @@ body {
     border: 1px solid black;
     background-color: aliceblue;
     padding: 1%;
-}
-
-.hide {
-    visibility: collapse;
-    display: none;
+    display: flex;
+    flex-direction: column;
 }
 
 /*
@@ -52,10 +62,6 @@ start screen
 /*
  chose difficulty box
 */
-#levelBox .hide-box-inner {
-    display: flex;
-    flex-direction: column;
-}
 
 #diffText {
     height: 40%;
@@ -124,12 +130,6 @@ number screen
 /*
 character select screen
 */
-#charBox .hide-box-inner{
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-}
 
 #textBox {
     height: 20%;
@@ -201,11 +201,6 @@ dice screen
 */
 
 
-#diceBox .hide-box-inner{
-    display: flex;
-    flex-direction: column;
-}
-
 #diceTextBox {
     width: 100;
     height: 20%;
@@ -262,3 +257,57 @@ question screen
     height: 100%;
 }
 
+/*
+item screen
+*/
+
+#powerUpText {
+    height: 30%;
+}
+
+#powerUpText img {
+    height: 100%;
+    margin: auto;
+    display: block;
+}
+
+#powerUpBox {
+    height: 50%;
+}
+
+#powerUpBox img {
+    height: 100%;
+    margin: auto;
+    display: block;
+}
+
+#powerUpBtns {
+    height: 20%;
+}
+
+#powerUpBtns button {
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+#powerUpBtns button img{
+    height: 100%;
+    width: 100%;
+}
+
+
+/*
+hide
+*/
+
+.hide {
+    visibility: collapse;
+    display: none;
+    
+}
+
+.hide * {
+    visibility: collapse;
+    display: none;
+}

@@ -11,10 +11,14 @@
 </head>
 
 <body>
+    <!-- board and chararacter draw screen -->
+    
+    <img src="./res/img/board/main.png" id="backImg" alt="back img">
+    <canvas id="canvas"></canvas>
 
     <!-- start screen select eiekn level -->
 
-    <div id="startBox" class="hide-box hide">
+    <div id="startBox" class="hide-box">
         <div class="hide-box-inner">
             <img id="titleImg" src="./res/img/text/title.png" alt="">
             <button id="startBtn"></button>
@@ -59,7 +63,7 @@
                     <img src="./res/img/number/two.png" alt="5">
                 </label>
             </div>
-            <button id="nmbrEntrBtn"><img src="./res/img/text/enter.png" alt=""></button>
+            <button id="lvlEntrBtn"><img src="./res/img/text/enter.png" alt=""></button>
         </div>
     </div>
 
@@ -88,6 +92,11 @@
                 <input class="selectRadio" type="radio" id="teamNumb5" name="teamNumb">
                 <label onclick="playPop()" class="selectLabel" for="teamNumb5">
                     <img src="./res/img/number/five.png" alt="5">
+                </label>
+
+                <input class="selectRadio" type="radio" id="teamNumb6" name="teamNumb">
+                <label onclick="playPop()" class="selectLabel" for="teamNumb6">
+                    <img src="./res/img/number/six.png" alt="5">
                 </label>
             </div>
             <button id="nmbrEntrBtn"><img src="./res/img/text/enter.png" alt=""></button>
@@ -190,12 +199,12 @@
     <!-- 
         question screen
     -->
-    <div id="questBox" class="hide-box">
+    <div id="questBox" class="hide-box hide">
         <div class="hide-box-inner">
             <h3 id="questText"></h3>
             <div id="questBtnCon"></div>
             <button class="hide" id="nextBtn"><img src="./res/img/text/next.png" alt="next"></button>
-            <button class="hide" id="itemBtn"><img src="./res/img/text/enter.png" alt="item"></button>
+            <button class="hide" id="itemBtn"><img src="./res/img/text/power-up.png" alt="item"></button>
         </div>
     </div>
 
@@ -204,14 +213,21 @@
     -->
     <div id="itemBox" class="hide-box hide">
         <div class="hide-box-inner">
-            <img src="./res/img/item/lightning.png" alt="">
-            <button id="getItemBtn">Get Item</button>
-            <button id="nextItemBtn">Next</button>
+            <div id="powerUpText">
+                <img src="./res/img/text/power-up.png" alt="">
+            </div>
+            <div id="powerUpBox">
+                <img id="powerUpImg" src="./res/img/item/question.png" alt="">
+            </div>
+            <div id="powerUpBtns">
+                <button id="getItemBtn"><img src="./res/img/text/power-up.png" alt=""></button>
+                <button class="hide" id="nextItemBtn"><img src="./res/img/text/next.png" alt=""></button>
+            </div>
         </div>
     </div>
 
     <!-- 
-        get item
+        game end
     -->
 
     <div id="endBox" class="hide-box hide">
