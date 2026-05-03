@@ -6,7 +6,7 @@ const N5 = [
         answer: "washing"
     },
     {
-        text: "It's very cold, Billy. () a coat today.",
+        text: "It's very cold, Billy. ( ) a coat today.",
         options: ["Listen", "Wear", "See", "Watch"],
         answer: "Wear"
     },
@@ -16,22 +16,22 @@ const N5 = [
         answer: "brown"
     },
     {
-        text: "I have a photo (). I have many pictures of my family in it.",
+        text: "I have a photo ( ). I have many pictures of my family in it.",
         options: ["album", "pen", "sun", "dog"],
         answer: "album"
     },
     {
-        text: "My brother and I () to school by bus every day.",
+        text: "My brother and I ( ) to school by bus every day.",
         options: ["talk", "eat", "see", "come"],
         answer: "come"
     },
     {
-        text: "I love basketball. I often watch basketball games () TV with my brother.",
+        text: "I love basketball. I often watch basketball games ( ) TV with my brother.",
         options: ["of", "on", "at", "in"],
         answer: "on"
     },
     {
-        text: "Henry is a (). He plays the guitar and the piano.",
+        text: "Henry is a ( ). He plays the guitar and the piano.",
         options: ["rabbit", "musician", "jacket", "team"],
         answer: "musician"
     },
@@ -41,12 +41,12 @@ const N5 = [
         answer: "gym"
     },
     {
-        text: "Tom has a () of coffee every morning before he goes to school.",
+        text: "Tom has a ( ) of coffee every morning before he goes to school.",
         options: ["corn", "floor", "window", "cup"],
         answer: "cup"
     },
     {
-        text: "I get () early every morning and go to the park.",
+        text: "I get ( ) early every morning and go to the park.",
         options: ["on", "up", "over", "right"],
         answer: "up"
     },
@@ -56,32 +56,32 @@ const N5 = [
         answer: "little"
     },
     {
-        text: "A : It's hot. Please () the window.<br> B : OK, Mom.",
+        text: "A : It's hot. Please ( ) the window.<br> B : OK, Mom.",
         options: ["opens", "open", "opening", "opened"],
         answer: "open"
     },
     {
-        text: "Janet () swimming every Sunday with her sister.",
+        text: "Janet ( ) swimming every Sunday with her sister.",
         options: ["goes", "asks", "buys", "drinks"],
         answer: "goes"
     },
     {
-        text: "Mom, can I () a letter to Uncle Rob this afternoon?",
+        text: "Mom, can I ( ) a letter to Uncle Rob this afternoon?",
         options: ["writes", "wrote", "write", "writing"],
         answer: "write"
     },
     {
-        text: "I know Tim and Lucy. () are Canadian.",
+        text: "I know Tim and Lucy. ( ) are Canadian.",
         options: ["He", "They", "It", "You"],
         answer: "They"
     },
     {
-        text: "A : Yuka, let's sit down on the () and watch TV.<br> B : OK.",
+        text: "A : Yuka, let's sit down on the ( ) and watch TV.<br> B : OK.",
         options: ["drink", "floor", "jump", "breakfast"],
         answer: "floor"
     },
     {
-        text: "Mr. Hara has a big () in his garden. It has many oranges.",
+        text: "Mr. Hara has a big ( ) in his garden. It has many oranges.",
         options: ["plate", "fork", "kitchen", "tree"],
         answer: "tree"
     },
@@ -91,7 +91,7 @@ const N5 = [
         answer: "dictionary"
     },
     {
-        text: "Mr. Brown is a music teacher. He plays the () very well.",
+        text: "Mr. Brown is a music teacher. He plays the ( ) very well.",
         options: ["trumpet", "cup", "clock", "pencil"],
         answer: "trumpet"
     },
@@ -101,12 +101,12 @@ const N5 = [
         answer: "great"
     },
     {
-        text: "Sally has a smart dog. He can stand and () a ball.",
+        text: "Sally has a smart dog. He can stand and ( ) a ball.",
         options: ["eat", "catch", "cook", "buy"],
         answer: "catch"
     },
     {
-        text: "A : Mom, please () sandwiches for lunch.<br>B : OK, John.",
+        text: "A : Mom, please ( ) sandwiches for lunch.<br>B : OK, John.",
         options: ["know", "make", "sit", "study"],
         answer: "make"
     },
@@ -116,7 +116,7 @@ const N5 = [
         answer: "see"
     },
     {
-        text: "A : () me. Where's the bathroom?<br>B : It's over there.",
+        text: "A : ( ) me. Where's the bathroom?<br>B : It's over there.",
         options: ["Begin", "Know", "Call", "Excuse"],
         answer: "Excuse"
     },
@@ -126,27 +126,27 @@ const N5 = [
         answer: "Have"
     },
     {
-        text: "A : Welcome () our sports club, Paul.<br>B : Thank you, Mr. Johnson.",
+        text: "A : Welcome ( ) our sports club, Paul.<br>B : Thank you, Mr. Johnson.",
         options: ["on", "of", "for", "to"],
         answer: "to"
     },
     {
-        text: "I play basketball () school. My brother and my friend play, too.",
+        text: "I play basketball ( ) school. My brother and my friend play, too.",
         options: ["from", "at", "of", "with"],
         answer: "at"
     },
     {
-        text: "Jack () a junior high school student. He goes to a high school.",
+        text: "Jack ( ) a junior high school student. He goes to a high school.",
         options: ["aren't", "doesn't", "isn't", "don't"],
         answer: "isn't"
     },
     {
-        text: "A : This dress is very nice. () is it?<br>B : It's my mother's.",
+        text: "A : This dress is very nice. ( ) is it?<br>B : It's my mother's.",
         options: ["Who", "Where", "Whose", "When"],
         answer: "Whose"
     },
     {
-        text: "A : Bill, let's () the homework together.<br> B : OK, Maria.",
+        text: "A : Bill, let's ( ) the homework together.<br> B : OK, Maria.",
         options: ["check", "checked", "checks", "checking"],
         answer: "check"
     }
@@ -159,7 +159,7 @@ const N4 = [
         answer: "professional"
     },
     {
-        text: "It'll rain this evening, Peter. Don't forget your ().",
+        text: "It'll rain this evening, Peter. Don't forget your ( ).",
         options: ["umbrella", "dream", "mirror", "sandwich"],
         answer: "umbrella"
     },
@@ -184,7 +184,7 @@ const N4 = [
         answer: "garden"
     },
     {
-        text: "Last week, Brian () a cold. He stayed in bed for two days.",
+        text: "Last week, Brian ( ) a cold. He stayed in bed for two days.",
         options: ["caught", "told", "forgot", "played"],
         answer: "caught"
     },
@@ -214,7 +214,7 @@ const N4 = [
         answer: "part"
     },
     {
-        text: "A : In our cooking class, we help each () when we cook.<br>B : Yes, we do. That's important.",
+        text: "A : In our cooking class, we help each ( ) when we cook.<br>B : Yes, we do. That's important.",
         options: ["any", "some", "other", "another"],
         answer: "other"
     },
