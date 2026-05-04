@@ -487,3 +487,5 @@ const N2 = [
         answer: ""
     }
 ]
+
+const LIST = [N5, N4, N3, P2, P2P, N2];

@@ -12,11 +12,11 @@
 
 <body>
     <!-- board and chararacter draw screen -->
-    
+
     <img src="./res/img/board/main.png" id="backImg" alt="back img">
     <canvas id="canvas"></canvas>
 
-    <!-- start screen select eiekn level -->
+    <!-- start screen-->
 
     <div id="startBox" class="hide-box">
         <div class="hide-box-inner">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <!-- chose difficulty box -->
+    <!-- chose difficulty box  select eiekn level -->
 
     <div id="levelBox" class="hide-box hide">
         <div class="hide-box-inner">
@@ -33,34 +33,34 @@
                 <img src="./res/img/text/Select-Difficulty-5-2-2026.png" alt="">
             </div>
             <div id="numberSelectBox">
-                <input class="selectRadio" type="radio" id="level5" name="teamNumb">
-                <label onclick="playPop()" class="selectLabel" for="level5">
-                    <img src="./res/img/number/five.png" alt="2">
+                <input class="selectRadio" type="radio" id="level0" name="teamNumb">
+                <label onclick="playPop()" class="selectLabel" for="level0">
+                    <img src="./res/img/number/five.png" alt="5">
                 </label>
 
-                <input class="selectRadio" type="radio" id="level4" name="teamNumb">
-                <label onclick="playPop()" class="selectLabel" for="level4">
-                    <img src="./res/img/number/four.png" alt="3">
-                </label>
-
-                <input class="selectRadio" type="radio" id="level3" name="teamNumb">
-                <label onclick="playPop()" class="selectLabel" for="level3">
-                    <img src="./res/img/number/three.png" alt="4">
-                </label>
-
-                <input class="selectRadio" type="radio" id="levelp2" name="teamNumb">
-                <label onclick="playPop()" class="selectLabel" for="levelp2">
-                    <img src="./res/img/text/p2.png" alt="5">
-                </label>
-
-                <input class="selectRadio" type="radio" id="levelp2p" name="teamNumb">
-                <label onclick="playPop()" class="selectLabel" for="levelp2p">
-                    <img src="./res/img/text/p2p.png" alt="5">
+                <input class="selectRadio" type="radio" id="level1" name="teamNumb">
+                <label onclick="playPop()" class="selectLabel" for="level1">
+                    <img src="./res/img/number/four.png" alt="4">
                 </label>
 
                 <input class="selectRadio" type="radio" id="level2" name="teamNumb">
                 <label onclick="playPop()" class="selectLabel" for="level2">
-                    <img src="./res/img/number/two.png" alt="5">
+                    <img src="./res/img/number/three.png" alt="3">
+                </label>
+
+                <input class="selectRadio" type="radio" id="level3" name="teamNumb">
+                <label onclick="playPop()" class="selectLabel" for="level3">
+                    <img src="./res/img/text/p2.png" alt="p2">
+                </label>
+
+                <input class="selectRadio" type="radio" id="level4" name="teamNumb">
+                <label onclick="playPop()" class="selectLabel" for="level4">
+                    <img src="./res/img/text/p2p.png" alt="p2p">
+                </label>
+
+                <input class="selectRadio" type="radio" id="level5" name="teamNumb">
+                <label onclick="playPop()" class="selectLabel" for="level5">
+                    <img src="./res/img/number/two.png" alt="2">
                 </label>
             </div>
             <button id="lvlEntrBtn"><img src="./res/img/text/enter.png" alt=""></button>
@@ -201,10 +201,20 @@
     -->
     <div id="questBox" class="hide-box hide">
         <div class="hide-box-inner">
-            <h3 id="questText"></h3>
-            <div id="questBtnCon"></div>
-            <button class="hide" id="nextBtn"><img src="./res/img/text/next.png" alt="next"></button>
-            <button class="hide" id="itemBtn"><img src="./res/img/text/power-up.png" alt="item"></button>
+            <div id="questTextBox">
+                <h3 id="questText"></h3>
+            </div>
+            <div id="questAnswerBox">
+                <div id="questBtnCon"></div>
+            </div>
+            <div id="questBtnBox">
+                <button class="hide" id="nextBtn">
+                    <img src="./res/img/text/next.png" alt="next">
+                </button>
+                <button class="hide" id="itemBtn">
+                    <img src="./res/img/text/power-up.png" alt="item">
+                </button>
+            </div>
         </div>
     </div>
 

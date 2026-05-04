@@ -244,13 +244,24 @@ dice screen
 question screen
 */
 
-#nextBtn, #itemBtn {
-    width: 20%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+#questTextBox {
+    height: 20%;
 }
 
+#questAnswerBox {
+    height: 60%;
+}
+
+#questBtnBox {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+}
+
+#nextBtn, #itemBtn {
+    width: 50%;
+    height: 100%;
+}
 
 #nextBtn img, #itemBtn img{
     width: 100%;
@@ -283,12 +294,13 @@ item screen
 
 #powerUpBtns {
     height: 20%;
+    display: flex;
+    flex-direction: row;
 }
 
 #powerUpBtns button {
     height: 100%;
-    width: 80%;
-    margin: auto;
+    width: 50%;
 }
 
 #powerUpBtns button img{
@@ -302,12 +314,5 @@ hide
 */
 
 .hide {
-    visibility: collapse;
-    display: none;
-    
-}
-
-.hide * {
-    visibility: collapse;
-    display: none;
+    visibility: collapse;  
 }

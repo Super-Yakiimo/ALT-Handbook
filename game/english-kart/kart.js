@@ -237,6 +237,11 @@ wrong.preload = 'auto';
 const uiClick = new Audio('./res/sound/uiClick.mp3');
 uiClick.preload = 'auto';
 const playClick = () => { uiClick.currentTime = 0.5; uiClick.play(); };
+// change page audio
+const pageChange = new Audio('./res/sound/litupsubway-ui-open-sfx-513358.mp3');
+pageChange.preload = 'auto';
+const changePagePlay = () => { pageChange.currentTime = 0; pageChange.play(); };
+
 // game\english-kart\res\sound\floraphonic-casual-click-pop.mp3
 const pop = new Audio('./res/sound/floraphonic-casual-click-pop.mp3');
 pop.preload = 'auto';
@@ -249,6 +254,17 @@ const getNumb = () => {
         let input = document.querySelector(`#teamNumb${numb}`);
         if (input.checked) {
             return numb;
+        }
+    }
+    return -1;
+}
+
+// get the selected eiken level
+const getLevel = () => {
+    for (let i = 0; i < 4; i++) {
+        let input = document.querySelector(`#level${i}`);
+        if (input.checked) {
+            return i;
         }
     }
     return -1;
@@ -335,6 +351,11 @@ window.onload = function () {
             showDice();
             return alert('move zero no ok');
         }
+
+        const passingCar = new Audio('./res/sound/freesound_community-engine-47745.mp3');
+        passingCar.preload = 'auto';
+        passingCar.loop = true;
+
         let char = racers[pickIndex];
 
         let moveList = [];
@@ -377,6 +398,9 @@ window.onload = function () {
             char.pos += dir;
         }
 
+        passingCar.currentTime = 0;
+        passingCar.play();
+
         let index = 0;
         let waitTime = Math.abs(numb) * MOVE_TIME / moveList.length;
 
@@ -385,9 +409,11 @@ window.onload = function () {
             char.x = pos.x;
             char.y = pos.y;
             index++;
+
             if (index >= moveList.length) {
                 // finish
                 clearInterval(handle);
+                passingCar.pause();
             }
         }, waitTime);
 
@@ -400,15 +426,26 @@ window.onload = function () {
         playClick();
         startBox.classList.add('hide');
         levelBox.classList.remove('hide');
+        changePagePlay();
     });
 
     /*
     level select
     */
     document.querySelector('#lvlEntrBtn').addEventListener('click', () => {
+        let level = getLevel();
+        console.log(level);
+
+        if(level == -1){
+            return;
+        }
+
+        questions = JSON.parse(JSON.stringify(LIST[level])).sort(() => Math.random() - 0.5);
+
         playClick();
         levelBox.classList.add('hide');
         numberBox.classList.remove('hide');
+        changePagePlay();
     });
 
     /*
@@ -425,6 +462,7 @@ window.onload = function () {
 
         numberBox.classList.add('hide');
         charBox.classList.remove('hide');
+        changePagePlay();
     });
 
 
@@ -447,6 +485,7 @@ window.onload = function () {
         if (racers.length >= teamNumb) {
             charBox.classList.add('hide');
             diceBox.classList.remove('hide');
+            changePagePlay();
         }
 
     });
@@ -462,6 +501,11 @@ window.onload = function () {
     let diceResultImg = document.querySelector("#diceResultImg");
     let rollNextBtn = document.querySelector("#rollNextBtn");
 
+
+    /*
+    quest screen is also here
+    */
+
     // set the active player
     diceIndexNumber.src = NUMBERS[index];
 
@@ -472,12 +516,14 @@ window.onload = function () {
         diceResultImg.src = NUMBERS[rnd];
         rollBtn.classList.add('hide');
         rollNextBtn.classList.remove('hide');
+        changePagePlay();
     });
 
     rollNextBtn.addEventListener('click', () => {
         rollNextBtn.classList.add('hide');
         rollBtn.classList.remove('hide');
         diceBox.classList.add('hide');
+        changePagePlay();
         diceResultImg.src = "./res/img/item/dice.png";
 
         // move selected character
@@ -492,6 +538,13 @@ window.onload = function () {
             let nextBtn = document.querySelector('#nextBtn');
             let itemBtn = document.querySelector('#itemBtn');
             let select = questions[Math.floor(Math.random() * questions.length)];
+
+
+            // make them invisible so can press button
+            itemBtn.classList.add('hide');
+            nextBtn.classList.add('hide');
+
+
             questText.innerHTML = select.text;
             let btnList = [];
             questBtnCon.innerHTML = "";
@@ -533,12 +586,14 @@ window.onload = function () {
         }
         diceIndexNumber.src = NUMBERS[index];
         diceBox.classList.remove('hide');
+        changePagePlay();
     });
 
     // get an item and then go to next players turn
     itemBtn.addEventListener('click', () => {
         questBox.classList.add('hide');
         itemBox.classList.remove('hide');
+        changePagePlay();
     });
 
 
@@ -559,8 +614,11 @@ window.onload = function () {
     });
 
     nextItemBtn.addEventListener('click', () => {
-        getItemBtn.classList.add('hide');
-        nextItemBtn.classList.remove('hide');
+        itemBox.classList.add('hide');
+        getItemBtn.classList.remove('hide');
+        nextItemBtn.classList.add('hide');
+        powerUpImg.src = './res/img/item/question.png';
+        changePagePlay();
 
         let wait = 0;
         let max;
@@ -633,9 +691,8 @@ window.onload = function () {
             }
             diceIndexNumber.src = NUMBERS[index];
             diceBox.classList.remove('hide');
+            changePagePlay();
         }, wait);
-
-        itemBox.classList.add('hide');
     });
 
 
