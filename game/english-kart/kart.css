@@ -245,7 +245,7 @@ question screen
 */
 
 #questTextBox {
-    height: 20%;
+    height: 40%;
 }
 
 #questAnswerBox {
@@ -315,4 +315,27 @@ hide
 
 .hide {
     visibility: collapse;  
+}
+
+/*
+end screen
+*/
+
+#endWinText {
+    height: 30%;
+}
+
+#endWinImgBox {
+    height: 50%;
+}   
+
+#endWinImgBox img, #endWinText img,#endWinBtn button {
+    height: 100%;
+    margin: auto;
+    display: block;
+}
+
+
+#endWinBtn {
+    height: 20%;
 }

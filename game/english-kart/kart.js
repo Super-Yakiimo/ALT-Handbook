@@ -249,7 +249,7 @@ pop.preload = 'auto';
 const playPop = () => { pop.currentTime = 0; pop.play(); };
 
 const getNumb = () => {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
         let numb = i + 2;
         let input = document.querySelector(`#teamNumb${numb}`);
         if (input.checked) {
@@ -309,7 +309,10 @@ window.onload = function () {
     let racers = [];
     let teamNumb = 0;
     let index = 0; // current player index
-    let questions = N5.sort(() => Math.random() - 0.5);
+    // the copy of the questions to use
+    let questions;
+    // store which questions to use
+    let selectLevel;
 
     // canvas / drawing variables and handlers
     let canvas = document.querySelector("#canvas");
@@ -356,6 +359,9 @@ window.onload = function () {
         passingCar.preload = 'auto';
         passingCar.loop = true;
 
+        const stop = new Audio('./res/sound/stop.mp3');
+        stop.preload = 'auto';
+
         let char = racers[pickIndex];
 
         let moveList = [];
@@ -368,9 +374,13 @@ window.onload = function () {
             nextIndex = 0;
         }
 
-        if (nextIndex == char.index) {
-            showDice();
-            return alert('no move');
+        // check if greater than level bound
+        if (nextIndex >= POS_LIST.length) {
+            nextIndex = POS_LIST.length - 1;
+        }
+
+        if (nextIndex == char.pos) {
+            return console.log('no move');
         }
 
         while (char.pos != nextIndex) {
@@ -401,19 +411,29 @@ window.onload = function () {
         passingCar.currentTime = 0;
         passingCar.play();
 
-        let index = 0;
+        let moveIndex = 0;
         let waitTime = Math.abs(numb) * MOVE_TIME / moveList.length;
 
         let handle = setInterval(() => {
-            let pos = moveList[index];
+            let pos = moveList[moveIndex];
             char.x = pos.x;
             char.y = pos.y;
-            index++;
+            moveIndex++;
 
-            if (index >= moveList.length) {
+            if (moveIndex >= moveList.length) {
                 // finish
                 clearInterval(handle);
                 passingCar.pause();
+                stop.currentTime = 18;
+                stop.play();
+
+                // check win
+                if (racers[index].pos >= POS_LIST.length - 1) {
+                    console.log('win');
+                    document.querySelector("#endBox").classList.remove('hide');
+                    console.log(racers[index].name);
+                    document.querySelector("#endWinImg").src = `./res/img/character/${racers[index].name}.png`;
+                }
             }
         }, waitTime);
 
@@ -436,11 +456,12 @@ window.onload = function () {
         let level = getLevel();
         console.log(level);
 
-        if(level == -1){
+        if (level == -1) {
             return;
         }
 
-        questions = JSON.parse(JSON.stringify(LIST[level])).sort(() => Math.random() - 0.5);
+        selectLevel = LIST[level];
+        questions = JSON.parse(JSON.stringify(selectLevel)).sort(() => Math.random() - 0.5);
 
         playClick();
         levelBox.classList.add('hide');
@@ -512,7 +533,7 @@ window.onload = function () {
     let rnd;
 
     rollBtn.addEventListener('click', () => {
-        rnd = Math.floor(Math.random() * 9);
+        rnd = Math.floor(Math.random() * 9); 
         diceResultImg.src = NUMBERS[rnd];
         rollBtn.classList.add('hide');
         rollNextBtn.classList.remove('hide');
@@ -529,7 +550,7 @@ window.onload = function () {
         // move selected character
         moveChar(rnd + 1, index);
 
-        this.setTimeout(() => {
+        setTimeout(() => {
             // show quest box
             questBox.classList.remove('hide');
             // make the question 
@@ -537,8 +558,13 @@ window.onload = function () {
             let questBtnCon = document.querySelector('#questBtnCon');
             let nextBtn = document.querySelector('#nextBtn');
             let itemBtn = document.querySelector('#itemBtn');
-            let select = questions[Math.floor(Math.random() * questions.length)];
 
+            // use each question once before repeating them
+            let select = questions.splice(Math.floor(Math.random() * questions.length), 1)[0];
+            // reload when empty
+            if(questions.length <= 0){
+                questions = JSON.parse(JSON.stringify(selectLevel)).sort(() => Math.random() - 0.5);
+            }
 
             // make them invisible so can press button
             itemBtn.classList.add('hide');
@@ -649,7 +675,7 @@ window.onload = function () {
                 });
                 let dif = max - racers[index].pos;
                 if (dif > 0) {
-                    moveChar(dir, index);
+                    moveChar(dif, index);
                     wait = dif * MOVE_TIME;
                 }
                 break;
@@ -692,7 +718,7 @@ window.onload = function () {
             diceIndexNumber.src = NUMBERS[index];
             diceBox.classList.remove('hide');
             changePagePlay();
-        }, wait);
+        }, wait + MOVE_TIME);
     });
 
 
