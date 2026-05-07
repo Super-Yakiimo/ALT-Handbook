@@ -118,6 +118,7 @@ function start() {
 
         cardList.forEach((card, index) => {
             card.backImg.src = "../../resource/img/" + picList[index].link;
+            card.name = picList[index].name;
         });
 
     }
@@ -147,6 +148,8 @@ function start() {
 
             // flip
             card.outer.classList.add('flip');
+
+            speakText(card.name);
 
             if(last == null){
                 last = card;

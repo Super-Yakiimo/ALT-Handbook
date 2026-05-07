@@ -26,7 +26,14 @@
                     <select name="mode" id="mode">
                         <option value="0">Free</option>
                         <option value="1">Match</option>
-                        <option disabled value="2">Test</option>
+                        <option value="2">Test</option>
+                    </select>
+
+                    <h3>Type</h3>
+                    <select name="type" id="type">
+                        <option value="0">Text</option>
+                        <option value="1">Image</option>
+                        <option value="2">Text & Image</option>
                     </select>
 
                     <br>
@@ -54,7 +61,7 @@
 
     <canvas></canvas>
 
-
+    <script src="../../database/speak.js"></script>
     <script src="../../database/database.js"></script>
     <script src="./balloon.js"></script>
 </body>

@@ -24,7 +24,7 @@ const makeBalloon = (word) => {
         y: Math.random() * window.innerHeight,
         dx: rand(),
         dy: rand(),
-        rad: 100,
+        rad: Math.random() * 50 + 100,
         name: word.name,
         img,
         color: getColor(),
@@ -36,56 +36,41 @@ const makeBalloon = (word) => {
 }
 
 const makeBalloons = (vocab) => {
+    let type = document.querySelector("#type").value;
+    console.log('type: ', type);
+
     let balloons = [];
+
+    const getState = (i) => {
+        // set the state
+        if(type == 0){
+            // text
+            return false;
+        }
+        if(type == 1){
+            // img
+            return true;
+        }
+        if(i < (vocab.length / 2)){
+            return false;
+        }
+        return true;
+    }
+
     // add balloons
     for (let i = 0; i < vocab.length; i++) {
         // pick a word
         let word = vocab[i];
         // make balloon
         let balloon = makeBalloon(word);
+        // get text or img
+        balloon.state = getState(i);
         // add to list
         balloons.push(balloon);
     }
 
     return balloons;
 }
-
-// speak
-function speakText(text) {
-
-    // Input validation
-    if (!text) {
-        alert("Please enter some text to speak.");
-        return;
-    }
-
-    // Check browser support
-    if (!('speechSynthesis' in window)) {
-        alert("Sorry, your browser does not support Text-to-Speech.");
-        return;
-    }
-
-    // Stop any ongoing speech
-    window.speechSynthesis.cancel();
-
-    // Create a new utterance
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US"; // English (US)
-    utterance.rate = 1;       // Speed (0.1 to 10)
-    utterance.pitch = 1;      // Pitch (0 to 2)
-    utterance.volume = 1;     // Volume (0 to 1)
-
-    // Optional: choose a specific English voice if available
-    const voices = speechSynthesis.getVoices();
-    const englishVoice = voices.find(voice => voice.lang.startsWith("en"));
-    if (englishVoice) {
-        utterance.voice = englishVoice;
-    }
-
-    // Speak the text
-    window.speechSynthesis.speak(utterance);
-}
-
 
 const start = () => {
 
@@ -123,6 +108,10 @@ const start = () => {
     // time
     let time = 0;
 
+    // wind variables
+    let windX = 0;
+    let windY = 0;
+
     // close the start screen
     document.querySelector('#start').classList.add('hide');
 
@@ -145,8 +134,8 @@ const start = () => {
             particle.dy += 0.1;
 
             // move 
-            particle.x += particle.dx;
-            particle.y += particle.dy;
+            particle.x += (particle.dx + windX);
+            particle.y += (particle.dy + windY);
 
             // draw
             ctx.beginPath();
@@ -162,8 +151,8 @@ const start = () => {
         for (let i = balloons.length - 1; i >= 0; i--) {
             let balloon = balloons[i];
 
-            balloon.x += balloon.dx;
-            balloon.y += balloon.dy;
+            balloon.x += (balloon.dx + windX);
+            balloon.y += (balloon.dy + windY);
 
             // x
             if (balloon.x - balloon.rad > canvas.width) {
@@ -191,12 +180,17 @@ const start = () => {
             ctx.stroke();
 
             // img
-            ctx.drawImage(balloon.img, balloon.x - balloon.rad / 2, balloon.y - balloon.rad / 2, balloon.rad, balloon.rad);
+            if (balloon.state) {
+                ctx.drawImage(balloon.img, balloon.x - balloon.rad / 2, balloon.y - balloon.rad / 2, balloon.rad, balloon.rad);
+            }
 
             // text
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "rgb(255, 255, 255)";
-            ctx.fillText(balloon.name, balloon.x, balloon.y);
+            if (!balloon.state) {
+                ctx.font = "30px Arial";
+                ctx.fillStyle = "rgb(255, 255, 255)";
+                ctx.fillText(balloon.name, balloon.x, balloon.y);
+            }
+
 
             if (balloon.pick == true) {
                 // hignlight when selected
@@ -247,7 +241,7 @@ const start = () => {
         // get selcted number of random vocab
         let s = vocab.sort(() => Math.random() - 0.5).splice(0, bNumb);
         balloons = makeBalloons(s);
-        console.log(balloons);
+        //console.log(balloons);
 
         canvas.addEventListener("click", (event) => {
             let result = checkTap();
@@ -274,11 +268,12 @@ const start = () => {
     const matchMode = () => {
         while (bNumb >= vocab.length / 2) {
             vocab = [...vocab, ...vocab];
-            console.log(bNumb, vocab.length);
+            //console.log(bNumb, vocab.length);
         }
         let s = vocab.sort(() => Math.random() - 0.5).splice(0, bNumb / 2);
         s = [...s, ...s];
         balloons = makeBalloons(s);
+        //console.log(s);
 
         let pick = null;
 
@@ -293,7 +288,7 @@ const start = () => {
                 return;
             }
 
-            if(balloons[result].pick == true){
+            if (balloons[result].pick == true) {
                 return;
             }
 
@@ -303,7 +298,7 @@ const start = () => {
                 return;
             }
 
-            console.log(balloons[pick].name == balloons[result].name);
+            //console.log(balloons[pick].name == balloons[result].name);
             if (balloons[pick].name == balloons[result].name) {
                 correct.currentTime = 0;
                 correct.play();
@@ -349,7 +344,81 @@ const start = () => {
     }
 
     const testMode = () => {
+        while (bNumb >= vocab.length) {
+            vocab = [...vocab, ...vocab];
+        }
+        // get selcted number of random vocab
+        let s = vocab.sort(() => Math.random() - 0.5).splice(0, bNumb);
+        balloons = makeBalloons(s);
+        //console.log(balloons);
 
+        // top:0px;right:0px;z-index:5;position:absolute;background:white;
+        let text = document.createElement('p');
+        text.style = 'top:0px;right:0px;z-index:5;position:absolute;background:white;font-size:30px;';
+        document.body.appendChild(text);
+    
+
+        let answer = null;
+
+        const questMaker=()=>{
+            if(balloons.length <= 0){
+                return;
+            }
+            answer = balloons[0];
+            setTimeout(() => {
+                speakText(`Find the ${answer.name} balloon.`);
+            }, 500);
+            //console.log(answer.name);
+            text.innerHTML = `Find the ${answer.name} balloon`;
+        }
+
+        questMaker();
+
+        canvas.addEventListener("click", (event) => {
+            let result = checkTap();
+            //console.log(result);
+
+            if (result == -1) {
+                return;
+            }
+
+            if(answer == null){
+                return;
+            }
+
+            // get the clicked balloon 
+            let click = balloons[result];
+
+            // check if correct balloon
+            //console.log(click);
+            if(answer.name != click.name){
+                wrong.currentTime = 0;
+                wrong.play();
+                return;
+            }
+
+            // remote the ballon from the list 
+            let pop = balloons.splice(result, 1)[0];
+
+            correct.currentTime = 0;
+            correct.play();
+
+            answer = null;
+            score++;
+
+            questMaker();
+
+            //console.log(pop);
+
+            // say name
+            speakText(pop.name);
+
+            addPop(pop.x, pop.y);
+
+            if (balloons.length == 0) {
+                end();
+            }
+        });
     }
 
 
@@ -369,17 +438,24 @@ const start = () => {
             break;
     }
 
-
     window.requestAnimationFrame(anim);
 
-    let pusher = setInterval(() => {
+    // change the wind
+    setInterval(() => {
+        const PATH = [-1, 0, 1]
+        windX = PATH[Math.floor(Math.random() * 3)];
+        windY = PATH[Math.floor(Math.random() * 3)];
+        //console.log(windX, windY);
+    }, 10000);
 
+    // give the balloon new speed
+    let pusher = setInterval(() => {
         if (balloons.length <= 0) {
             return clearInterval(pusher);
         }
         let randBalloon = balloons[Math.floor(Math.random() * balloons.length)];
-        randBalloon.dx = rand();
-        randBalloon.dy = rand();
+        randBalloon.dx = rand() * 2;
+        randBalloon.dy = rand() * 2;
     }, 1000);
 }
 
