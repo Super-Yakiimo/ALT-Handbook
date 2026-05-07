@@ -368,6 +368,7 @@ const makeCheckBox = () => {
 
                 let input = document.createElement('input');
                 let label = document.createElement('label');
+                label.htmlFor = id;
 
                 input.id = id;
                 input.type = 'checkbox';
