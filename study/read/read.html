@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Comprehension</title>
+    <link rel="stylesheet" href="./read.css">
+    <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
+</head>
+<body>
+      <div id="startScrn" class="control">
+        <div class="control-inner">
+            <div style="height: 80%;">
+                <h2>Reading Time!</h2>
+
+                <h3>Eiken Level</h3>
+                <select name="level" id="level">
+                    <option value="0">EIKEN 5</option>
+                    <option value="1">EIKEN 4</option>
+                    <option value="2">EIKEN 3</option>
+                    <option value="3">EIKEN P2</option>
+                    <option value="4">EIKEN P2+</option>
+                    <option value="5">EIKEN 2</option>
+                </select>
+
+            </div>
+            <div>
+                <button onclick="start()">Start Reading</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="paperBox">
+        <h2>Passage</h2>
+        <div id="essayBox"></div>
+        <h2>Questions</h2>
+        <div id="questBox"></div>
+    </div>
+
+    <button id="ctrlBtn">Play/Pause</button>
+    
+
+    <script src="../../database/speak.js"></script>
+    <script src="../../database/readingTest.js"></script>
+    <script src="./read.js"></script>
+</body>
+</html>

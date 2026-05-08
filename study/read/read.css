@@ -1,0 +1,69 @@
+html, body {
+    touch-action: none;
+    margin: none;
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(240, 248, 255, 0.653);
+}
+
+.control-inner {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 30%;
+    border: 5px solid black;
+    padding: 10%;
+}
+
+.hide {
+    display: none;
+}
+
+/*
+add stuff 
+*/
+
+#paperBox {
+    width: 60%;
+    background-image: url('../../resource/img/ui/paper.PNG');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    margin: auto;
+    padding: 5% 5% 5% 20%;
+}
+
+#essayBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.482);
+    font-size: 20px;
+    padding: 5px;
+}
+
+.hoverText:hover {
+    background-color: aqua;
+}
+
+.hoverText, .autoText {
+    font-size: 20px;
+    padding: 5px;
+}
+
+#questBox {
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.767);
+}
+
+#ctrlBtn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
