@@ -4,44 +4,18 @@ vocab stufy stuff learn screen
 
 */
 
-const synth = window.speechSynthesis;
-// speak
-function speakText(text) {
-
-    // Input validation
-    if (!text) {
-        alert("Please enter some text to speak.");
-        return;
-    }
-
-    // Check browser support
-    if (!('speechSynthesis' in window)) {
-        alert("Sorry, your browser does not support Text-to-Speech.");
-        return;
-    }
-
-    // Stop any ongoing speech
-    window.speechSynthesis.cancel();
-
-    // Create a new utterance
-    const utterance = new SpeechSynthesisUtterance(text);
-    //utterance.lang = "en-US"; // English (US)
-    utterance.rate = 1;       // Speed (0.1 to 10)
-    utterance.pitch = 1;      // Pitch (0 to 2)
-    utterance.volume = 1;     // Volume (0 to 1)
-
-    // Speak the text
-    synth.speak(utterance);
-}
-
-
 // vocab container
 const VOCAB_ID = "#vocabCardBox";
 
 // create buttons for vocab words
 // get list of vocab and create vocab buttons
 function start() {
-    let words = getVocab();
+
+    let scramble = document.querySelector('#scramble').checked;
+
+    console.log(scramble);
+
+    let words = getVocab(scramble);
     let vocabBox = document.querySelector(VOCAB_ID);
 
     // return alert if none selected

@@ -194,6 +194,28 @@ const SHAPE = [
     { name: "triangle", link: "shape/triangle.png" },
 ];
 
+const NUMBER = [
+    { name: "one", link: "number/one.png" },
+    { name: "two", link: "number/two.png" },
+    { name: "three", link: "number/three.png" },
+    { name: "four", link: "number/four.png" },
+    { name: "five", link: "number/five.png" },
+    { name: "six", link: "number/six.png" },
+    { name: "seven", link: "number/seven.png" },
+    { name: "eight", link: "number/eight.png" },
+    { name: "nine", link: "number/nine.png" },
+    { name: "ten", link: "number/ten.png" },
+    { name: "twenty", link: "number/twenty.png" },
+    { name: "thirty", link: "number/thirty.png" },
+    { name: "fourty", link: "number/fourty.png" },
+    { name: "fifty", link: "number/fifty.png" },
+    { name: "sixty", link: "number/sixty.png" },
+    { name: "seventy", link: "number/seventy.png" },
+    { name: "eighty", link: "number/eighty.png" },
+    { name: "ninety", link: "number/ninety.png" },
+    { name: "one hundred", link: "number/onehundred.png" },
+]
+
 const FOOD = [
     { name: "pizza", link: "food/pizza.png" },
     { name: "hamburger", link: "food/food_hamburger_cheese.png" },
@@ -322,17 +344,102 @@ const VERB = [
     { name: "win", link: "verb/win.jpg" },
 ]
 
+const CLOTHS = [
+    { name: "shirt", link: "" },
+    { name: "t-shirt", link: "" },
+    { name: "jacket", link: "" },
+    { name: "shorts", link: "" },
+    { name: "sweater", link: "" },
+    { name: "jeans", link: "" },
+    { name: "socks", link: "" },
+    { name: "hat", link: "" },
+    { name: "underwear", link: "" },
+    { name: "gloves", link: "" },
+    { name: "scarf", link: "" },
+    { name: "coat", link: "" },
+    { name: "skirt", link: "" },
+    { name: "slippers", link: "" },
+    { name: "pajamas", link: "" },
+    { name: "pants", link: "" },
+];
+
+
+const COUNTRIES = [
+    { name: "France", link: "" },
+    { name: "Austria", link: "" },
+    { name: "United Kingdom", link: "" },
+    { name: "Germany", link: "" },
+    { name: "Spain", link: "" },
+    { name: "Ukraine", link: "" },
+    { name: "Italy", link: "" },
+    { name: "Poland", link: "" },
+    { name: "Czechia", link: "" },
+    { name: "Portugal", link: "" },
+    { name: "Norway", link: "" },
+    { name: "England", link: "" },
+    { name: "Ireland", link: "" },
+    { name: "Japan", link: "" },
+    { name: "China", link: "" },
+    { name: "Canada", link: "" },
+    { name: "Sweden", link: "" },
+    { name: "Romania", link: "" },
+    { name: "Greece", link: "" },
+]
+
+const KITCHEN = [
+    { name: "knife", link: "kitchen/knife.png" },
+    { name: "fork", link: "kitchen/fork.png" },
+    { name: "spoon", link: "kitchen/spoon.png" },
+    { name: "bowl", link: "kitchen/bowl.png" },
+    { name: "plate", link: "kitchen/plate.png" },
+    { name: "cup", link: "kitchen/cup.png" },
+    { name: "mug", link: "kitchen/mug.png" },
+    { name: "saucepan", link: "kitchen/saucepan.png" },
+    { name: "frying pan", link: "kitchen/fryingpan.png" },
+    { name: "pot", link: "kitchen/pot.png" },
+    { name: "kitchen knife", link: "kitchen/kitchenknife.png" },
+    { name: "cutting board", link: "kitchen/cutting_board.png" },
+    { name: "grater", link: "kitchen/grater.png" },
+    { name: "peeler", link: "kitchen/peeler.png" },
+    { name: "tongs", link: "kitchen/tongs.png" },
+];
+
+const COOKING_VERBS = [
+    { name: "grate", link: "cook_verb/grate.jpg" },
+    { name: "slice", link: "cook_verb/slice.jpg" },
+    { name: "peel", link: "cook_verb/peel.jpg" },
+    { name: "whisk", link: "cook_verb/whisk.jpg" },
+    { name: "boil", link: "cook_verb/boil.jpg" },
+    { name: "fry", link: "cook_verb/fry.jpg" },
+    { name: "grill", link: "cook_verb/grill.jpg" },
+    { name: "bake", link: "cook_verb/bake.jpg" },
+    { name: "pour", link: "cook_verb/pour.jpg" },
+    { name: "scramble", link: "cook_verb/scramble.jpg" },
+    { name: "simmer", link: "cook_verb/simmer.jpg" },
+    { name: "spread", link: "cook_verb/spread.jpg" },
+    { name: "stir", link: "cook_verb/stir.jpg" },
+    { name: "taste", link: "cook_verb/taste.jpg" },
+    { name: "add", link: "cook_verb/add.jpg" },
+    { name: "blend", link: "cook_verb/blend.jpg" },
+    { name: "roast", link: "cook_verb/roast.jpg" },
+    { name: "chop", link: "cook_verb/chop.jpg" },
+    { name: "steam", link: "cook_verb/steam.jpg" },
+    { name: "roll", link: "cook_verb/roll.jpg" },
+]
+
+
+
 // icons "../../resource/img/icon/card-back.png"
 const BACK = "../../resource/img/icon/card-back.png";
 
 const VOCAB_LIST = [
-    FOOD, FRUIT, VEGETABLE, DESSERT, DRINK, JOBS, ANIMAL, VERB, DAYS_OF_WEEK, MONTH, WEATHER, SCHOOL, TOWN, STATIONARY, SHAPE
+    FOOD, FRUIT, VEGETABLE, DESSERT, DRINK, JOBS, ANIMAL, VERB, DAYS_OF_WEEK, MONTH, WEATHER, SCHOOL, TOWN, STATIONARY, SHAPE, COLOR, NUMBER, KITCHEN, COOKING_VERBS, CLOTHS, COUNTRIES
 ];
 
-const LABEL_NAMES = ["Food", "Fruit", "Vegetable", "Dessert", "Drink", "Job", "Animal", "Verb", "DOTW", "Month", "Weather", "School", "Town", "Stationary", "Shape"];
+const LABEL_NAMES = ["Food", "Fruit", "Vegetable", "Dessert", "Drink", "Job", "Animal", "Verb", "DOTW", "Month", "Weather", "School", "Town", "Stationary", "Shape", "Color", "Number", "Kitchen", "Cooking Verbs", "Cloths", "Countries"];
 
 const INPUT = [
-    "foodCheck", "fruitCheck", "vegCheck", "Dessert", "Drink", "jobCheck", "animalCheck", "verbCheck", "daysOfWeekCheck", "monthCheck", "weatherCheck", "schoolCheck", "townCheck", "statCheck", "shapeCheck"
+    "foodCheck", "fruitCheck", "vegCheck", "Dessert", "Drink", "jobCheck", "animalCheck", "verbCheck", "daysOfWeekCheck", "monthCheck", "weatherCheck", "schoolCheck", "townCheck", "statCheck", "shapeCheck", "colorCheck", "numbCkeck", "kitchenCheck", "cookVerbCheck", "clothCheck", "countryCheck"
 ];
 
 /*
@@ -344,23 +451,24 @@ make the check boxes for vocab select
 const makeCheckBox = () => {
 
     const checkCon = document.querySelector("#checkCon");
-    const DIM = 4;
+    const ROW = 6;
+    const COL = 4;
 
     if (checkCon == null) {
         return alert('cannot find the check box container');
     }
 
-    for (let i = 0; i < DIM; i++) {
+    for (let i = 0; i < ROW; i++) {
         let row = document.createElement('div');
         row.className = 'row';
-        row.style = `height:${100/DIM}%;width:100%;display:flex;flex-direction: row;`;
-        for (let j = 0; j < DIM; j++) {
+        row.style = `height:${100 / COL}%;width:100%;display:flex;flex-direction: row;`;
+        for (let j = 0; j < COL; j++) {
 
-            let index = i * DIM + j;
+            let index = i * COL + j;
 
             let box = document.createElement('div');
             box.className = 'box';
-            box.style = `height:100%;width:${100/DIM}%;border: 1px solid black;`;
+            box.style = `height:100%;width:${100 / COL}%;border: 1px solid black;`;
 
             if (index < VOCAB_LIST.length) {
                 let id = INPUT[index];
@@ -393,7 +501,7 @@ get selected vocab
 based on input
 */
 
-const getVocab = () => {
+const getVocab = (scramble = true) => {
 
     let vocabList = [];
 
@@ -403,7 +511,12 @@ const getVocab = () => {
             vocabList = vocabList.concat(VOCAB_LIST[i]);
         }
     }
-    return vocabList.sort(() => Math.random() - 0.5);
+
+    if (scramble) {
+        vocabList.sort(() => Math.random() - 0.5)
+    }
+
+    return vocabList;
 }
 
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Who</title>
+    <link rel="stylesheet" href="./guess.css">
+    <link rel="icon" type="image/x-icon" href="../../resource/img/icon/favicon.ico">
+</head>
+
+<body>
+    <div class="root">
+        <div id="char-root">
+            <div id="root-one" class="player-root">
+                <div class="player-box">
+                    <img src="./img/text/player-one.png" alt="">
+                </div>
+                <div class="card-box" id="playerOne"></div>
+                <button onclick="showLeft()">Show</button>
+            </div>
+            <div id="root-two" class="player-root">
+                <div class="player-box">
+                    <img src="./img/text/player-two.png" alt="">
+                </div>
+                <div class="card-box" id="playerTwo"></div>
+                <button onclick="showRight()">Show</button>
+            </div>
+        </div>
+
+
+        <div class="hide" id="answerLeft">
+            <div class="answer-inner">
+                <div class="answer-con">
+                    <div id="leftCardCon"></div>
+                    <button onclick="hideLeft()">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="hide" id="answerRight">
+            <div class="answer-inner">
+                <div class="answer-con">
+                    <div id="rightCardCon"></div>
+                    <button onclick="hideRight()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./guess.js"></script>
+
+    <img src="./img/back.jpg" alt="">
+</body>
+
+</html>
