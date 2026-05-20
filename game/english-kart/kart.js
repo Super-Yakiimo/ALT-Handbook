@@ -674,10 +674,12 @@ window.onload = function () {
                     }
                 });
                 let dif = max - racers[index].pos;
-                if (dif > 0) {
-                    moveChar(dif, index);
-                    wait = dif * MOVE_TIME;
+                // if in first place only move one
+                if(dif <= 0){
+                    dif = 1;
                 }
+                moveChar(dif, index);
+                wait = dif * MOVE_TIME;
                 break;
             case 2: // gold mushroom
                 moveChar(5, index);
