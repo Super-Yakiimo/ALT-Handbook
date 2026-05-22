@@ -242,6 +242,9 @@ const pageChange = new Audio('./res/sound/litupsubway-ui-open-sfx-513358.mp3');
 pageChange.preload = 'auto';
 const changePagePlay = () => { pageChange.currentTime = 0; pageChange.play(); };
 
+const winSound = new Audio('../../resource/sound/floraphonic-you-win-sequence-2-183949.mp3');
+winSound.preload = 'auto';
+
 // game\english-kart\res\sound\floraphonic-casual-click-pop.mp3
 const pop = new Audio('./res/sound/floraphonic-casual-click-pop.mp3');
 pop.preload = 'auto';
@@ -261,7 +264,7 @@ const getNumb = () => {
 
 // get the selected eiken level
 const getLevel = () => {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < LIST.length; i++) {
         let input = document.querySelector(`#level${i}`);
         if (input.checked) {
             return i;
@@ -346,7 +349,7 @@ window.onload = function () {
     let itemBox = document.querySelector("#itemBox");
     let questBox = document.querySelector("#questBox");
     let levelBox = document.querySelector("#levelBox");
-    let __ = document.querySelector("#__");
+    //let __ = document.querySelector("#__");
 
     // move a character to the next location
     const moveChar = (numb, pickIndex) => {
@@ -429,6 +432,11 @@ window.onload = function () {
 
                 // check win
                 if (racers[index].pos >= POS_LIST.length - 1) {
+
+                    // play win sound
+                    winSound.currentTime = 0;
+                    winSound.play();
+
                     console.log('win');
                     document.querySelector("#endBox").classList.remove('hide');
                     console.log(racers[index].name);
@@ -533,7 +541,7 @@ window.onload = function () {
     let rnd;
 
     rollBtn.addEventListener('click', () => {
-        rnd = Math.floor(Math.random() * 9); 
+        rnd = Math.floor(Math.random() * 9);
         diceResultImg.src = NUMBERS[rnd];
         rollBtn.classList.add('hide');
         rollNextBtn.classList.remove('hide');
@@ -562,7 +570,7 @@ window.onload = function () {
             // use each question once before repeating them
             let select = questions.splice(Math.floor(Math.random() * questions.length), 1)[0];
             // reload when empty
-            if(questions.length <= 0){
+            if (questions.length <= 0) {
                 questions = JSON.parse(JSON.stringify(selectLevel)).sort(() => Math.random() - 0.5);
             }
 
@@ -675,7 +683,7 @@ window.onload = function () {
                 });
                 let dif = max - racers[index].pos;
                 // if in first place only move one
-                if(dif <= 0){
+                if (dif <= 0) {
                     dif = 1;
                 }
                 moveChar(dif, index);
