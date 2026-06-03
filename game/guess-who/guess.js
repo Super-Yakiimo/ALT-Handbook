@@ -11,13 +11,18 @@ let BOY = [
     "spongebob_PNG1.png",
     "tom.webp",
     "woody.jpeg",
-    "Buzz_Lightyear.png"
+    "Buzz_Lightyear.png",
+    "mario.png",
+    "luigi.png",
+    "link.jpg",
+    "Donkey-kong.png",
+    "steve.png"
 ];
 
 let GIRL = [
     "Chihiro.jpg",
-    "anna.jpg",
-    "ariel.jpg",
+    "anna.png",
+    "ariel.png",
     "Frozen-Elsa-PNG-Photo.png",
     "hello kitty.png",
     "hermione granger.jpg",
@@ -25,9 +30,17 @@ let GIRL = [
     "moana-png-8.png",
     "nami.jpg",
     "satsuki.png",
-    "jessie.jpeg"
+    "jessie.png",
+    "peach.png",
+    "daisy.png",
+    "zelda.jpg",
+    "Inkling_Girl.png",
+    "rosalina.png",
+    "Nobara_Kugisaki.png",
 ]
 
+const WIDTH = 6;
+const HEIGHT = 5;
 
 function makeCard(path, name) {
 
@@ -66,12 +79,12 @@ function makeCard(path, name) {
 }
 
 function makeCards(parent, charList) {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < HEIGHT; i++) {
 
         let row = document.createElement('div');
         row.className = 'card-row';
 
-        for (let j = 0; j < 4; j++) {
+        for (let j = 0; j < WIDTH; j++) {
 
             let cardBox = document.createElement('div');
             cardBox.className = "card-row-box";
@@ -123,8 +136,9 @@ window.onload = function () {
     let playerTwo = document.querySelector('#playerTwo');
 
 
-    let bselect = Array.from(BOY.sort(() => Math.random() - 0.5).slice(0, 10), (name, i) => `./img/char/boy/${name}`);
-    let gselect = Array.from(GIRL.sort(() => Math.random() - 0.5).slice(0, 10), (name, i) => `./img/char/girl/${name}`);
+    let len = WIDTH * HEIGHT / 2;
+    let bselect = Array.from(BOY.sort(() => Math.random() - 0.5).slice(0, len), (name, i) => `./img/char/boy/${name}`);
+    let gselect = Array.from(GIRL.sort(() => Math.random() - 0.5).slice(0, len), (name, i) => `./img/char/girl/${name}`);
 
     let format = bselect.concat(gselect).sort(() => Math.random() - 0.5);
     console.log(format);
@@ -140,8 +154,28 @@ window.onload = function () {
 
     let c1 = makeCard(pathOne, "");
     let c2 = makeCard(pathTwo, "");
+    c1.classList.add('flip');
+    c2.classList.add('flip');
 
     leftCardCon.appendChild(c1);
     rightCardCon.appendChild(c2);
+
+    c1.addEventListener("click", () => {
+        if (c1.classList.contains('flip')) {
+            c1.classList.remove('flip');
+        }
+        else {
+            c1.classList.add('flip');
+        }
+    });
+
+    c2.addEventListener("click", () => {
+        if (c2.classList.contains('flip')) {
+            c2.classList.remove('flip');
+        }
+        else {
+            c2.classList.add('flip');
+        }
+    });
 
 }

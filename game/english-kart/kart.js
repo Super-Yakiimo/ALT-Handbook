@@ -735,3 +735,6 @@ window.onload = function () {
     // start anim
     window.requestAnimationFrame(anim);
 }
+
+// no right click 
+document.addEventListener('contextmenu', event => event.preventDefault());
