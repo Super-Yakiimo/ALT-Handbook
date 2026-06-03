@@ -1,39 +1,52 @@
-const E5 = [
-    "the flower shop opens at ten o'clock every day",
-    "Julia what are you doing now",
-    "today is the first day of our school trip",
-    "my aunt lives in London",
-    "does your sister go skiing",
+
+
+const EASY = [
+    "I like red.",
+    "How are you?",
+    "I am Bob.",
+    "Nice to meet you!",
+    "I have a book.",
+    "Do you like dogs?",
+    "I get up in the morning.",
+    "The cat is under the chair."
 ];
 
-const E4 = [
+const MEDUIM = [
+    "Let's go to the library", 
+    "What did you eat?",
+    "How is the weather today?",
+    "My name is Thomas.",
+    "Ken is reading a book.",
+    "Where do you live?",
+    "What time do you get up?",
+    "She has a new bike.",
+    "Can I have some water?",
+];
+
+const DIFFICULT = [
+    "My aunt lives in London",
+    "Does your sister go skiing",
+    "Let's eat food at the cafeteria.",
+    "Julia what are you doing now?",
+    "He is watching TV now.",
+    "I want to play tennis.",
+    "Can I help you?",
+    "Who is that man?",
+    "There are many dogs in the park.",
+    "The sun shines in the sky."
+];
+
+const EXTREME = [
     "Bill didn't have time to eat breakfast",
     "Harumi had a great weeking in Kyoto",
     "Can your father speak both Chinese and French",
-    "did you see the lions at that zoo?",
-    "I asked Mr.Kent about his bobbies.",
-    "",
+    "Did you see the lions at that zoo?",
+    "I asked Mr.Kent about his hobbies.",
+    "The flower shop opens at ten o'clock every day.",
+    "Today is the first day of our school trip",
 ];
 
-const E3 = [
-    "My mom’s taking me by car. You can come with us.",
-    "Do you want to go jogging with me on the beach tomorrow?",
-    "Can you turn down the radio, please?",
-    "Mr. Ford often buys a newspaper at the station in the morning on his way to work.",
-    "Mr. Jones has a meeting at 5:00. He has to leave right now.",
-    "Mom, have you checked the mail yet today?",
-];
-
-const E2 = [
-    "The characteristics that make rabbits different from other animals are that they have long ears and short tails.",
-    "Do you get nervous before giving a speech in front of the class?",
-    "Haruka wanted to enter a popular university, so she devoted all her attention to studying for the entrance exam.",
-    "The hard, wooden bench in the park was uncomfortable, so Anna and Cathy decided to sit on the grass.",
-    "In order to go on a trip to Europe next year, John is trying to save up enough money. He is only eating out on weekends to cut down on spending.",
-    "I’m going to work for an organization that helps children. I’m going to help people who are in need and try to improve their welfare.",
-];
-
-const LIST = [E5, E4, E3, E2];
+const LIST = [EASY, MEDUIM, DIFFICULT, EXTREME];
 
 const WIDTH = 100;
 const HEIGHT = 10;
@@ -187,6 +200,17 @@ function start() {
     const anim = () => {
         ctx.clearRect(0, 0, innerWidth, innerHeight);
 
+        // only use width to get smaller tiles
+        let gridW = canvas.width / WIDTH;
+        let gridH = canvas.height / WIDTH;
+
+        for(let i = 0; i < WIDTH; i++){
+            for(let j = 0; j < WIDTH; j++){
+                ctx.fillStyle = ((i + j) % 2 == 0) ? "grey" : "white";
+                ctx.fillRect(i * gridW, j * gridH, gridW, gridH);
+            }
+        }
+
         wordBoxes.forEach((box, index) => {
             // rectangle
             ctx.fillStyle = "black";
@@ -225,3 +249,5 @@ function start() {
     document.querySelector('#start').classList.add('hide');
     window.requestAnimationFrame(anim);
 }
+
+document.addEventListener('contextmenu', event => event.preventDefault());
