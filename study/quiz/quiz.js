@@ -121,22 +121,35 @@ create the test
 
 const makeTest = (vocab, types, qNumb) => {
     let test = [];
+    let temp = JSON.parse(JSON.stringify(vocab)).sort(()=>Math.random() - 0.5);
 
     for (let i = 0; i < qNumb; i++) {
-        let temp = JSON.parse(JSON.stringify(vocab));
-        let answer = temp.splice(i, 1)[0];
+        let answer = temp.splice(0, 1)[0];
+        let copy = JSON.parse(JSON.stringify(vocab));
+
+        // remove answer to not add again
+        copy.slice(copy.indexOf(answer), 1);
+
+        if(temp.length == 0){
+            temp = JSON.parse(JSON.stringify(vocab)).sort(()=>Math.random() - 0.5);
+        }
+
         let options = [answer];
         for (let i = 0; i < 3; i++) {
-            let rnd = Math.floor(Math.random() * temp.length);
-            options.push(temp.splice(rnd, 1)[0]);
+            let rnd = Math.floor(Math.random() * copy.length);
+            options.push(copy.splice(rnd, 1)[0]);
         }
         options.sort(() => Math.random() - 0.5);
+        // set the type
         let type = types[Math.floor(Math.random() * types.length)];
+
+        // create the question
         test.push({
             answer, options, type
         });
     }
 
+    console.log(test);
     return test;
 }
 
