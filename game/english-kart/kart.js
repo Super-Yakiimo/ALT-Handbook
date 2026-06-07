@@ -40,8 +40,9 @@ const POS_LIST = [
     },
     {
         "x": 0.6165137614678899,
-        "y": 0.8867924528301887
-    },
+        "y": 0.8867924528301887,
+        "jump":8
+    }, // 6
     {
         "x": 0.7009174311926606,
         "y": 0.8773584905660378
@@ -57,7 +58,7 @@ const POS_LIST = [
     {
         "x": 0.9128440366972477,
         "y": 0.6871069182389937
-    },
+    }, //10
     {
         "x": 0.8486238532110092,
         "y": 0.5911949685534591
@@ -77,11 +78,12 @@ const POS_LIST = [
     {
         "x": 0.47706422018348627,
         "y": 0.6556603773584906
-    },
+    }, //15
     {
         "x": 0.3871559633027523,
-        "y": 0.699685534591195
-    },
+        "y": 0.699685534591195,
+        "jump":8
+    }, //16
     {
         "x": 0.29174311926605506,
         "y": 0.7311320754716981
@@ -97,7 +99,7 @@ const POS_LIST = [
     {
         "x": 0.062385321100917435,
         "y": 0.6053459119496856
-    },
+    }, // 20
     {
         "x": 0.11467889908256881,
         "y": 0.49056603773584906
@@ -132,12 +134,13 @@ const POS_LIST = [
     },
     {
         "x": 0.43394495412844036,
-        "y": 0.2783018867924528
-    },
+        "y": 0.2783018867924528,
+        "jump":9
+    }, // 29
     {
         "x": 0.3412844036697248,
         "y": 0.2830188679245283
-    },
+    }, // 30
     {
         "x": 0.26238532110091745,
         "y": 0.29874213836477986
@@ -177,7 +180,7 @@ const POS_LIST = [
     {
         "x": 0.6027522935779817,
         "y": 0.06132075471698113
-    },
+    }, //40
     {
         "x": 0.6889908256880733,
         "y": 0.059748427672955975
@@ -209,7 +212,7 @@ const POS_LIST = [
     {
         "x": 0.6880733944954128,
         "y": 0.22169811320754718
-    }
+    } // 48
 ];
 
 const ITEMS = [
@@ -365,6 +368,38 @@ window.onload = function () {
         const stop = new Audio('./res/sound/stop.mp3');
         stop.preload = 'auto';
 
+        // function to create list of sub points between two points
+        // start : start index, end : end index
+        const pathMaker = (start, end) => {
+
+            // list of positions
+            let posList = [];
+
+            //console.log("index: ", start, end);
+
+            // start pos
+            let sPos = POS_LIST[start];
+
+            // end post
+            let ePos = POS_LIST[end];
+
+            let deltaX = (ePos.x - sPos.x) / STEP;
+            let deltaY = (ePos.y - sPos.y) / STEP;
+
+            // add start position
+            moveList.push(sPos);
+
+            for (let i = 0; i < STEP; i++) {
+                let x = sPos.x + deltaX * i;
+                let y = sPos.y + deltaY * i;
+                moveList.push({
+                    x, y
+                });
+            }
+
+            return posList;
+        }
+
         let char = racers[pickIndex];
 
         let moveList = [];
@@ -392,20 +427,8 @@ window.onload = function () {
 
             let sIndex = char.pos;
             let eIndex = char.pos + dir;
-            let sPos = POS_LIST[sIndex];
-            let ePos = POS_LIST[eIndex];
-            moveList.push(sPos);
-
-            let deltaX = (ePos.x - sPos.x) / STEP;
-            let deltaY = (ePos.y - sPos.y) / STEP;
-
-            for (let i = 0; i < STEP; i++) {
-                let x = sPos.x + deltaX * i;
-                let y = sPos.y + deltaY * i;
-                moveList.push({
-                    x, y
-                });
-            }
+            let path = pathMaker(sIndex, eIndex);
+            moveList.concat(path);
 
             // move towards the intended index
             char.pos += dir;
@@ -414,8 +437,23 @@ window.onload = function () {
         passingCar.currentTime = 0;
         passingCar.play();
 
+        // store if user lands on a bridge
+        let bridge = false;
+
+
         let moveIndex = 0;
         let waitTime = Math.abs(numb) * MOVE_TIME / moveList.length;
+
+        // check if on bridge
+        if(POS_LIST[char.pos].jump != null){
+            let bridge = true;
+            let jump = POS_LIST[char.pos].jump;
+            let start = char.pos;
+            let end = char.pos + jump;
+            let path = pathMaker(start, end);
+            moveList.concat(path);
+            char.pos += jump;
+        }
 
         let handle = setInterval(() => {
             let pos = moveList[moveIndex];
@@ -445,6 +483,7 @@ window.onload = function () {
             }
         }, waitTime);
 
+        return bridge;
     }
 
     /*
@@ -540,8 +579,8 @@ window.onload = function () {
 
     let rnd;
 
-    rollBtn.addEventListener('click', () => {
-        rnd = Math.floor(Math.random() * 9);
+    rollBtn.addEventListener('click', () => { // fix here
+        rnd = Math.floor(Math.random() * 9); 
         diceResultImg.src = NUMBERS[rnd];
         rollBtn.classList.add('hide');
         rollNextBtn.classList.remove('hide');
@@ -556,7 +595,11 @@ window.onload = function () {
         diceResultImg.src = "./res/img/item/dice.png";
 
         // move selected character
-        moveChar(rnd + 1, index);
+        let bridge = moveChar(rnd + 1, index);
+        let time = (rnd + 1) * MOVE_TIME;
+        if(bridge){
+            time += MOVE_TIME;
+        }
 
         setTimeout(() => {
             // show quest box
@@ -604,7 +647,7 @@ window.onload = function () {
                     }
                 });
             }
-        }, (rnd + 1) * MOVE_TIME);
+        }, time);
     });
 
 
@@ -656,6 +699,7 @@ window.onload = function () {
 
         let wait = 0;
         let max;
+        let bridge;
 
         switch (itmIndex) {
             case 0: //blue shell
@@ -667,7 +711,7 @@ window.onload = function () {
                 });
                 racers.forEach((racer, rIndex) => {
                     if (racer.pos == max) {
-                        moveChar(-3, rIndex);
+                        bridge = moveChar(-3, rIndex);
                     }
                 });
 
@@ -686,38 +730,44 @@ window.onload = function () {
                 if (dif <= 0) {
                     dif = 1;
                 }
-                moveChar(dif, index);
+                bridge = moveChar(dif, index);
                 wait = dif * MOVE_TIME;
                 break;
             case 2: // gold mushroom
-                moveChar(5, index);
+                bridge = moveChar(5, index);
                 wait = 5 * MOVE_TIME;
                 break;
             case 3: // lightning
                 racers.forEach((racer, rIndex) => {
                     if (index != rIndex) {
-                        moveChar(-1, rIndex);
+                        bridge = moveChar(-1, rIndex);
                     }
                 });
                 wait = MOVE_TIME;
                 break;
             case 4: // mushroom
-                moveChar(1, index);
+                bridge = moveChar(1, index);
                 wait = MOVE_TIME;
                 break;
             case 5: // tripple mushroom
-                moveChar(3, index);
+                bridge = moveChar(3, index);
                 wait = 3 * MOVE_TIME;
                 break;
             case 6: // green shell
-                moveChar(-1, index);
+                bridge = moveChar(-1, index);
                 wait = MOVE_TIME;
                 break;
             default:
-                moveChar(10, index);
+                bridge = moveChar(10, index);
                 wait = 10 * MOVE_TIME;
                 break;
         }
+
+        if(bridge){
+            wait += MOVE_TIME;
+        }
+
+        wait += MOVE_TIME;
 
         setTimeout(() => {
             console.log('item');
@@ -728,7 +778,7 @@ window.onload = function () {
             diceIndexNumber.src = NUMBERS[index];
             diceBox.classList.remove('hide');
             changePagePlay();
-        }, wait + MOVE_TIME);
+        }, wait);
     });
 
 

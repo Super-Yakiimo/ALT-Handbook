@@ -119,7 +119,7 @@ function start() {
 
     // get leve questions
     let nLevel = Number(level.value);
-    let questPick = getQuest(nLevel);
+    let questPick = getQuest(nLevel).sort(() => Math.random() - 0.5);
     //console.log(questPick);
 
     // store tic tac board

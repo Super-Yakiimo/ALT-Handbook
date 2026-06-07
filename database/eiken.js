@@ -149,8 +149,58 @@ const N5 = [
         text: "A : Bill, let's ( ) the homework together.<br> B : OK, Maria.",
         options: ["check", "checked", "checks", "checking"],
         answer: "check"
+    },
+    {
+        text: "Teacher : Hi, I'm Tom. I'm your new English teacher.<br> Girl : Hello, Tom. ()",
+        options: ["I think so.", "You're welcome.", "I do, too.", "Nice to meet you."],
+        answer: "Nice to meet you."
+    },
+    {
+        text: "Boy : Do you have any sisters?<br> Girl : No, but ()",
+        options: ["it's my birthday.", "I have two brothers.", "this is my room.", "I like tennis."],
+        answer: "I have two brothers."
+    },
+    {
+        text: "Boy : What's the date today?<br>Mother : ()",
+        options: ["It's April 29.", "It's nine o'clock.", "I love spring.", "Next Monday."],
+        answer: "It's April 29."
+    },
+    {
+        text: "Girl : What do you do on weekends, Bob?<br>Boy : ()",
+        options: ["No, I don't.", "Good idea.", "I play soccer.", "Sorry, I can't."],
+        answer: "I play soccer."
+    },
+    {
+        text: "Boy 1 : Let's play badminton at the park, Brad.<br>Boy 2 : ()",
+        options: ["Yes, let's.", "Yes, I am.", "It's you.", "It's short."],
+        answer: "Yes, let's."
+    },
+    {
+        text: "Boy : Where are my pajamas, Mom?<br>Mother : ()",
+        options: ["It's big.", "Five dollars.", "On your bed.", "After dinner."],
+        answer: "On your bed."
+    },
+    {
+        text: "Mother : What drink do you want?<br>Girl : ()",
+        options: ["Two eggs.", "Yes, at night.", "Orange juice, please.", "Every weekend."],
+        answer: "Orange juice, please."
+    },
+    {
+        text: "Girl : Allan, your pink T-shirt is nice.<br>Boy : () Brenda.",
+        options: ["Thanks,", "Good job,", "You're welcome,", "They're interesting,"],
+        answer: "Thanks,"
+    },
+    {
+        text: "Girl : When do you study English, Taro?<br>Boy : () Then I watch TV.",
+        options: ["I like it.", "In my room.", "After dinner.", "For three hours."],
+        answer: "For three hours."
+    },
+    {
+        text: "Boy : Can you come to my house today, Lisa?<br>Girl : No, I can't. ()",
+        options: ["That's a good idea.", "I have a violin lesson.", "Come in, please.", "It's not mine."],
+        answer: "I have a violin lesson."
     }
-];
+]; // one and two added
 
 const N4 = [
     {
@@ -227,8 +277,108 @@ const N4 = [
         text: "Last night, Taro was ( ) a movie about airplanes. He liked it very much.",
         options: ["watching", "watches", "watch", "watched"],
         answer: "watching"
+    },
+    {
+        text: "Woman 1 : I went to a party this weekend.<br>Woman 2 : ( )<br>Woman 1 : My new dress.",
+        options: ["What time does it open?", "What did you wear?", "How many people were there?", "Can you teach me?"],
+        answer: "What did you wear?"
+    },
+    {
+        text: "Boy : Did you bring your soccer ball?<br>Girl : ( ) but I'll bring it tomorrow.",
+        options: ["Not today,", "I like P.E.,", "Wait a minute,", "You played well,"],
+        answer: "Not today,"
+    },
+    {
+        text: "Girl 1 : We should go to the science room now.<br>Girl 2 : ( ) I have to get my notebook from my locker first.",
+        options: ["Bring it tomorrow.", "Wait for me.", "In my desk.", "For my teacher."],
+        answer: "Wait for me."
+    },
+    {
+        text: "Man : Excuse me. Is there a subway station near here?<br>Woman : ( ) It's about five minutes from here.",
+        options: ["I don't have a watch.", "I bought a new bicycle.", "I lost my ticket.", "There's one by the stadium."],
+        answer: "There's one by the stadium."
+    },
+    {
+        text: "Brother : Can you get my book, Mary? It's on the table. Sister : Sure. ( )",
+        options: ["Just a minute.", "I'll buy it.", "That's all.", "It's not mine."],
+        answer: "Just a minute."
+    },
+    {
+        text: "Last night, Paul studied with his sister. She couldn't ( ) her homework, so Paul helped her.",
+        options: ["wash", "understand", "play", "open"],
+        answer: "understand"
+    },
+    {
+        text: "A : Is your train () to Osaka in your pocket?<br> B : No, it's on the table.",
+        options: ["car", "pencil", "shirt", "ticket"],
+        answer: "ticket"
+    },
+    {
+        text: "Helen's tennis lesson will ( ) at five o'clock on Saturday.",
+        options: ["take", "end", "put", "make"],
+        answer: "end"
+    },
+    {
+        text: "A : Did you see the () on TV, Mom? A giraffe at the zoo had a baby.<br>B : Yes, I saw it. It was so cute.",
+        options: ["news", "weather", "sport", "bag"],
+        answer: "news"
+    },
+    {
+        text: "A : What does your brother do, Ms. Brown? B : He's a ( ) student. He studies computer science.",
+        options: ["towel", "mistake", "college", "station"],
+        answer: "college"
+    },
+    {
+        text: "After the big game yesterday, the soccer team was very happy. Today is a ( ), so the players can relax.",
+        options: ["holiday", "bank", "friend", "pool"],
+        answer: "holiday"
+    },
+    {
+        text: "A : When will you () cleaning your room?<br>B : By six o'clock.",
+        options: ["visit", "finish", "remember", "leave"],
+        answer: "finish"
+    },
+    {
+        text: "The library is open ( ) nine to seven. Many people go there in the morning.",
+        options: ["among", "from", "over", "with"],
+        answer: "from"
+    },
+    {
+        text: "A : Mom, I'm having () with my homework. B : OK, I'll help you with it.",
+        options: ["action", "type", "world", "trouble"],
+        answer: "trouble"
+    },
+    {
+        text: "Mr. Smith usually ( ) the housework on Sunday mornings. After that, he likes to read magazines.",
+        options: ["does", "uses", "holds", "gives"],
+        answer: "does"
+    },
+    {
+        text: "A : Bye, Mom. Dan and I are going to a party. B : OK, have a good ( ).",
+        options: ["job", "help", "time", "taste"],
+        answer: "time"
+    },
+    {
+        text: "Daniel is fourteen years ( ). He is very good at sports.",
+        options: ["old", "light", "big", "short"],
+        answer: "old"
+    },
+    {
+        text: "Henry ( ) home from school early yesterday because he was sick.",
+        options: ["came", "comes", "come", "coming"],
+        answer: "came"
+    },
+    {
+        text: "A : Many of the buildings in this city are very big. B : Yes, but this one is the ( ).",
+        options: ["large", "largest", "larger", "too large"],
+        answer: "largest"
+    },
+    {
+        text: "A : What's your town like, Tom? B : It's nice. ( ) are lots of parks and a big pool.",
+        options: ["They", "Those", "There", "Their"],
+        answer: "There"
     }
-]
+]; // one added
 
 const N3 = [
     {
