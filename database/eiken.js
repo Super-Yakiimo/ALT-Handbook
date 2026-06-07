@@ -377,8 +377,33 @@ const N4 = [
         text: "A : What's your town like, Tom? B : It's nice. ( ) are lots of parks and a big pool.",
         options: ["They", "Those", "There", "Their"],
         answer: "There"
+    },
+    {
+        text: "Daughter : Can I go outside to play now?<br>Father : No, ( )",
+        options: ["wash the dishes first.", "have fun.", "I don't like it very much.", "it's not yours."],
+        answer: "wash the dishes first."
+    },
+    {
+        text: "Son : I'm going to make some rice balls for the picnic. ( )<br>Mother : About five or six.",
+        options: ["How many should I make?", "What did you make?", "Do you like them?", "Are you good at cooking?"],
+        answer: "How many should I make?"
+    },
+    {
+        text: "Mother : Do you want some more pizza, Daniel?<br>Son : Yes, ( )",
+        options: ["I want to cook dinner.", "I can't eat it.", "I don't think so.", "I'm really hungry."],
+        answer: "I'm really hungry."
+    },
+    {
+        text: "Man : ( ) Susan. How was your camping trip?<br>Woman : It was wonderful.",
+        options: ["Good luck,", "Welcome back,", "Have a good day,", "Not at all,"],
+        answer: "Welcome back,"
+    },
+    {
+        text: "Boy : I always do well in math class. ( ) Girl : Oh, can you study with me? Maybe you can help me.",
+        options: ["I like history.", "It's easy.", "It's really short.", "She's my teacher."],
+        answer: "It's easy."
     }
-]; // one added
+]; // one and two added
 
 const N3 = [
     {
