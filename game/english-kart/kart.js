@@ -446,7 +446,7 @@ window.onload = function () {
 
         // check if on bridge
         if(POS_LIST[char.pos].jump != null){
-            let bridge = true;
+            bridge = true;
             let jump = POS_LIST[char.pos].jump;
             let start = char.pos;
             let end = char.pos + jump;
