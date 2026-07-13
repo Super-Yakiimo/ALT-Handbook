@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Maker</title>
+    <style>
+        @media print {
+            @page {
+                margin: 50px;
+                /* Strips browser headers/footers */
+            }
+
+            body {
+                margin: 1.6cm;
+                /* Re-applies safe margins to your content */
+            }
+        }
+
+        @font-face {
+            font-family: MyFont;
+            src: url(./font/KGPrimaryDotsLined.ttf);
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid;
+            padding: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            width: 100%;
+            height: 50%;
+        }
+
+        td {
+            width: 20%;
+            height: 100%;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .trace {
+            font-family: MyFont;
+            font-size: 50px;
+        }
+
+        #words {
+            font-family: MyFont;
+            font-size: 50px;
+        }
+
+        #words p {
+            margin: 1px;
+        }
+
+        .corner {
+            position: absolute;
+            top: 10%;
+            right: 20%;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="printArea">
+
+        <table id="table">
+        </table>
+
+        <div id="words"></div>
+
+
+        <table id="puzzle">
+        </table>
+
+    </div>
+
+    <script src="../../database/database.js"></script>
+    <script>
+
+        const WIDTH = 5;
+        const HEIGHT = 5;
+
+        let food = FOOD.splice(0, 10);
+        console.log(food);
+
+        let table = document.querySelector("#table");
+
+        let quest = "What do you want?";
+
+        let words = document.querySelector("#words");
+
+        for (let j = 0; j < 2; j++) {
+            let tr = document.createElement('tr');
+            for (let i = 0; i < 5; i++) {
+                // add row
+                let td = document.createElement('td');
+                let obj = food[j * 5 + i];
+                let path = "../../resource/img/" + obj.link;
+                td.innerHTML = `<img src="${path}"><p>${obj.name}</p>`;
+                tr.appendChild(td);
+
+                // add words
+                words.innerHTML += `<p>${quest}</p><p>I want ${obj.name}</p>`;
+
+            }
+            table.appendChild(tr);
+        }
+
+        let comicPath = "./comic.png";
+        let puzzle = document.querySelector("#puzzle");
+
+        for (let j = 0; j < 5; j++) {
+            let tr = document.createElement('tr');
+            for (let i = 0; i < 2; i++) {
+                let obj = food[i * WIDTH + j];
+                let path = "../../resource/img/" + obj.link;
+
+                // add row
+                let td = document.createElement('td');
+                td.innerHTML = `<img src="${comicPath}"><p class='trace'>I want ____.</p><img class="corner" src="${path}">`;
+
+                tr.appendChild(td);
+
+            }
+            puzzle.appendChild(tr);
+        }
+
+    </script>
+
+</body>
+
+</html>
