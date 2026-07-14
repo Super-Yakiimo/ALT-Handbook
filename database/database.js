@@ -148,7 +148,7 @@ const JOBS = [
 const STATIONARY = [
     { name: "pencil", link: "stationary/pencil.png" },
     { name: "mechanical pencil", link: "stationary/mechanical pencil.png" },
-    { name: "earaser", link: "stationary/earaser.png" },
+    { name: "eraser", link: "stationary/earaser.png" },
     { name: "pencil case", link: "stationary/pencil case.png" },
     { name: "ruler", link: "stationary/ruler.png" },
     { name: "glue stick", link: "stationary/glue stick.png" },

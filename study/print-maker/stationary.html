@@ -53,6 +53,7 @@
         .trace {
             font-family: MyFont;
             font-size: 50px;
+            margin: 0;
         }
 
         #words {
@@ -61,15 +62,24 @@
         }
 
         #words p {
-            margin: 1px;
+            margin: 5px;
         }
 
         .corner {
             position: absolute;
-            top: 10%;
+            top: 5%;
             right: 20%;
+            width: 20%;
+            height: 20%;
+        }
+
+        .quest {
+            position: absolute;
+            top: 5%;
+            left: 10%;
             width: 50px;
             height: 50px;
+            font-size: 25px;
         }
     </style>
 </head>
@@ -94,13 +104,15 @@
         const WIDTH = 5;
         const HEIGHT = 5;
 
-        let food = FOOD.splice(0, 10);
+        const VOWL = "aeiuoAEIOU";
+
+        let food = STATIONARY.splice(0, 10);
         console.log(food);
 
         let table = document.querySelector("#table");
 
-        let quest = "What do you want?";
-        let resp = "I want ";
+        let quest = "What's this?";
+        let resp = "It's ";
 
         let words = document.querySelector("#words");
 
@@ -111,17 +123,18 @@
                 let td = document.createElement('td');
                 let obj = food[j * 5 + i];
                 let path = "../../resource/img/" + obj.link;
+                let art = (VOWL.includes(obj.name[0])) ? "an" : "a";
                 td.innerHTML = `<img src="${path}"><p>${obj.name}</p>`;
                 tr.appendChild(td);
 
                 // add words
-                words.innerHTML += `<p>${quest}</p><p>${resp}${obj.name}</p>`;
+                words.innerHTML += `<p>${quest}</p><p>${resp} ${art} ${obj.name}</p>`;
 
             }
             table.appendChild(tr);
         }
 
-        let comicPath = "./comic.png";
+        let comicPath = "./comicteacher.png";
         let puzzle = document.querySelector("#puzzle");
 
         for (let j = 0; j < 5; j++) {
@@ -129,10 +142,11 @@
             for (let i = 0; i < 2; i++) {
                 let obj = food[i * WIDTH + j];
                 let path = "../../resource/img/" + obj.link;
+                let art = (VOWL.includes(obj.name[0])) ? "an" : "a ";
 
                 // add row
                 let td = document.createElement('td');
-                td.innerHTML = `<img src="${comicPath}"><p class='trace'>I want ____.</p><img class="corner" src="${path}">`;
+                td.innerHTML = `<img src="${comicPath}"><p class='quest'>${quest}</p><p class='trace'>${resp} ${art} ______.</p><img class="corner" src="${path}">`;
 
                 tr.appendChild(td);
 

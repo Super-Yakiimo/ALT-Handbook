@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Maker</title>
+    <style>
+        @media print {
+            @page {
+                margin: 50px;
+                /* Strips browser headers/footers */
+            }
+
+            body {
+                margin: 1.6cm;
+                /* Re-applies safe margins to your content */
+            }
+        }
+
+        @font-face {
+            font-family: MyFont;
+            src: url(../font/KGPrimaryDotsLined.ttf);
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid;
+            padding: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            width: 100%;
+            height: 50%;
+        }
+
+        td {
+            width: 20%;
+            height: 100%;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .trace {
+            font-family: MyFont;
+            font-size: 50px;
+        }
+
+        #words {
+            font-family: MyFont;
+            font-size: 50px;
+        }
+
+        #words p {
+            margin: 1px;
+        }
+
+        .corner {
+            position: absolute;
+            top: 10%;
+            right: 20%;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="printArea">
+
+        <table id="table">
+            <tr>
+                <td><img src="../../../resource/img/food/pizza.png">
+                    <p>pizza</p>
+                </td>
+                <td><img src="../../../resource/img/food/food_hamburger_cheese.png">
+                    <p>hamburger</p>
+                </td>
+                <td><img src="../../../resource/img/food/food_fried_potato_dish.png">
+                    <p>french fries</p>
+                </td>
+                <td><img src="../../../resource/img/food/curry.png">
+                    <p>curry</p>
+                </td>
+                <td><img src="../../../resource/img/food/salad.png">
+                    <p>salad</p>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../../../resource/img/food/beef.png">
+                    <p>steak</p>
+                </td>
+                <td><img src="../../../resource/img/food/fishandchips.png">
+                    <p>fish and chips</p>
+                </td>
+                <td><img src="../../../resource/img/food/food_omurice.png">
+                    <p>omlet</p>
+                </td>
+                <td><img src="../../../resource/img/food/tacos.png">
+                    <p>tacos</p>
+                </td>
+                <td><img src="../../../resource/img/food/sushi.png">
+                    <p>sushi</p>
+                </td>
+            </tr>
+        </table>
+
+        <div id="words">
+            <p>What do you want?</p>
+            <p>I want pizza</p>
+            <p>What do you want?</p>
+            <p>I want a hamburger</p>
+            <p>What do you want?</p>
+            <p>I want french fries</p>
+            <p>What do you want?</p>
+            <p>I want curry</p>
+            <p>What do you want?</p>
+            <p>I want salad</p>
+            <p>What do you want?</p>
+            <p>I want steak</p>
+            <p>What do you want?</p>
+            <p>I want fish and chips</p>
+            <p>What do you want?</p>
+            <p>I want an omlet</p>
+            <p>What do you want?</p>
+            <p>I want tacos</p>
+            <p>What do you want?</p>
+            <p>I want sushi</p>
+        </div>
+
+
+        <table id="puzzle">
+            <tr>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/pizza.png">
+                </td>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/beef.png">
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner"
+                        src="../../../resource/img/food/food_hamburger_cheese.png">
+                </td>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/fishandchips.png">
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner"
+                        src="../../../resource/img/food/food_fried_potato_dish.png">
+                </td>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/food_omurice.png">
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/curry.png">
+                </td>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/tacos.png">
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/salad.png">
+                </td>
+                <td><img src="../comic.png">
+                    <p class="trace">I want ____.</p><img class="corner" src="../../../resource/img/food/sushi.png">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
