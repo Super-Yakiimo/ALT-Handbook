@@ -40,9 +40,13 @@ font
     src: url(./font/KGPrimaryDotsLined.ttf);
 }
 
-.trace {
+.trace, .answer {
     font-family: MyFont;
     font-size: 50px;
+}
+
+.answer {
+    margin: 0;
 }
 
 

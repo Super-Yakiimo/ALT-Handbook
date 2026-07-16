@@ -50,7 +50,9 @@ function makePuzzle(vocab, quest, resp) {
         for (let i = 0; i < HEIGHT; i++) {
             let obj = vocab[i * WIDTH + j];
             let path = "../../resource/img/" + obj.link;
-            puzzle += `<td><img src="${comicPath}"><p class='quest'>${quest}</p><p class='trace'>${resp} ______.</p><img class="corner" src="${path}"></td>`
+            puzzle += `<td><img src="${comicPath}"><p class='quest'>${quest}</p>`;
+            puzzle += `<p class='answer'>${resp} ______.</p>`;
+            puzzle += `<img class="corner" src="${path}"></td>`;
         }
         puzzle += REND;
     }
