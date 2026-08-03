@@ -385,6 +385,8 @@ const COUNTRIES = [
     { name: "Romania", link: "country/Romania.png" },
     { name: "Greece", link: "country/Greece.png" },
     { name: "Philippines", link: "country/Philippines.png" },
+    { name: "United States", link: "country/united_states.png" },
+
 ]
 
 const KITCHEN = [
