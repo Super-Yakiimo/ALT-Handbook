@@ -41,7 +41,7 @@ const POS_LIST = [
     {
         "x": 0.6165137614678899,
         "y": 0.8867924528301887,
-        "jump":8
+        "jump": 8
     }, // 6
     {
         "x": 0.7009174311926606,
@@ -82,7 +82,7 @@ const POS_LIST = [
     {
         "x": 0.3871559633027523,
         "y": 0.699685534591195,
-        "jump":8
+        "jump": 8
     }, //16
     {
         "x": 0.29174311926605506,
@@ -135,7 +135,7 @@ const POS_LIST = [
     {
         "x": 0.43394495412844036,
         "y": 0.2783018867924528,
-        "jump":9
+        "jump": 9
     }, // 29
     {
         "x": 0.3412844036697248,
@@ -445,7 +445,7 @@ window.onload = function () {
         let waitTime = Math.abs(numb) * MOVE_TIME / moveList.length;
 
         // check if on bridge
-        if(POS_LIST[char.pos].jump != null){
+        if (POS_LIST[char.pos].jump != null) {
             bridge = true;
             let jump = POS_LIST[char.pos].jump;
             let start = char.pos;
@@ -580,7 +580,7 @@ window.onload = function () {
     let rnd;
 
     rollBtn.addEventListener('click', () => { // fix here
-        rnd = Math.floor(Math.random() * 9); 
+        rnd = Math.floor(Math.random() * 9);
         diceResultImg.src = NUMBERS[rnd];
         rollBtn.classList.add('hide');
         rollNextBtn.classList.remove('hide');
@@ -597,7 +597,7 @@ window.onload = function () {
         // move selected character
         let bridge = moveChar(rnd + 1, index);
         let time = (rnd + 1) * MOVE_TIME;
-        if(bridge){
+        if (bridge) {
             time += MOVE_TIME;
         }
 
@@ -763,7 +763,7 @@ window.onload = function () {
                 break;
         }
 
-        if(bridge){
+        if (bridge) {
             wait += MOVE_TIME;
         }
 
